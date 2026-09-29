@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Parveen Yadav — Product Designer</title>
 <meta name="description" content="Portfolio of Parveen Yadav, product designer.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/js/support.js"></script>
 </head>
 <body>
@@ -15,6 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=Caveat:wght@500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
+  :root { --g: max(clamp(24px, 5vw, 72px), calc((100vw - 1500px) / 2)); }
   body { margin: 0; background: #1546F5; overflow-x: hidden; }
   a { color: #FFFFFF; }
   a:hover { color: #ffffff; }
@@ -30,10 +31,20 @@
   @media (max-width: 999px) { #about [data-ts-grid], #testimonials [data-ts-grid] { grid-template-columns: minmax(0, 1fr) !important; } }
   @media (max-width: 1180px) { #contact [data-fo-ring] { display: none !important; } }
   @media (max-width: 900px) { #contact [data-fo-grid] { grid-template-columns: minmax(0, 1fr) !important; } #contact [data-fo-grid] > div:last-child { border-left: none !important; padding-left: 0 !important; flex-wrap: wrap; } }
-  @media (max-width: 720px) { #work [data-work-grid] { grid-template-columns: minmax(0, 1fr) !important; } }
+  @media (max-width: 720px) { #work [data-work-grid], #archive [data-work-grid] { grid-template-columns: minmax(0, 1fr) !important; } }
+  @media (prefers-reduced-motion: reduce) { #archive * { transition: none !important; } }
+  @media (max-width: 1100px) { #journey [data-tl-grid] { grid-template-columns: minmax(0, 1fr) !important; } }
+  @media (max-width: 860px) {
+    #journey [data-tl-list] { grid-template-columns: minmax(0, 1fr) !important; gap: 28px !important; padding-left: 30px !important; }
+    #journey [data-tl-rail] { display: block !important; position: absolute; left: 5px; top: 6px; bottom: 0; width: 1px; background: rgba(21,70,245,.35); }
+    #journey [data-tl-line], #journey [data-tl-note], #journey [data-tl-stem] { display: none !important; }
+    #journey [data-tl-mark] { flex-direction: row-reverse !important; justify-content: flex-end !important; height: auto !important; margin: 0 0 14px -30px; gap: 19px !important; }
+    #journey [data-tl-intro] { grid-template-columns: minmax(0, 1fr) !important; }
+    #journey [data-tl-illus] { justify-self: center !important; max-width: 420px !important; }
+  }
   @media (max-width: 1000px) {
     #hero { min-height: 0 !important; }
-    #hero [data-hero-copy] { max-width: 100% !important; padding: clamp(84px, 11vw, 120px) clamp(22px, 5vw, 48px) clamp(340px, 54vw, 500px) !important; min-height: 0 !important; }
+    #hero [data-hero-copy] { max-width: 100% !important; padding: clamp(84px, 11vw, 120px) var(--g) clamp(340px, 54vw, 500px) !important; min-height: 0 !important; }
     #hero [data-hero-stage] { right: 0 !important; top: auto !important; bottom: 0 !important; width: 100% !important; height: clamp(330px, 50vw, 460px) !important; }
     #hero [data-hero-stage] img { object-position: 72% bottom !important; }
     #hero [data-hero-veil] { background: linear-gradient(to bottom, #1546F5 0%, #1546F5 46%, rgba(21,70,245,.92) 58%, rgba(21,70,245,0) 76%) !important; }
@@ -44,7 +55,7 @@
   @media (max-width: 759px) {
     #hero h1 { font-size: clamp(38px, 11.5vw, 56px) !important; }
     #hero [data-hero-copy] p { max-width: 100% !important; }
-    header[data-hdr] { gap: 14px !important; padding: 14px 20px !important; flex-wrap: wrap; font-size: 11px !important; }
+    header[data-hdr] { gap: 14px !important; padding: 14px var(--g) !important; flex-wrap: wrap; font-size: 11px !important; }
     header[data-hdr] nav { gap: 14px !important; }
   }
   @keyframes pyOrbit { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } }
@@ -96,8 +107,8 @@
 
   <div data-hero-veil="1" style="position: absolute; inset: 0; background: linear-gradient(100deg, #1546F5 0%, #1546F5 34%, rgba(21,70,245,0.86) 46%, rgba(21,70,245,0) 62%); pointer-events: none;"></div>
 
-  <header data-hdr="1" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: flex-start; gap: clamp(24px, 5vw, 64px); padding: 20px clamp(24px, 5vw, 72px); background: transparent; transition: background .35s ease, color .35s ease, box-shadow .35s ease; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; animation: pyFade .7s ease-out .15s both;">
-    <span style="font-weight: 500;">Parveen Yadav</span>
+  <header data-hdr="1" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: flex-start; gap: clamp(24px, 5vw, 64px); padding: 20px var(--g); background: transparent; transition: background .35s ease, color .35s ease, box-shadow .35s ease; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; animation: pyFade .7s ease-out .15s both;">
+    <span style="font-weight: 500; white-space: nowrap;">Parveen Yadav</span>
     <nav style="display: flex; gap: clamp(16px, 3vw, 34px);">
       <a href="#work" style="text-decoration: none; opacity: 1; border-bottom: 1px solid transparent; transition: border-color .25s ease;" style-hover="border-color: #FFFFFF;">Work</a>
       <a href="#lab" style="text-decoration: none; opacity: 1; border-bottom: 1px solid transparent; transition: border-color .25s ease;" style-hover="border-color: #FFFFFF;">Lab</a>
@@ -107,11 +118,11 @@
     </nav>
   </header>
 
-  <div data-hero-copy="1" style="position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: center; min-height: 100%; padding: 96px clamp(24px, 5vw, 72px) clamp(40px, 7vh, 96px); max-width: min(58%, 760px);">
+  <div data-hero-copy="1" style="position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: center; min-height: 100%; padding: 96px var(--g) clamp(40px, 7vh, 96px); max-width: calc(var(--g) + min(58vw - 72px, 690px));">
 
     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: clamp(18px, 3vh, 30px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; animation: pyFade .7s ease-out .35s both;">
       <span style="width: 7px; height: 7px; border-radius: 50%; background: #FFFFFF; animation: pyCaret 1.9s steps(1,end) infinite;"></span>
-      <span>HI, I AM PARVEEN</span>
+      <span style="white-space: nowrap;">HI, I AM PARVEEN</span>
     </div>
 
     <h1 style="margin: 0; font-size: clamp(40px, 6.6vw, 104px); line-height: 0.94; font-weight: 800; letter-spacing: -0.035em; text-wrap: balance;">
@@ -144,13 +155,13 @@
     </div>
   </div>
 
-  <div data-hero-scroll="1" style="position: absolute; left: clamp(24px, 5vw, 72px); bottom: 18px; z-index: 3; display: flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: .9; animation: pyFade 1s ease-out 1.3s both;">
+  <div data-hero-scroll="1" style="position: absolute; left: var(--g); bottom: 18px; z-index: 3; display: flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: .9; animation: pyFade 1s ease-out 1.3s both;">
     <span style="display: block; animation: pyNudge 2.4s ease-in-out infinite;">↓</span>
     <span>Scroll</span>
   </div>
 </section>
 
-<section id="work" data-screen-label="Selected work" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(64px, 11vh, 130px) clamp(24px, 5vw, 72px) clamp(72px, 12vh, 150px);">
+<section id="work" data-screen-label="Selected work" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(64px, 11vh, 130px) var(--g) clamp(72px, 12vh, 150px);">
 
   <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: clamp(20px, 3vh, 32px); border-bottom: 1px solid rgba(16,32,63,.18); margin-bottom: clamp(40px, 7vh, 84px);">
     <h2 style="margin: 0; font-size: clamp(26px, 3.6vw, 52px); font-weight: 600; letter-spacing: -0.03em; line-height: 1;">Selected work</h2>
@@ -214,26 +225,92 @@
   </div>
 </section>
 
-<section id="craft" data-screen-label="Capabilities" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(40px, 7vh, 84px) clamp(16px, 3vw, 40px) clamp(48px, 8vh, 96px);">
-  <div ref="{{ craftBoxRef }}" style="position: relative; width: 100%; max-width: 1620px; margin: 0 auto; overflow: hidden;">
-    <div ref="{{ craftRef }}" style="position: absolute; left: 0; top: 0; width: 1536px; height: 1090px; transform-origin: 0 0;">
+<section id="archive" data-screen-label="Archived work" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: 0 var(--g) clamp(56px, 9vh, 110px); margin-top: calc(-1 * clamp(24px, 5vh, 70px));">
+  <button type="button" onClick="{{ toggleArchive }}" aria-expanded="{{ archExpanded }}" aria-controls="archive-panel" aria-label="{{ archLabel }}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: clamp(18px, 2.6vh, 26px) 0; background: none; border: none; border-top: 1px solid rgba(16,32,63,.18); border-bottom: 1px solid rgba(16,32,63,.18); color: inherit; font: inherit; text-align: left; cursor: pointer;" style-hover="color: #1546F5;">
+    <span style="font-size: clamp(20px, 2.1vw, 30px); font-weight: 600; letter-spacing: -0.025em; line-height: 1;">Archived work</span>
+    <span style="display: flex; align-items: center; gap: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #1546F5;">04 projects<span aria-hidden="true" style="display: inline-block; font-size: 16px; letter-spacing: 0; transform: rotate({{ archRot }}); transition: transform .3s cubic-bezier(.16,1,.3,1);">↓</span></span>
+  </button>
+  <div id="archive-panel" role="region" aria-label="Archived work" style="display: grid; grid-template-rows: {{ archRows }}; transition: grid-template-rows .32s cubic-bezier(.16,1,.3,1);">
+    <div style="overflow: hidden; min-height: 0;" inert="{{ archInert }}">
+      <div style="opacity: {{ archOpacity }}; transform: translateY({{ archShift }}); transition: opacity .3s ease-out, transform .32s cubic-bezier(.16,1,.3,1);">
+        <div data-work-grid="true" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(40px, 6vw, 88px) clamp(28px, 4vw, 56px); padding-top: clamp(40px, 6vh, 72px);">
+          <a href="https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=245-35&amp;viewport=266%2C85%2C0.03&amp;t=9dKWqpn7QmiVIiar-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; color: inherit; transition: transform .4s cubic-bezier(.16,1,.3,1);" style-hover="transform: translateY(-6px);">
+            <div style="position: relative; overflow: hidden; border-radius: 6px; background: rgba(16,32,63,.06); aspect-ratio: 16 / 11;">
+              <img src="assets/images/work/quick-repairs.png" alt="Quick Repairs cover" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: clamp(18px, 2.4vh, 26px);">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #1546F5; padding-top: .55em;">01</span>
+              <div>
+                <h3 style="margin: 0; font-size: clamp(20px, 2.1vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.14; text-wrap: pretty;">Making complex repairs simpler for customers</h3>
+                <p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(16,32,63,.78);">OneAssist · Service experience · <span style="color: #1546F5;">Archived</span></p>
+              </div>
+            </div>
+          </a>
 
-      <div data-c="card" data-cr-head="1" style="position: absolute; left: 84px; top: 56px; width: 512px; z-index: 6;">
+          <a href="https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=649-431&amp;viewport=266%2C85%2C0.03&amp;t=rzYL0wGSNZvHuKM6-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; color: inherit; transition: transform .4s cubic-bezier(.16,1,.3,1);" style-hover="transform: translateY(-6px);">
+            <div style="position: relative; overflow: hidden; border-radius: 6px; background: rgba(16,32,63,.06); aspect-ratio: 16 / 11;">
+              <img src="assets/images/work/insta-doc.png" alt="Insta Doc cover" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: clamp(18px, 2.4vh, 26px);">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #1546F5; padding-top: .55em;">02</span>
+              <div>
+                <h3 style="margin: 0; font-size: clamp(20px, 2.1vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.14; text-wrap: pretty;">Designing a simpler telemedicine experience for patients</h3>
+                <p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(16,32,63,.78);">InstaDoc · Healthcare · <span style="color: #1546F5;">Archived</span></p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=648-2&amp;viewport=266%2C85%2C0.03&amp;t=EdSec0aZUYahBPhl-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; color: inherit; transition: transform .4s cubic-bezier(.16,1,.3,1);" style-hover="transform: translateY(-6px);">
+            <div style="position: relative; overflow: hidden; border-radius: 6px; background: rgba(16,32,63,.06); aspect-ratio: 16 / 11;">
+              <img src="assets/images/work/continental-coffee.png" alt="Continental Coffee cover" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: clamp(18px, 2.4vh, 26px);">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #1546F5; padding-top: .55em;">03</span>
+              <div>
+                <h3 style="margin: 0; font-size: clamp(20px, 2.1vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.14; text-wrap: pretty;">Brewing a better digital experience for Continental Coffee</h3>
+                <p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(16,32,63,.78);">Continental Coffee · E-commerce · <span style="color: #1546F5;">Archived</span></p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=882-494&amp;viewport=266%2C85%2C0.03&amp;t=YMWpCHODs0tgytbr-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank" rel="noopener noreferrer" style="display: block; text-decoration: none; color: inherit; transition: transform .4s cubic-bezier(.16,1,.3,1);" style-hover="transform: translateY(-6px);">
+            <div style="position: relative; overflow: hidden; border-radius: 6px; background: rgba(16,32,63,.06); aspect-ratio: 16 / 11;">
+              <img src="assets/images/work/idfence.png" alt="IDFence cover" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: clamp(18px, 2.4vh, 26px);">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #1546F5; padding-top: .55em;">04</span>
+              <div>
+                <h3 style="margin: 0; font-size: clamp(20px, 2.1vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.14; text-wrap: pretty;">Making digital identity protection easier to understand</h3>
+                <p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(16,32,63,.78);">OneAssist · Fintech / Security · <span style="color: #1546F5;">Archived</span></p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="craft" data-screen-label="Capabilities" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(40px, 7vh, 84px) var(--g) clamp(48px, 8vh, 96px);">
+  <div ref="{{ craftBoxRef }}" style="position: relative; width: 100%;">
+    <div ref="{{ craftRef }}" style="position: absolute; left: 0; top: 0; width: 1368px; height: 1037px; transform-origin: 0 0;">
+
+      <div data-c="card" data-cr-head="1" style="position: absolute; left: 0px; top: 56px; width: 512px; z-index: 6;">
         <p style="margin: 0 0 20px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(16,32,63,.7);">Skills and tools</p>
         <h2 style="margin: 0; font-size: 82px; font-weight: 800; line-height: 0.9; letter-spacing: -0.045em;">Design<br>Capabilities<br><span style="position: relative; font-weight: 400; font-style: italic;">&amp; Craft<span style="position: absolute; left: 46%; right: -34%; bottom: -0.02em; height: 7px; border-radius: 6px; background: #1546F5; transform: rotate(-1.4deg);"></span></span></h2>
         <p style="margin: 44px 0 0; max-width: 34ch; font-size: 19px; line-height: 1.5; color: rgba(16,32,63,.85); text-wrap: pretty;">A blend of product thinking, visual craft, and the right tools to bring ideas to life.</p>
       </div>
 
-      <div data-c="decor" style="position: absolute; left: 600px; top: 52px; width: 170px; z-index: 12;">
+      <div data-c="decor" style="position: absolute; left: 516px; top: 52px; width: 170px; z-index: 12;">
         
         
       </div>
 
-      <div data-c="card" data-cr-art="1" style="position: absolute; left: 690px; top: 0; width: 830px; height: 430px; z-index: 4;">
+      <div data-c="card" data-cr-art="1" style="position: absolute; left: 556px; top: 0; width: 812px; height: 430px; z-index: 4;">
         <img src="assets/images/toolkit.png" alt="Design toolkit — pencil case with tools" style="display: block; width: 100%; height: 100%; object-fit: contain; object-position: center top; will-change: transform; transform: translateY(0) rotate(0deg) scale(1); filter: drop-shadow(0 10px 18px rgba(16,32,63,.10)); transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1), filter 550ms cubic-bezier(0.22, 1, 0.36, 1);" style-hover="transform: translateY(-6px) rotate(-1deg) scale(1.025); filter: drop-shadow(0 22px 34px rgba(16,32,63,.18));">
       </div>
 
-      <div data-c="card" data-cr-card="1" style="position: absolute; left: 84px; top: 462px; width: 586px; height: 519px; display: flex; flex-direction: column; padding: 26px 24px 28px; background: rgba(16,32,63,.045); border-radius: 18px; z-index: 8; transition: background .35s ease;">
+      <div data-c="card" data-cr-card="1" style="position: absolute; left: 0px; top: 462px; width: 563px; height: 519px; display: flex; flex-direction: column; padding: 26px 24px 28px; background: rgba(16,32,63,.045); border-radius: 18px; z-index: 8; transition: background .35s ease;">
         <div style="display: flex; align-items: center; margin-bottom: 24px;">
           <h3 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap;">UI/UX Capabilities</h3>
         </div>
@@ -287,11 +364,11 @@
         </div>
       </div>
 
-      <div data-c="card" data-cr-card="2" style="position: absolute; left: 686px; top: 462px; width: 508px; height: 519px; display: flex; flex-direction: column; padding: 26px 24px 28px; background: rgba(16,32,63,.045); border-radius: 18px; z-index: 8; transition: background .35s ease;">
+      <div data-c="card" data-cr-card="2" style="position: absolute; left: 583px; top: 462px; width: 488px; height: 519px; display: flex; flex-direction: column; padding: 26px 24px 28px; background: rgba(16,32,63,.045); border-radius: 18px; z-index: 8; transition: background .35s ease;">
         <div style="display: flex; align-items: center; margin-bottom: 24px;">
           <h3 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap;">Visual, Brand &amp; Craft</h3>
         </div>
-        <div style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 172px)); align-content: center; gap: 14px;">
+        <div style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px;">
 
           <div data-cr-tile="2" style="display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-height: 128px; padding: 20px 18px; background: rgba(16,32,63,.05); border-radius: 12px; transition: background .3s ease, transform .3s cubic-bezier(.16,1,.3,1);" style-hover="background: rgba(21,70,245,.1); transform: translateY(-3px);">
             <svg viewBox="0 0 24 24" fill="none" stroke="#10203F" stroke-width="1.4" stroke-linejoin="round" style="width: 28px; height: 28px;"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 18 L10 13 L15 17 L19 14"></path></svg>
@@ -326,11 +403,11 @@
         </div>
       </div>
 
-      <div data-c="card" data-cr-card="3" style="position: absolute; left: 1200px; top: 462px; width: 288px; height: 519px; display: flex; flex-direction: column; padding: 26px 22px 28px; background: rgba(16,32,63,.045); border-radius: 18px; z-index: 8; transition: background .35s ease;">
+      <div data-c="card" data-cr-card="3" style="position: absolute; left: 1091px; top: 462px; width: 277px; height: 519px; display: flex; flex-direction: column; padding: 26px 24px 28px; background: rgba(16,32,63,.045); border-radius: 18px; z-index: 8; transition: background .35s ease;">
         <div style="display: flex; align-items: center; margin-bottom: 24px;">
           <h3 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap;">Tools I Use</h3>
         </div>
-        <div style="flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px;">
+        <div style="flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 14px;">
 
           <div data-cr-tile="3" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; min-height: 104px; padding: 16px 12px; background: rgba(16,32,63,.05); border-radius: 12px; transition: background .3s ease, transform .3s cubic-bezier(.16,1,.3,1);" style-hover="background: rgba(21,70,245,.1); transform: translateY(-3px);">
             <img src="assets/images/tools/figma.png" alt="" style="display: block; width: 36px; height: 36px; object-fit: contain;">
@@ -367,7 +444,7 @@
 
       
 
-      <div data-c="decor" style="position: absolute; left: 1350px; top: 998px; width: 150px; z-index: 12;">
+      <div data-c="decor" style="position: absolute; left: 1266px; top: 998px; width: 150px; z-index: 12;">
         
         
       </div>
@@ -376,116 +453,107 @@
   </div>
 </section>
 
-<section id="journey" data-screen-label="Design journey" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(40px, 7vh, 80px) clamp(16px, 3vw, 40px) clamp(48px, 8vh, 96px);">
-  <div ref="{{ journeyBoxRef }}" style="position: relative; width: 100%; max-width: 1620px; margin: 0 auto; overflow: hidden;">
-    <div ref="{{ journeyRef }}" style="position: absolute; left: 0; top: 0; width: 1536px; height: 1048px; transform-origin: 0 0;">
+<section id="journey" data-screen-label="Design journey" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(64px, 11vh, 130px) var(--g) clamp(72px, 12vh, 140px);">
+  <div data-tl-grid="1" style="display: flex; flex-direction: column; gap: clamp(40px, 7vh, 80px);">
 
-      <div data-c="card" data-jr-head="1" style="position: absolute; left: 80px; top: 56px; width: 420px; z-index: 6;">
-        <p style="margin: 0 0 18px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(16,32,63,.7);">Work experience</p>
-        <h2 style="margin: 0; font-size: 76px; font-weight: 800; line-height: 0.9; letter-spacing: -0.045em;">My design<br>journey<br><span style="font-weight: 400; font-style: italic; color: #1546F5;">so far.</span></h2>
-        <p style="margin: 26px 0 0; max-width: 30ch; font-size: 17px; line-height: 1.5; color: rgba(16,32,63,.85); text-wrap: pretty;">From graphic design to product UX, a journey shaped by growth, collaboration, and building meaningful digital experiences at scale.</p>
-      </div>
-
-      <svg data-c="decor" viewBox="0 0 1536 1010" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 1536px; height: 1010px; z-index: 3; pointer-events: none; overflow: visible;">
-        <path data-jr-path="1" d="M -20 828 C 24 816 82 786 106 710 C 162 566 384 626 476 522 C 566 426 704 384 820 440 C 906 482 1086 402 1236 262 C 1368 196 1456 486 1486 772" fill="none" stroke="#10203F" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="12 14"></path>
-      </svg>
-
-      <span data-c="decor" data-jr-blob="1" style="position: absolute; left: 262px; top: 736px; width: 168px; height: 168px; border-radius: 50%; background: #1546F5; z-index: 2; transition: transform .5s cubic-bezier(.16,1,.3,1);"></span>
-      <span data-c="decor" data-jr-blob="2" style="position: absolute; left: 560px; top: 726px; width: 128px; height: 128px; border-radius: 50%; background: #1546F5; z-index: 2; transition: transform .5s cubic-bezier(.16,1,.3,1);"></span>
-      <span data-c="decor" data-jr-blob="3" style="position: absolute; left: 852px; top: 424px; width: 300px; height: 250px; border-radius: 52% 48% 44% 56% / 56% 44% 56% 44%; background: #1546F5; z-index: 2; transition: transform .5s cubic-bezier(.16,1,.3,1);"></span>
-      <span data-c="decor" data-jr-blob="4" style="position: absolute; left: 1236px; top: 552px; width: 220px; height: 200px; border-radius: 46% 54% 58% 42% / 48% 52% 48% 52%; background: #1546F5; z-index: 2; transition: transform .5s cubic-bezier(.16,1,.3,1);"></span>
-
-      <span data-c="decor" data-jr-year="1" style="position: absolute; left: 84px; top: 676px; z-index: 12; display: flex; flex-direction: column; align-items: center; gap: 12px;">
-        <b style="display: block; padding: 4px 10px; background: #10203F; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: .08em;">2017</b>
-        <span style="display: block; width: 13px; height: 13px; border-radius: 50%; background: #10203F;"></span>
-      </span>
-      <span data-c="decor" data-jr-year="2" style="position: absolute; left: 448px; top: 488px; z-index: 12; display: flex; flex-direction: column; align-items: center; gap: 12px;">
-        <b style="display: block; padding: 4px 10px; background: #10203F; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: .08em;">2019</b>
-        <span style="display: block; width: 13px; height: 13px; border-radius: 50%; background: #10203F;"></span>
-      </span>
-      <span data-c="decor" data-jr-year="3" style="position: absolute; left: 790px; top: 406px; z-index: 12; display: flex; flex-direction: column; align-items: center; gap: 12px;">
-        <b style="display: block; padding: 4px 10px; background: #10203F; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: .08em;">2021</b>
-        <span style="display: block; width: 13px; height: 13px; border-radius: 50%; background: #10203F;"></span>
-      </span>
-      <span data-c="decor" data-jr-year="4" style="position: absolute; left: 1204px; top: 200px; z-index: 12; display: flex; flex-direction: column; align-items: center; gap: 12px;">
-        <b style="display: block; padding: 4px 10px; background: #10203F; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: .08em;">2024</b>
-        <span style="display: block; width: 13px; height: 13px; border-radius: 50%; background: #10203F;"></span>
-      </span>
-
-      <p data-c="decor" data-jr-note="0" style="position: absolute; left: 14px; top: 758px; width: 130px; margin: 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1.2; transform: rotate(-6deg); z-index: 12; transition: color .3s ease;">It started here…</p>
-      <p data-c="decor" data-jr-note="1" style="position: absolute; left: 176px; top: 468px; width: 130px; margin: 0; font-family: Caveat, cursive; font-size: 25px; line-height: 1.2; transform: rotate(-4deg); z-index: 12; transition: color .3s ease;">Learned the basics. <span style="display: inline-block; transform: rotate(12deg);">↘</span></p>
-      <p data-c="decor" data-jr-note="2" style="position: absolute; left: 606px; top: 286px; width: 150px; margin: 0; font-family: Caveat, cursive; font-size: 25px; line-height: 1.2; transform: rotate(-3deg); z-index: 12; transition: color .3s ease;">Bigger problems. Bigger learning. <span style="display: inline-block; transform: rotate(30deg);">↘</span></p>
-      <p data-c="decor" data-jr-note="3" style="position: absolute; left: 1010px; top: 60px; width: 150px; margin: 0; font-family: Caveat, cursive; font-size: 25px; line-height: 1.2; transform: rotate(-2deg); z-index: 12; transition: color .3s ease;">Real people. Real problems. <span style="display: inline-block; transform: rotate(48deg);">↘</span></p>
-      <p data-c="decor" data-jr-note="4" style="position: absolute; left: 1368px; top: 36px; width: 140px; margin: 0; font-family: Caveat, cursive; font-size: 25px; line-height: 1.2; transform: rotate(-4deg); z-index: 12; transition: color .3s ease;">Different roles. Same curiosity.</p>
-      <p data-c="decor" data-jr-note="5" style="position: absolute; left: 1374px; top: 224px; width: 140px; margin: 0; font-family: Caveat, cursive; font-size: 25px; line-height: 1.2; transform: rotate(-3deg); z-index: 12; transition: color .3s ease;">Bigger impact. Still curious. <span style="display: inline-block; transform: rotate(70deg);">↘</span></p>
-
-      <div data-c="card" data-jr-card="1" style="position: absolute; left: 168px; top: 528px; width: 254px; padding: 26px 24px 46px; background: #FFFFFF; border: 1px solid rgba(16,32,63,.09); box-shadow: 0 18px 38px rgba(16,32,63,.16); transform: rotate(-1.6deg); z-index: 8; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, opacity .4s ease;">
-        <span data-jr-tape="1" style="position: absolute; left: 118px; top: -14px; width: 96px; height: 26px; background: rgba(16,32,63,.13); transform: rotate(-3deg); transition: transform .45s cubic-bezier(.16,1,.3,1);"></span>
-        <img src="assets/images/journey/logo-eckovation.png" alt="Eckovation" style="display: block; width: 66px; height: 66px; object-fit: contain;">
-        <h3 style="margin: 22px 0 14px; font-size: 23px; font-weight: 800; letter-spacing: -0.02em;">Eckovation</h3>
-        <p style="margin: 0; font-size: 15.5px; font-weight: 600; line-height: 1.3;">Lead Product Designer</p>
-        <p style="margin: 4px 0 18px; font-size: 15px; color: rgba(16,32,63,.55);">Mar 2017 – Oct 2019</p>
-        <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.9); text-wrap: pretty;">Started my professional journey here, working on early product experiences and learning the fundamentals of user-centered design.</p>
-        <span data-jr-photo="1" style="display: block; position: absolute; right: -74px; bottom: -98px; width: 196px; height: 132px; transform: rotate(2deg); transition: transform .4s cubic-bezier(.16,1,.3,1);">
-          <img src="assets/images/journey/bldg-eckovation.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: contain;">
-        </span>
-      </div>
-
-      <div data-c="card" data-jr-card="2" style="position: absolute; left: 528px; top: 408px; width: 262px; padding: 26px 24px 28px; background: #FFFFFF; border: 1px solid rgba(16,32,63,.09); box-shadow: 0 18px 38px rgba(16,32,63,.16); transform: rotate(1.2deg); z-index: 9; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, opacity .4s ease;">
-        <span data-jr-tape="2" style="position: absolute; left: 26px; top: -13px; width: 92px; height: 25px; background: rgba(16,32,63,.13); transform: rotate(4deg); transition: transform .45s cubic-bezier(.16,1,.3,1);"></span>
-        <img src="assets/images/journey/logo-oneassist.png" alt="OneAssist" style="display: block; width: 66px; height: 66px; object-fit: contain;">
-        <h3 style="margin: 22px 0 14px; font-size: 23px; font-weight: 800; letter-spacing: -0.02em;">OneAssist</h3>
-        <p style="margin: 0; font-size: 15.5px; font-weight: 600; line-height: 1.3;">Senior UX Designer</p>
-        <p style="margin: 4px 0 18px; font-size: 15px; color: rgba(16,32,63,.55);">Nov 2019 – Mar 2021</p>
-        <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.9); text-wrap: pretty;">Deepened my UX skills, worked on complex problem spaces, and got hands-on with designing for scale.</p>
-        <span data-jr-photo="2" style="display: block; position: absolute; right: -46px; bottom: -128px; width: 210px; height: 138px; transform: rotate(-2deg); transition: transform .4s cubic-bezier(.16,1,.3,1);">
-          <img src="assets/images/journey/bldg-oneassist.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: contain;">
-        </span>
-      </div>
-
-      <div data-c="card" data-jr-card="3" style="position: absolute; left: 874px; top: 172px; width: 256px; padding: 26px 24px 28px; background: #FFFFFF; border: 1px solid rgba(16,32,63,.09); box-shadow: 0 18px 38px rgba(16,32,63,.16); transform: rotate(-1deg); z-index: 10; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, opacity .4s ease;">
-        <span data-jr-tape="3" style="position: absolute; left: 96px; top: -14px; width: 104px; height: 26px; background: rgba(16,32,63,.13); transform: rotate(-2deg); transition: transform .45s cubic-bezier(.16,1,.3,1);"></span>
-        <img src="assets/images/journey/logo-baari.png" alt="Baari" style="display: block; width: 66px; height: 66px; object-fit: contain;">
-        <h3 style="margin: 22px 0 14px; font-size: 23px; font-weight: 800; letter-spacing: -0.02em;">Entrepreneurship</h3>
-        <p style="margin: 0; font-size: 15px; color: rgba(16,32,63,.6);">Mar 2021 – Sep 2023</p>
-        <p style="margin: 18px 0 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.9); text-wrap: pretty;">Took a detour to run my own café, learned to listen, solve real problems, and take full ownership.</p>
-        <span data-jr-photo="3" style="display: block; position: absolute; right: -22px; bottom: -186px; width: 226px; height: 180px; transform: rotate(1.5deg); transition: transform .4s cubic-bezier(.16,1,.3,1);">
-          <img src="assets/images/journey/bldg-baari.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: contain;">
-        </span>
-      </div>
-
-      <div data-c="card" data-jr-card="4" style="position: absolute; left: 1236px; top: 250px; width: 256px; padding: 26px 24px 28px; background: #FFFFFF; border: 1px solid rgba(16,32,63,.09); box-shadow: 0 18px 38px rgba(16,32,63,.16); transform: rotate(0.8deg); z-index: 10; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, opacity .4s ease;">
-        <img src="assets/images/journey/logo-yaper.png" alt="Yaper" style="display: block; width: 66px; height: 66px; object-fit: contain;">
-        <h3 style="margin: 22px 0 14px; font-size: 23px; font-weight: 800; letter-spacing: -0.02em;">Yaper</h3>
-        <p style="margin: 0; font-size: 15.5px; font-weight: 600; line-height: 1.3;">Senior Product Designer</p>
-        <p style="margin: 4px 0 18px; font-size: 15px; color: rgba(16,32,63,.55);">May 2024 – Present</p>
-        <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.9); text-wrap: pretty;">Back to product, now designing at a larger scale, solving meaningful problems, and creating better experiences for millions.</p>
-        <span data-jr-photo="4" style="display: block; position: absolute; right: -14px; bottom: -142px; width: 238px; height: 168px; transform: rotate(-1.5deg); transition: transform .4s cubic-bezier(.16,1,.3,1);">
-          <img src="assets/images/journey/bldg-yaper.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: contain;">
-        </span>
-      </div>
-
-      <div data-c="decor" data-jr-memo="1" style="position: absolute; left: 916px; top: 748px; width: 296px; padding: 34px 28px 30px; background: #FFFFFF; background-image: url('assets/images/journey/grid-paper.png'); background-size: 100% 100%; transform: rotate(-1.6deg); z-index: 11; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;">
-        <span style="position: absolute; left: 34px; top: -13px; width: 86px; height: 26px; background: #1546F5; transform: rotate(-2deg);"></span>
-        <p style="margin: 0; font-family: Caveat, cursive; font-size: 27px; line-height: 1.4; transform: rotate(-2deg);">Same designer.<br>Different chapters.<br>A more curious me.</p>
-      </div>
-
-      <img data-c="decor" src="assets/images/journey/books.png" alt="" style="display: block; position: absolute; left: -14px; top: 830px; width: 246px; height: auto; z-index: 12;">
-
-      
+    <div data-tl-intro="1" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 46%); gap: clamp(24px, 4vw, 64px); align-items: center;">
+    <div style="max-width: 720px;">
+      <p style="margin: 0 0 20px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(16,32,63,.7);">Work experience</p>
+      <h2 style="margin: 0; font-size: clamp(48px, 6.2vw, 92px); font-weight: 800; line-height: 0.9; letter-spacing: -0.045em;">My design<br>journey<br><span style="font-weight: 400; font-style: italic; color: #1546F5;">so far.</span></h2>
+      <p style="margin: clamp(24px, 4vh, 40px) 0 0; max-width: 44ch; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(16,32,63,.85); text-wrap: pretty;">From graphic design to product UX, a journey shaped by growth, collaboration, and building meaningful digital experiences at scale.</p>
     </div>
+    <img data-tl-illus="1" src="assets/images/illus.png" alt="Coffee mug, plant and notebook on a desk" style="display: block; justify-self: end; width: 100%; max-width: 640px; height: auto;">
+    </div>
+
+    <div data-tl-wrap="1" style="position: relative; padding-top: 0;">
+            <svg data-tl-line="1" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 12.5%; top: 0; width: 75%; height: 16px; margin-top: 26px; z-index: 1; overflow: visible;"><path d="M0 6 C 12 7.5 22 7.5 33.3 5.5 C 44 3.5 56 2.5 66.6 5 C 77 7.5 88 8 100 5" fill="none" stroke="rgba(21,70,245,.45)" stroke-width="1.2" vector-effect="non-scaling-stroke"></path></svg>
+      <ol data-tl-list="1" style="position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 24px);">
+        <span data-tl-rail="1" aria-hidden="true" style="display: none;"></span>
+      <li data-tl-item="1" style="position: relative; display: flex; flex-direction: column; min-width: 0;">
+        <div data-tl-mark="1" style="display: flex; flex-direction: column; align-items: center; gap: 14px; height: 76px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; line-height: 1;">2017</span>
+          <span style="position: relative; z-index: 2; display: block; width: 11px; height: 11px; border-radius: 50%; background: #1546F5; box-shadow: 0 0 0 5px #FFFFFF;"></span>
+          <span data-tl-stem="1" style="display: block; flex: 1; width: 0; border-left: 1px dashed rgba(16,32,63,.22);"></span>
+        </div>
+        <article style="flex: 1; display: flex; flex-direction: column; padding: clamp(18px, 1.7vw, 26px) clamp(16px, 1.6vw, 24px) 0; background: #FFFFFF; border: 1px solid rgba(16,32,63,.1); border-radius: 12px; box-shadow: 0 1px 2px rgba(16,32,63,.04); overflow: hidden; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, border-color .4s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 16px 32px rgba(16,32,63,.08); border-color: rgba(21,70,245,.28);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: block; flex: none; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(16,32,63,.08);"><img src="assets/images/journey/logo-eckovation.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08);"></span>
+            <h3 style="margin: 0; min-width: 0; font-size: clamp(18px, 1.45vw, 21px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;">Eckovation</h3>
+          </div>
+          <p style="margin: 20px 0 0; font-size: 15.5px; font-weight: 600; line-height: 1.3;">Lead Product Designer</p>
+          <p style="margin: 4px 0 0; font-size: 14.5px; color: rgba(16,32,63,.6);">Mar 2017 – Oct 2019</p>
+          <span style="display: block; width: 28px; height: 2px; margin: 18px 0; background: #1546F5; border-radius: 2px;"></span>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.85); text-wrap: pretty;">Started my professional journey here, working on early product experiences and learning the fundamentals of user-centered design.</p>
+          <img src="assets/images/journey/bldg-eckovation.png" alt="" style="display: block; width: 100%; height: clamp(110px, 10vw, 150px); margin-top: auto; padding-top: 22px; object-fit: contain; object-position: center bottom;">
+        </article>
+      </li>
+      <li data-tl-item="1" style="position: relative; display: flex; flex-direction: column; min-width: 0;">
+        <div data-tl-mark="1" style="display: flex; flex-direction: column; align-items: center; gap: 14px; height: 76px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; line-height: 1;">2019</span>
+          <span style="position: relative; z-index: 2; display: block; width: 11px; height: 11px; border-radius: 50%; background: #1546F5; box-shadow: 0 0 0 5px #FFFFFF;"></span>
+          <span data-tl-stem="1" style="display: block; flex: 1; width: 0; border-left: 1px dashed rgba(16,32,63,.22);"></span>
+        </div>
+        <article style="flex: 1; display: flex; flex-direction: column; padding: clamp(18px, 1.7vw, 26px) clamp(16px, 1.6vw, 24px) 0; background: #FFFFFF; border: 1px solid rgba(16,32,63,.1); border-radius: 12px; box-shadow: 0 1px 2px rgba(16,32,63,.04); overflow: hidden; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, border-color .4s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 16px 32px rgba(16,32,63,.08); border-color: rgba(21,70,245,.28);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: block; flex: none; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(16,32,63,.08);"><img src="assets/images/journey/logo-oneassist.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08);"></span>
+            <h3 style="margin: 0; min-width: 0; font-size: clamp(18px, 1.45vw, 21px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;">OneAssist</h3>
+          </div>
+          <p style="margin: 20px 0 0; font-size: 15.5px; font-weight: 600; line-height: 1.3;">Senior UX Designer</p>
+          <p style="margin: 4px 0 0; font-size: 14.5px; color: rgba(16,32,63,.6);">Nov 2019 – Mar 2021</p>
+          <span style="display: block; width: 28px; height: 2px; margin: 18px 0; background: #1546F5; border-radius: 2px;"></span>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.85); text-wrap: pretty;">Deepened my UX skills, worked on complex problem spaces, and got hands-on with designing for scale.</p>
+          <img src="assets/images/journey/bldg-oneassist.png" alt="" style="display: block; width: 100%; height: clamp(110px, 10vw, 150px); margin-top: auto; padding-top: 22px; object-fit: contain; object-position: center bottom;">
+        </article>
+      </li>
+      <li data-tl-item="1" style="position: relative; display: flex; flex-direction: column; min-width: 0;">
+        <div data-tl-mark="1" style="display: flex; flex-direction: column; align-items: center; gap: 14px; height: 76px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; line-height: 1;">2021</span>
+          <span style="position: relative; z-index: 2; display: block; width: 11px; height: 11px; border-radius: 50%; background: #1546F5; box-shadow: 0 0 0 5px #FFFFFF;"></span>
+          <span data-tl-stem="1" style="display: block; flex: 1; width: 0; border-left: 1px dashed rgba(16,32,63,.22);"></span>
+        </div>
+        <article style="flex: 1; display: flex; flex-direction: column; padding: clamp(18px, 1.7vw, 26px) clamp(16px, 1.6vw, 24px) 0; background: #FFFFFF; border: 1px solid rgba(16,32,63,.1); border-radius: 12px; box-shadow: 0 1px 2px rgba(16,32,63,.04); overflow: hidden; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, border-color .4s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 16px 32px rgba(16,32,63,.08); border-color: rgba(21,70,245,.28);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: block; flex: none; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(16,32,63,.08);"><img src="assets/images/journey/logo-baari.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08);"></span>
+            <h3 style="margin: 0; min-width: 0; font-size: clamp(18px, 1.45vw, 21px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;">Baari</h3>
+          </div>
+          <p style="margin: 20px 0 0; font-size: 15.5px; font-weight: 600; line-height: 1.3;">Entrepreneurship</p>
+          <p style="margin: 4px 0 0; font-size: 14.5px; color: rgba(16,32,63,.6);">Mar 2021 – Sep 2023</p>
+          <span style="display: block; width: 28px; height: 2px; margin: 18px 0; background: #1546F5; border-radius: 2px;"></span>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.85); text-wrap: pretty;">Took a detour to run my own café, learned to listen, solve real problems, and take full ownership.</p>
+          <img src="assets/images/journey/bldg-baari.png" alt="" style="display: block; width: 100%; height: clamp(110px, 10vw, 150px); margin-top: auto; padding-top: 22px; object-fit: contain; object-position: center bottom;">
+        </article>
+      </li>
+      <li data-tl-item="1" style="position: relative; display: flex; flex-direction: column; min-width: 0;">
+        <div data-tl-mark="1" style="display: flex; flex-direction: column; align-items: center; gap: 14px; height: 76px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; line-height: 1;">2024</span>
+          <span style="position: relative; z-index: 2; display: block; width: 11px; height: 11px; border-radius: 50%; background: #1546F5; box-shadow: 0 0 0 5px #FFFFFF;"></span>
+          <span data-tl-stem="1" style="display: block; flex: 1; width: 0; border-left: 1px dashed rgba(16,32,63,.22);"></span>
+        </div>
+        <article style="flex: 1; display: flex; flex-direction: column; padding: clamp(18px, 1.7vw, 26px) clamp(16px, 1.6vw, 24px) 0; background: #FFFFFF; border: 1px solid rgba(16,32,63,.1); border-radius: 12px; box-shadow: 0 1px 2px rgba(16,32,63,.04); overflow: hidden; transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, border-color .4s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 16px 32px rgba(16,32,63,.08); border-color: rgba(21,70,245,.28);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: block; flex: none; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(16,32,63,.08);"><img src="assets/images/journey/logo-yaper.png" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08);"></span>
+            <h3 style="margin: 0; min-width: 0; font-size: clamp(18px, 1.45vw, 21px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;">Yaper</h3>
+          </div>
+          <p style="margin: 20px 0 0; font-size: 15.5px; font-weight: 600; line-height: 1.3;">Senior Product Designer</p>
+          <p style="margin: 4px 0 0; font-size: 14.5px; color: rgba(16,32,63,.6);">May 2024 – Present</p>
+          <span style="display: block; width: 28px; height: 2px; margin: 18px 0; background: #1546F5; border-radius: 2px;"></span>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: rgba(16,32,63,.85); text-wrap: pretty;">Back to product, now designing at a larger scale, solving meaningful problems, and creating better experiences for millions.</p>
+          <img src="assets/images/journey/bldg-yaper.png" alt="" style="display: block; width: 100%; height: clamp(110px, 10vw, 150px); margin-top: auto; padding-top: 22px; object-fit: contain; object-position: center bottom;">
+        </article>
+      </li>
+      </ol>
+    </div>
+
   </div>
 </section>
 
-<section id="lab" data-screen-label="The Lab" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(64px, 11vh, 130px) clamp(24px, 5vw, 72px) clamp(72px, 12vh, 140px);">
+<section id="lab" data-screen-label="The Lab" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(64px, 11vh, 130px) var(--g) clamp(72px, 12vh, 140px);">
   <div style="max-width: 1500px; margin: 0 auto;">
 
     <div data-lab-top="1" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 430px); gap: clamp(28px, 5vw, 72px); align-items: start;">
 
       <div>
         <div style="display: flex; align-items: center; gap: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(16,32,63,.72);">
-          <span>04</span>
-          <span style="width: clamp(36px, 6vw, 72px); height: 1px; background: rgba(16,32,63,.35);"></span>
           <span>The Lab</span>
         </div>
 
@@ -493,12 +561,6 @@
 
         <p style="margin: clamp(22px, 3.4vh, 34px) 0 0; max-width: 48ch; font-size: clamp(16px, 1.2vw, 19px); line-height: 1.55; color: rgba(16,32,63,.85); text-wrap: pretty;">I like figuring out how things work — and AI has given me a whole new set of things to take apart and rebuild. Here are some experiments, prototypes and small products I’ve built.</p>
 
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(26px, 3.6vh, 38px);">
-          <button type="button" data-lab-pill="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; color: #10203F; background: rgba(16,32,63,.055); border: 1px solid rgba(16,32,63,.28); border-radius: 999px; padding: 13px 18px; min-height: 44px; cursor: pointer; transition: background .3s ease, border-color .3s ease, transform .3s cubic-bezier(.16,1,.3,1);">Experiments</button>
-          <button type="button" data-lab-pill="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; color: #10203F; background: transparent; border: 1px solid rgba(16,32,63,.22); border-radius: 999px; padding: 13px 18px; min-height: 44px; cursor: pointer; transition: background .3s ease, border-color .3s ease, transform .3s cubic-bezier(.16,1,.3,1);">AI tools</button>
-          <button type="button" data-lab-pill="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; color: #10203F; background: transparent; border: 1px solid rgba(16,32,63,.22); border-radius: 999px; padding: 13px 18px; min-height: 44px; cursor: pointer; transition: background .3s ease, border-color .3s ease, transform .3s cubic-bezier(.16,1,.3,1);">Quick builds</button>
-          <button type="button" data-lab-pill="1" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; color: #10203F; background: transparent; border: 1px solid rgba(16,32,63,.22); border-radius: 999px; padding: 13px 18px; min-height: 44px; cursor: pointer; transition: background .3s ease, border-color .3s ease, transform .3s cubic-bezier(.16,1,.3,1);">Ongoing</button>
-        </div>
       </div>
 
       <div data-lab-moon="1" style="width: 100%; max-width: 430px; margin-left: auto;">
@@ -570,7 +632,7 @@
             <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(16,32,63,.2); border-radius: 999px; padding: 5px 10px; color: rgba(16,32,63,.72);">Travel</span>
             <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(16,32,63,.2); border-radius: 999px; padding: 5px 10px; color: rgba(16,32,63,.72);">Experiment</span>
           </div>
-          <span style="display: inline-flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 22px; font-size: 15px; font-weight: 500;">View project <span data-lab-arrow="1" aria-hidden="true" style="display: inline-block; transition: transform .3s cubic-bezier(.16,1,.3,1);">→</span></span>
+          <span style="display: inline-flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 22px; font-size: 15px; font-weight: 500;">Coming Soon <span data-lab-arrow="1" aria-hidden="true" style="display: none; transition: transform .3s cubic-bezier(.16,1,.3,1);">→</span></span>
         </div>
       </article>
 
@@ -580,7 +642,6 @@
       <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.7; color: rgba(16,32,63,.8);">More experiments<br>on the way.</p>
       <span style="flex: 1; min-width: 40px; height: 1px; background: rgba(16,32,63,.25);"></span>
       <a href="#contact" data-lab-stay="1" style="display: inline-flex; align-items: center; gap: 16px; text-decoration: none; color: #10203F;">
-        <span style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #10203F; color: #FFFFFF; font-size: 18px;"><span data-lab-arrow="1" aria-hidden="true" style="display: inline-block; transition: transform .3s cubic-bezier(.16,1,.3,1);">→</span></span>
         <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;">Stay curious</span>
       </a>
     </div>
@@ -588,7 +649,7 @@
   </div>
 </section>
 
-<section id="testimonials" data-screen-label="Testimonials" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(56px, 9vh, 104px) clamp(24px, 5vw, 72px);">
+<section id="testimonials" data-screen-label="Testimonials" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(56px, 9vh, 104px) var(--g);">
   <div data-ts-grid="true" style="display: grid; grid-template-columns: minmax(260px, 360px) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; max-width: 1500px; margin: 0 auto;">
 
     <div style="display: flex; flex-direction: column; gap: clamp(20px, 3vh, 30px); padding-top: 8px;">
@@ -602,10 +663,6 @@
       <div ref="{{ collageRef }}" style="position: absolute; left: 0; top: 0; width: 1150px; height: 700px; transform-origin: 0 0;">
 
         <img data-c="decor" src="assets/images/loudspeaker.png" alt="" aria-hidden="true" style="position: absolute; left: 150px; top: 0px; width: 820px; height: auto; z-index: 1; pointer-events: none; object-fit: fill">
-
-        <div data-c="decor" style="position: absolute; right: 6px; top: 4px; width: 140px; padding: 14px 16px; background: #FFFFFF; border: 1px solid rgba(16,32,63,.1); box-shadow: 0 10px 24px rgba(16,32,63,.14); transform: rotate(3deg); z-index: 22;">
-          <p style="margin: 0; font-family: Caveat, cursive; font-size: 22px; line-height: 1.2;">Good products happen together.</p>
-        </div>
 
       <div data-c="card" style="position: absolute; left: 0px; top: 300px; width: 300px; display: flex; flex-direction: column; gap: 12px; padding: 22px 22px 20px; background: #FFFFFF; border: 1px solid rgba(16,32,63,.09); border-radius: 12px; box-shadow: 0 16px 34px rgba(16,32,63,.16); color: #10203F; transform: rotate(-3deg); z-index: 8; transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;" style-hover="transform: rotate(0deg) translateY(-10px) scale(1.04); box-shadow: 0 26px 54px rgba(16,32,63,.24); z-index: 40;">
         <span style="font-size: 34px; line-height: .5; color: #1546F5;">“</span>
@@ -657,7 +714,7 @@
   </div>
 </section>
 
-<section id="about" data-screen-label="About" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(56px, 9vh, 104px) clamp(24px, 5vw, 72px) clamp(64px, 10vh, 120px);">
+<section id="about" data-screen-label="About" style="background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(56px, 9vh, 104px) var(--g) clamp(64px, 10vh, 120px);">
   <div data-ts-grid="true" style="display: grid; grid-template-columns: minmax(260px, 380px) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; max-width: 1500px; margin: 0 auto;">
 
     <div style="display: flex; flex-direction: column; gap: clamp(18px, 2.6vh, 28px); padding-top: 8px;">
@@ -743,7 +800,6 @@
         </div>
 
         <div data-c="decor" data-stain="1" aria-hidden="true" style="position: absolute; left: 448px; top: 596px; width: 260px; height: 104px; border: 11px solid rgba(120,84,52,.2); border-radius: 50%; transform: rotate(-9deg); opacity: 0; transition: opacity 1.2s ease; z-index: 2;"></div>
-        <p data-c="decor" style="position: absolute; left: 1010px; top: 10px; width: 140px; margin: 0; font-family: Caveat, cursive; font-size: 21px; line-height: 1.25; z-index: 22;">Good products start with good conversations.</p>
         <p data-c="decor" style="position: absolute; left: 300px; top: 690px; width: 220px; margin: 0; font-family: Caveat, cursive; font-size: 21px; line-height: 1.25; z-index: 22;">Same curiosity. Just different customers.</p>
         <span data-c="decor" style="position: absolute; left: 1050px; top: 700px; font-size: 40px; line-height: 1; color: #1546F5; z-index: 22;">✳</span>
         <span data-c="decor" style="position: absolute; left: 470px; top: 300px; font-size: 30px; line-height: 1; color: #1546F5; transform: rotate(-12deg); z-index: 4;">///</span>
@@ -752,7 +808,7 @@
   </div>
 </section>
 
-<section id="contact" data-screen-label="Footer" style="position: relative; overflow: hidden; background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(56px, 9vh, 104px) clamp(24px, 5vw, 72px) clamp(150px, 20vw, 250px);">
+<section id="contact" data-screen-label="Footer" style="position: relative; overflow: hidden; background: #FFFFFF; color: #10203F; font-family: 'Bricolage Grotesque', system-ui, sans-serif; padding: clamp(56px, 9vh, 104px) var(--g) clamp(150px, 20vw, 250px);">
 
   <img aria-hidden="true" src="assets/images/footer/left-trim.png" alt="" style="position: absolute; left: 0; bottom: 0; display: block; width: clamp(150px, 17vw, 260px); height: auto; z-index: 0; pointer-events: none;">
   <img aria-hidden="true" src="assets/images/footer/right-trim.png" alt="" style="position: absolute; right: 0; bottom: 0; display: block; width: clamp(140px, 16vw, 250px); height: auto; z-index: 0; pointer-events: none;">
@@ -833,7 +889,8 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;roles&quot;:{&quot;editor&quot;:null,&quot;default&quot;:[[&quot;Currently shaping&quot;,&quot;better products&quot;],[&quot;Currently untangling&quot;,&quot;complex workflows&quot;],[&quot;Currently exploring&quot;,&quot;AI + design&quot;],[&quot;Currently building&quot;,&quot;design systems&quot;],[&quot;Currently fixing&quot;,&quot;what\u2019s not working&quot;]],&quot;tsType&quot;:&quot;string[][]&quot;}}">
 class Component extends DCLogic {
-  state = { i: 0, active: 2 };
+  state = { i: 0, active: 2, archOpen: false };
+  toggleArchive = () => this.setState(s => ({ archOpen: !s.archOpen }));
   roles() {
     const r = this.props.roles;
     const def = [['Currently shaping', 'better products'], ['Currently untangling', 'complex workflows'], ['Currently exploring', 'AI + design'], ['Currently building', 'design systems'], ['Currently fixing', "what's not working"]];
@@ -1010,7 +1067,7 @@ class Component extends DCLogic {
 
   wireJourney = () => {
     const root = document.getElementById('journey');
-    if (!root || root.dataset.wired) return;
+    if (!root || root.dataset.wired || !root.querySelector('[data-jr-card]')) return;
     root.dataset.wired = '1';
 
     const svg = root.querySelector('[data-jr-path]') ? root.querySelector('svg') : null;
@@ -1111,8 +1168,7 @@ class Component extends DCLogic {
     return [
       { box: this.collageBoxRef.current, inner: this.collageRef.current, w: 1150, h: 700, mw: '440px', st: 0.62 },
       { box: this.aboutBoxRef.current, inner: this.aboutRef.current, w: 1150, h: 780, mw: '520px', st: 0.62 },
-      { box: this.journeyBoxRef.current, inner: this.journeyRef.current, w: 1536, h: 1048, mw: '620px', st: 0.72 },
-      { box: this.craftBoxRef.current, inner: this.craftRef.current, w: 1536, h: 1090, mw: '620px', st: 0.62 }
+      { box: this.craftBoxRef.current, inner: this.craftRef.current, w: 1368, h: 1037, mw: '620px', st: 0.62, up: true }
     ].filter(o => o.box && o.inner);
   }
 
@@ -1137,7 +1193,7 @@ class Component extends DCLogic {
 
   fitOne = (o) => {
     const { box, inner, w: DW, h: DH, mw } = o;
-    const k = Math.min(1, box.clientWidth / DW);
+    const k = o.up ? box.clientWidth / DW : Math.min(1, box.clientWidth / DW);
     const stack = k < (o.st || 0.85);
     const cards = inner.querySelectorAll('[data-c="card"]');
     const decor = inner.querySelectorAll('[data-c="decor"]');
@@ -1158,7 +1214,7 @@ class Component extends DCLogic {
       inner.style.display = 'flex';
       inner.style.flexDirection = 'column';
       inner.style.gap = '18px';
-      inner.style.alignItems = 'center';
+      inner.style.alignItems = o.up ? 'stretch' : 'center';
       box.style.height = 'auto';
       decor.forEach(d => { d.style.display = 'none'; });
       inner.querySelectorAll('[data-jr-photo]').forEach(p => {
@@ -1181,7 +1237,7 @@ class Component extends DCLogic {
         c.style.left = 'auto';
         c.style.top = 'auto';
         c.style.width = '100%';
-        c.style.maxWidth = mw;
+        c.style.maxWidth = o.up ? 'none' : mw;
         c.dataset.baseT = 'none';
         if (!c.dataset.hov) c.style.transform = 'none';
       });
@@ -1328,7 +1384,16 @@ class Component extends DCLogic {
   };
 
   renderVals() {
+    const ao = !!this.state.archOpen;
     return {
+      toggleArchive: this.toggleArchive,
+      archExpanded: ao ? 'true' : 'false',
+      archLabel: ao ? 'Collapse archived work' : 'Expand archived work',
+      archRot: ao ? '180deg' : '0deg',
+      archRows: ao ? '1fr' : '0fr',
+      archOpacity: ao ? 1 : 0,
+      archShift: ao ? '0px' : '-12px',
+      archInert: ao ? undefined : '',
       toTop: this.toTop,
       collageRef: this.collageRef,
       collageBoxRef: this.collageBoxRef,
