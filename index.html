@@ -17,12 +17,12 @@
 <meta property="og:title" content="Parveen Yadav — Product Designer">
 <meta property="og:description" content="Parveen Yadav is a product designer in Delhi with 8+ years across fintech, insurtech and edtech. Case studies from Yaper, a design system, and things built with AI.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F0F10" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <style>
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;color-scheme:light only}
 html,body{overflow-x:clip}
 @supports not (overflow:clip){body{overflow-x:hidden}}
 .pv-nav{position:sticky;top:0;z-index:50;padding:24px 0;background:var(--bg);border-bottom:1px solid transparent;box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax);transition:padding .3s cubic-bezier(.2,.7,.2,1),border-color .3s ease}
@@ -33,7 +33,7 @@ body{margin:0}
 .pv-art{overflow:clip;overflow-clip-margin:24px}
 @media (max-width: 860px){.pv-art{overflow-clip-margin:14px}}
 :root{--cs-accent:#025ACE;--sage:#5F7A50;--bg:#FFFFFF;--fg:#141414;--muted:#5C5C5C;--faint:#767676;--line:#EBEBEB;--soft:#F4F4F4;--panel:#F7F7F7;--chip:#FFFFFF;--hero-panel:#EEF3FC;--hero-chip:#E2EBFB;--hero-chip-fg:#2A4A86}
-@media (prefers-color-scheme: dark){:root{--cs-accent:#7EB0FF;--bg:#0F0F10;--fg:#EDEDED;--muted:#A3A3A3;--faint:#8C8C8C;--line:#26262A;--soft:#1A1A1C;--sage:#A3B896;--panel:#161618;--chip:#1E1E21;--hero-panel:#141B27;--hero-chip:#1B2638;--hero-chip-fg:#A9C2F0}}
+
 a{color:var(--fg)}a:hover{color:var(--muted)}
 @keyframes pv-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes pv-grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -413,24 +413,28 @@ html.pv-menu-lock{overflow:hidden}
 .pv-nav.open .pv-menu a:nth-child(3){animation-delay:.06s}
 .pv-nav.open .pv-menu a:nth-child(4){animation-delay:.09s}
 .pv-nav.open .pv-menu a:nth-child(5){animation-delay:.12s}
-.pv-nav + *{margin-top:-80px}
+.pv-nav + *{margin-top:-56px}
 .pv-hero-grid{gap:8px}
 .pv-about-ph{flex:1 1 100% !important;max-width:none !important;border-radius:10px !important}
 .pv-about-ph img{aspect-ratio:4 / 3 !important}
 }
-.pv-show{--h:340px;position:relative;overflow:hidden;padding:12px 0 8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.pv-show-track{display:flex;width:max-content;animation:pv-marquee 70s linear infinite}
-.pv-show:hover .pv-show-track{animation-play-state:paused}
-.pv-show-set{display:flex;gap:28px;padding-right:28px}
-.pv-shot{position:relative;margin:0;height:var(--h);flex:0 0 auto;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.pv-shot img{display:block;height:100%;width:100%;object-fit:contain;user-select:none;-webkit-user-select:none}
+.pv-show{--h:340px;--g:28px;position:relative;overflow-x:auto;overflow-y:hidden;padding:12px 0 8px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.pv-show::-webkit-scrollbar{display:none}
+.pv-show-set{display:flex;gap:var(--g);width:max-content}
+.pv-show.js{overflow:hidden;height:calc(var(--h) + 20px);box-sizing:border-box}
+.pv-show.js .pv-show-set{display:block;position:relative;width:auto;height:var(--h)}
+.pv-show.js .pv-shot{position:absolute;left:0;top:0;will-change:transform}
+.pv-shot{position:relative;margin:0;height:var(--h);flex:0 0 auto}
+.pv-shot img{display:block;height:100%;width:100%;object-fit:contain;user-select:none;-webkit-user-select:none;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .pv-shot figcaption{position:absolute;left:50%;bottom:10px;display:flex;gap:6px;align-items:baseline;white-space:nowrap;padding:6px 12px;border-radius:999px;font-size:12px;line-height:1.2;background:rgba(20,20,20,.82);color:#fff;opacity:0;transform:translate(-50%,6px);transition:opacity .25s ease, transform .3s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 .pv-shot figcaption b{font-weight:600;opacity:.7}
-@media (hover: hover){.pv-shot:hover{transform:translateY(-6px)}.pv-shot:hover figcaption{opacity:1;transform:translate(-50%,0)}}
+@media (hover: hover){.pv-shot:hover img{transform:translateY(-6px)}.pv-shot:hover figcaption{opacity:1;transform:translate(-50%,0)}}
 @media (hover: none){.pv-show-hint{display:none}}
-@keyframes pv-marquee{to{transform:translateX(-50%)}}
+@media (max-width: 860px){.pv-show{--h:240px;--g:18px}}
+@media (prefers-reduced-motion: reduce){.pv-show{-webkit-mask-image:none;mask-image:none}.pv-show-hint{display:none}}
 @media (max-width: 860px){.pv-show{--h:240px}.pv-show-set{gap:18px;padding-right:18px}}
 @media (prefers-reduced-motion: reduce){.pv-show{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.pv-show-track{animation:none}.pv-show-set[aria-hidden]{display:none}.pv-show-hint{display:none}}
+@media (max-width: 640px){.pv-main{gap:80px !important}.pv-hero-grid .pv-art{margin-bottom:-28px}#about{border-top:0 !important;padding-top:0 !important}}
 @media (max-width: 640px){.pv-tap{display:inline-block;padding-top:12px !important;padding-bottom:12px !important}}
 .cs-next{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px 40px;align-items:center;text-decoration:none;border-top:1px solid var(--line);padding-top:28px}
 .cs-next .pv-frame img{aspect-ratio:3/2}
@@ -452,7 +456,7 @@ html.pv-menu-lock{overflow:hidden}
 
 .pv-baari{position:relative;display:inline-block;font-weight:500;color:#1F5FD1;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:default;outline:none;border-radius:2px}
 .pv-pol span{text-decoration:none}
-@media (prefers-color-scheme: dark){.pv-baari{color:#8FB4FF}}
+
 .pv-baari:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .pv-pol{position:absolute;left:50%;bottom:calc(100% + 12px);width:200px;padding:10px 10px 0;box-sizing:border-box;background:#fff;border-radius:3px;box-shadow:0 14px 32px rgba(0,0,0,.18),0 2px 6px rgba(0,0,0,.08);opacity:0;visibility:hidden;pointer-events:none;transform:translate(calc(-50% + var(--dx, 0px)),10px) rotate(0deg) scale(.94);transform-origin:50% 100%;transition:opacity .25s ease,transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s linear .4s;z-index:30}
 .pv-pol img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#eee}
@@ -468,7 +472,7 @@ html.pv-menu-lock{overflow:hidden}
 @media (max-width: 560px){.pv-how{grid-template-columns:minmax(0,1fr);row-gap:0}.pv-how-col,.pv-how-col:nth-child(3){padding:24px 0;border-left:0}.pv-how-col+.pv-how-col{border-left:0;border-top:1px solid var(--line)}}
 .pv-chip{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 14px;border-radius:14px;border:1px solid var(--line);background:var(--panel);font-size:15px;color:var(--fg)}
 .pv-chip img{width:22px;height:22px;object-fit:contain}
-@media (prefers-color-scheme: dark){.pv-mono{filter:invert(1)}}
+
 .pv-hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center}
 @media (min-width: 861px){.pv-hero-grid .pv-art{width:calc(100% + 40px + clamp(0px, (100vw - 1160px) / 2, 90px)) !important;max-width:none !important;margin-left:-40px;margin-right:calc(-1 * clamp(0px, (100vw - 1160px) / 2, 90px))}}
 .pv-h1 .pv-l{display:block}
@@ -499,7 +503,7 @@ html.pv-menu-lock{overflow:hidden}
 </style>
 </helmet>
 <div style="background: var(--bg); color: var(--fg); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.55; min-height: 100vh">
-<div style="max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 64px; display: flex; flex-direction: column; gap: 104px">
+<div class="pv-main" style="max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 64px; display: flex; flex-direction: column; gap: 104px">
 
   <sc-if value="{{intro}}" hint-placeholder-val="{{false}}">
   <div class="pv-intro" ref="{{setIntro}}" onClick="{{introSkip}}">
@@ -520,7 +524,7 @@ html.pv-menu-lock{overflow:hidden}
       <h1 class="pv-h1 pv-hs" style="--d: 0ms; margin: 0; font-size: clamp(30px, 3vw + 14px, 48px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; color: var(--fg); text-wrap: balance">Hi, I’m Parveen.</h1>
       <p class="pv-hs" style="--d: 380ms; margin: 0; max-width: 40ch; font-size: clamp(17px, 0.5vw + 14px, 20px); line-height: 1.6; color: var(--muted); text-wrap: pretty">I use AI to move from idea to prototype faster, then bring the context and judgment to make the result useful for real people.</p>
       <div class="pv-hs" style="--d: 700ms; display: flex; flex-wrap: wrap; gap: 10px; padding-top: 6px">
-        <a href="#work" class="pv-cta" style="display: inline-flex; align-items: center; gap: 8px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 8px; padding: 12px 18px; font-weight: 500; min-height: 44px; box-sizing: border-box">See the work <svg class="pv-chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+        <a href="#work" class="pv-cta" style="display: inline-flex; align-items: center; gap: 8px; background: var(--fg); color: var(--bg); text-decoration: none; border-radius: 8px; padding: 12px 18px; font-weight: 500; min-height: 44px; box-sizing: border-box">See the work <svg class="pv-chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v11M3.5 9l4.5 4.5L12.5 9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
         <a href="#contact" class="pv-cta pv-ghost" style="display: inline-flex; align-items: center; color: var(--fg); border: 1px solid var(--line); text-decoration: none; border-radius: 8px; padding: 11px 17px; font-weight: 500; min-height: 44px; box-sizing: border-box; transition: border-color .2s ease">Say hello</a>
       </div>
     </div>
@@ -539,7 +543,7 @@ html.pv-menu-lock{overflow:hidden}
         <a href="{{w.url}}" class="pv-card pv-reveal" style="--tint: {{w.tint}}; --dotc: {{w.dot}}">
           <div class="pv-frame"><img src="{{w.img}}" alt="{{w.alt}}"></div>
           <div style="display: flex; flex-direction: column; gap: 2px">
-            <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px"><span style="font-weight: 500">{{w.name}}</span><span style="display: flex; align-items: center; gap: 8px; color: var(--muted)"><span class="pv-dot" aria-hidden="true"></span>{{w.status}}</span></div>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px"><span style="font-weight: 500">{{w.name}}</span></div>
             <span style="color: var(--muted)">{{w.title}}</span>
             <div style="display: flex; justify-content: space-between; gap: 16px; padding-top: 6px"><span style="color: var(--faint); font-size: 13px">{{w.tags}}</span><span class="pv-more" style="font-size: 13px">{{w.cta}} <span class="pv-arrow">→</span></span></div>
           </div>
@@ -549,9 +553,9 @@ html.pv-menu-lock{overflow:hidden}
   </section>
 
   <section id="showcase" style="display: flex; flex-direction: column; gap: 24px">
-    <div class="pv-reveal" style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 12px"><h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: var(--fg)">Visual showcase</h2><span class="pv-show-hint" style="font-size: 13px">Hover to pause</span></div>
-    <div class="pv-show pv-reveal" aria-label="Screens from recent work">
-      <div class="pv-show-track"><div class="pv-show-set"><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/28a065cb1bef.webp" alt="App screen: Onboarding" width="377" height="760" draggable="false"><figcaption><b>App</b>Onboarding</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 1051 / 760"><img src="assets/images/6acba1c935cb.webp" alt="Web screen: Credit card consultation" width="1051" height="760" draggable="false"><figcaption><b>Web</b>Credit card consultation</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/15f5adb14e9b.webp" alt="App screen: Home" width="377" height="760" draggable="false"><figcaption><b>App</b>Home</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 760 / 760"><img src="assets/images/7af975cc08fd.webp" alt="Campaign screen: Save big on online shopping" width="760" height="760" draggable="false"><figcaption><b>Campaign</b>Save big on online shopping</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 327 / 760"><img src="assets/images/14b6cb817c7b.webp" alt="App screen: Accept deal" width="327" height="760" draggable="false"><figcaption><b>App</b>Accept deal</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 1051 / 760"><img src="assets/images/da012aa043b2.webp" alt="Web screen: Find your card match" width="1051" height="760" draggable="false"><figcaption><b>Web</b>Find your card match</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/74f0f6d62956.webp" alt="App screen: Card details" width="377" height="760" draggable="false"><figcaption><b>App</b>Card details</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/f0d303e6e55a.webp" alt="App screen: Order history" width="377" height="760" draggable="false"><figcaption><b>App</b>Order history</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 850 / 760"><img src="assets/images/f3fe99761e81.webp" alt="Web screen: Compare credit cards" width="850" height="760" draggable="false"><figcaption><b>Web</b>Compare credit cards</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/23cfeb7c361f.webp" alt="App screen: My account" width="377" height="760" draggable="false"><figcaption><b>App</b>My account</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 1051 / 760"><img src="assets/images/1748ae2bcc04.webp" alt="Web screen: Partner banks" width="1051" height="760" draggable="false"><figcaption><b>Web</b>Partner banks</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/df8856796b86.webp" alt="App screen: Profile" width="377" height="760" draggable="false"><figcaption><b>App</b>Profile</figcaption></figure></div><div class="pv-show-set" aria-hidden="true"><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/28a065cb1bef.webp" alt="" width="377" height="760" draggable="false"><figcaption><b>App</b>Onboarding</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 1051 / 760"><img src="assets/images/6acba1c935cb.webp" alt="" width="1051" height="760" draggable="false"><figcaption><b>Web</b>Credit card consultation</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/15f5adb14e9b.webp" alt="" width="377" height="760" draggable="false"><figcaption><b>App</b>Home</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 760 / 760"><img src="assets/images/7af975cc08fd.webp" alt="" width="760" height="760" draggable="false"><figcaption><b>Campaign</b>Save big on online shopping</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 327 / 760"><img src="assets/images/14b6cb817c7b.webp" alt="" width="327" height="760" draggable="false"><figcaption><b>App</b>Accept deal</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 1051 / 760"><img src="assets/images/da012aa043b2.webp" alt="" width="1051" height="760" draggable="false"><figcaption><b>Web</b>Find your card match</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/74f0f6d62956.webp" alt="" width="377" height="760" draggable="false"><figcaption><b>App</b>Card details</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/f0d303e6e55a.webp" alt="" width="377" height="760" draggable="false"><figcaption><b>App</b>Order history</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 850 / 760"><img src="assets/images/f3fe99761e81.webp" alt="" width="850" height="760" draggable="false"><figcaption><b>Web</b>Compare credit cards</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/23cfeb7c361f.webp" alt="" width="377" height="760" draggable="false"><figcaption><b>App</b>My account</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 1051 / 760"><img src="assets/images/1748ae2bcc04.webp" alt="" width="1051" height="760" draggable="false"><figcaption><b>Web</b>Partner banks</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/df8856796b86.webp" alt="" width="377" height="760" draggable="false"><figcaption><b>App</b>Profile</figcaption></figure></div></div>
+    <div class="pv-reveal" style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 12px"><h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: var(--fg)">Screens up close</h2><span class="pv-show-hint" style="font-size: 13px">Hover to pause</span></div>
+    <div class="pv-show" ref="{{setShow}}" aria-label="Screens from recent work">
+      <div class="pv-show-set"><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/bdc087c2f4de.webp" alt="App screen: Refer a friend" width="377" height="760" draggable="false"><figcaption><b>App</b>Refer a friend</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3604b6edb719.webp" alt="App screen: Home for new users" width="377" height="760" draggable="false"><figcaption><b>App</b>Home for new users</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/4d1cbadde612.webp" alt="App screen: Order & Earn progress" width="377" height="760" draggable="false"><figcaption><b>App</b>Order &amp; Earn progress</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/72cf8e4f4df9.webp" alt="App screen: Select your cards" width="377" height="760" draggable="false"><figcaption><b>App</b>Select your cards</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3cbcd3ba0ee8.webp" alt="App screen: Onboarding" width="377" height="760" draggable="false"><figcaption><b>App</b>Onboarding</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/1dd769187ad6.webp" alt="App screen: Campaign terms" width="377" height="760" draggable="false"><figcaption><b>App</b>Campaign terms</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/63c0f5befc09.webp" alt="App screen: Pay Link" width="377" height="760" draggable="false"><figcaption><b>App</b>Pay Link</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/ae46123ac183.webp" alt="App screen: Festive home" width="377" height="760" draggable="false"><figcaption><b>App</b>Festive home</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3dceb7163dfa.webp" alt="App screen: Home with instant deal" width="377" height="760" draggable="false"><figcaption><b>App</b>Home with instant deal</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/887d08d94043.webp" alt="App screen: Apply for cards" width="377" height="760" draggable="false"><figcaption><b>App</b>Apply for cards</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/8b1f9c56631d.webp" alt="App screen: Card details" width="377" height="760" draggable="false"><figcaption><b>App</b>Card details</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/e02b2d57731e.webp" alt="App screen: My profile" width="377" height="760" draggable="false"><figcaption><b>App</b>My profile</figcaption></figure></div>
     </div>
   </section>
 
@@ -1019,7 +1023,7 @@ html.pv-menu-lock{overflow:hidden}
     <section class="cs-sec">
       <a class="cs-next" href="#yaper-design-system">
         <div class="cs-side"><span class="cs-k">Next project</span><span style="font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em">Yaper Design System</span><span style="color: var(--muted)">Building the system behind the product</span><span class="pv-cta" style="display: inline-flex; gap: 6px; font-weight: 500; padding-top: 6px">Read case study <span class="pv-arrow">→</span></span></div>
-        <div class="pv-frame"><img src="assets/images/e50b4ce9a470.webp" alt="Yaper Design System board"></div>
+        <div class="pv-frame"><img src="assets/images/328a4c5e64ab.webp" alt="Yaper Design System board"></div>
       </a>
       <button type="button" class="cs-back" onClick="{{csBack}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to all work</button>
     </section>
@@ -1444,6 +1448,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.setBaRef = (el) => { if (el) this.baEl = el; };
+    this.setShowRef = (el) => { if (el && el !== this.showEl) { this.showEl = el; this.startShow(el); } };
     this.setGcRef = (el) => { if (el) { this.gcEl = el; const i = el.querySelector('#gc-value'); if (i && !i.dataset.init) { i.value = '10000'; i.dataset.init = '1'; } } };
     this.setIntroRef = (el) => { if (el && el !== this.introEl) { this.introEl = el; this.runIntro(el); } };
     this.toggleMenu = (e) => {
@@ -1495,6 +1500,59 @@ class Component extends DCLogic {
     const top = !el ? 0 : Math.max(0, el.getBoundingClientRect().top - base + sc.scrollTop - navH - 16);
     const behavior = smooth && !reduce ? 'smooth' : 'instant';
     try { sc.scrollTo({ top: top, behavior: behavior }); } catch (err) { sc.scrollTop = top; }
+  }
+  // Screens strip: each screen moves on its own small layer, wrapping round (no giant animated track).
+  startShow(el) {
+    if (this.showStop) this.showStop();
+    let reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (reduce) return;
+    const figs = [...el.querySelectorAll('.pv-shot')];
+    if (!figs.length) return;
+    el.classList.add('js');
+    let pos = [], total = 0, offset = 0, last = 0, raf = 0, hover = false, inView = true, stopped = false;
+    const layout = () => {
+      const g = parseFloat(getComputedStyle(el).getPropertyValue('--g')) || 24;
+      const h = figs[0].offsetHeight || parseFloat(getComputedStyle(el).getPropertyValue('--h')) || 240;
+      pos = []; total = 0;
+      figs.forEach((f) => {
+        const ar = (f.style.aspectRatio || '1 / 1').split('/').map(Number);
+        const w = Math.round(h * ar[0] / ar[1]);
+        f.style.width = w + 'px';
+        pos.push([total, w]); total += w + g;
+      });
+    };
+    const place = () => {
+      const cw = el.clientWidth;
+      figs.forEach((f, i) => {
+        let x = pos[i][0] - offset;
+        if (x < -pos[i][1]) x += total;
+        if (x > cw + total - pos[i][1]) x -= total;
+        f.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
+        f.style.visibility = (x > cw || x < -pos[i][1]) ? 'hidden' : 'visible';
+      });
+    };
+    const tick = (t) => {
+      if (stopped) return;
+      const dt = last ? Math.min(64, t - last) : 0; last = t;
+      if (!hover && inView && !document.hidden) {
+        const speed = window.innerWidth < 861 ? 30 : 45;
+        offset = (offset + speed * dt / 1000) % total;
+        place();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    layout(); place();
+    const onEnter = (e) => { if (e.pointerType === 'mouse') hover = true; };
+    const onLeave = () => { hover = false; };
+    const onResize = () => { layout(); place(); };
+    el.addEventListener('pointerenter', onEnter); el.addEventListener('pointerleave', onLeave);
+    window.addEventListener('resize', onResize);
+    let io = null;
+    try { io = new IntersectionObserver((en) => { inView = en[0].isIntersecting; }, { rootMargin: '200px 0px' }); io.observe(el); } catch (e) {}
+    figs.forEach((f) => { const im = f.querySelector('img'); if (im && !im.complete) im.addEventListener('load', onResize, { once: true }); });
+    raf = requestAnimationFrame(tick);
+    this.showStop = () => { stopped = true; cancelAnimationFrame(raf); window.removeEventListener('resize', onResize); el.removeEventListener('pointerenter', onEnter); el.removeEventListener('pointerleave', onLeave); if (io) io.disconnect(); };
   }
   // Intro: the line types itself on a blank page, once per visit, then the site appears.
   introWanted() {
@@ -1855,6 +1913,7 @@ class Component extends DCLogic {
       setIntro: this.setIntroRef,
       introSkip: this.introSkip,
       toggleMenu: this.toggleMenu,
+      setShow: this.setShowRef,
       isCase: s.view === 'revamp3',
       isGift: s.view === 'gift',
       isDs: s.view === 'ds',
@@ -1881,7 +1940,7 @@ class Component extends DCLogic {
       work: [
         { name: 'Product Revamp 3.0', status: 'Live', dot: '#2FA36B', tint: 'rgba(110, 90, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Making a complicated rewards product simpler', img: 'assets/images/194f76d6dd4f.webp', alt: 'Product Revamp 3.0 cover', url: '#product-revamp-3' },
         { name: 'Gift Cards', status: 'Live', dot: '#2FA36B', tint: 'rgba(120, 140, 240, 0.09)', tags: 'Yaper · New surface', cta: 'Read case study', title: 'Turning a gift card into cash, without losing the user’s trust along the way', img: 'assets/images/0110bee0f94d.webp', alt: 'Gift Cards cover', url: '#gift-cards' },
-        { name: 'Yaper Design System', status: 'Foundation', dot: '#3B82C4', tint: 'rgba(90, 150, 230, 0.09)', tags: 'Yaper · System', cta: 'Read case study', title: 'Building the system behind the product', img: 'assets/images/e50b4ce9a470.webp', alt: 'Yaper Design System cover', url: '#yaper-design-system' },
+        { name: 'Yaper Design System', status: 'Foundation', dot: '#3B82C4', tint: 'rgba(90, 150, 230, 0.09)', tags: 'Yaper · System', cta: 'Read case study', title: 'Building the system behind the product', img: 'assets/images/328a4c5e64ab.webp', alt: 'Yaper Design System cover', url: '#yaper-design-system' },
         { name: 'Product Revamp 2.0', status: 'Archive', dot: '#8C8C8C', tint: 'rgba(140, 120, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Redesigning Yaper to fix the activation → trust → reward loop', img: 'assets/images/f4c2f7b25897.webp', alt: 'Product Revamp 2.0 cover', url: '#product-revamp-2' }
       ],
       archive: [
