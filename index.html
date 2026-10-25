@@ -1560,9 +1560,15 @@ class Component extends DCLogic {
     this.showStop = () => { stopped = true; cancelAnimationFrame(raf); window.removeEventListener('resize', onResize); el.removeEventListener('pointerenter', onEnter); el.removeEventListener('pointerleave', onLeave); if (io) io.disconnect(); };
   }
   // Intro: the line types itself on a blank page, once per visit, then the site appears.
+  sectionFromHash() {
+    let h = '';
+    try { h = (window.location.hash || '').slice(1); } catch (e) {}
+    return ['work', 'lab', 'about', 'contact'].indexOf(h) !== -1 ? h : '';
+  }
   introWanted() {
     // Skip only when a case study link was opened directly (other hashes belong to the host page).
     if (this.caseFromHash() !== 'home') return false;
+    if (this.sectionFromHash()) return false;
     try { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false; } catch (e) {}
     return true;
   }
@@ -1799,6 +1805,9 @@ class Component extends DCLogic {
     };
   }
   componentDidMount() {
+    // Arriving from another page with #work, #lab, #about or #contact: land on that section
+    const landOn = this.sectionFromHash();
+    if (landOn) { [80, 400, 900].forEach((t) => setTimeout(() => { if (this.state.view === 'home') this.scrollToId(landOn, false); }, t)); }
     // Smooth scroll for in-page links (header, hero buttons, Back to top)
     this.onAnchor = (e) => {
       if (e.target && e.target.closest && e.target.closest('.pv-menu a') && this.setMenu) this.setMenu(false);

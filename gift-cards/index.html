@@ -160,6 +160,20 @@ a{color:var(--fg)}a:hover{color:var(--muted)}
 .gc-measure li:nth-child(odd){padding-right:24px}
 .gc-measure li::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
 
+.gc-back{box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;min-height:40px;padding:0 16px 0 12px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:500;color:var(--fg);text-decoration:none;transition:border-color .2s ease}
+a.gc-back:hover{border-color:var(--muted);color:var(--fg)}
+.gc-back svg{transition:transform .25s ease}
+.gc-back:hover svg{transform:translateX(-3px)}
+.gc-end{display:flex;flex-direction:column;gap:28px}
+.gc-next{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px 40px;align-items:center;text-decoration:none;border-top:1px solid var(--line);padding-top:28px;color:var(--fg)}
+a.gc-next:hover{color:var(--fg)}
+.gc-next>div:first-child{display:flex;flex-direction:column;gap:14px;min-width:0}
+.gc-next .frame{overflow:hidden;border-radius:10px;background:var(--soft)}
+.gc-next .frame img{display:block;width:100%;aspect-ratio:3 / 2;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gc-next:hover .frame img{transform:scale(1.035)}
+.gc-next .arr{display:inline-block;transition:transform .25s ease}
+.gc-next:hover .arr{transform:translateX(3px)}
+@media (max-width: 860px){.gc-next{grid-template-columns:minmax(0,1fr)}}
 .gc-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid var(--line);color:var(--faint);font-size:13px}
 .gc-foot a{color:var(--faint)}
 
@@ -207,6 +221,7 @@ a{color:var(--fg)}a:hover{color:var(--muted)}
 
   <div style="display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px); margin-top: calc(-1 * clamp(24px, 4vw, 56px))">
     <header class="gc-hero">
+      <a class="gc-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>All work</a>
       <h1 class="gc-h1">Turning a gift card into cash, without leaving users guessing</h1>
       <p class="gc-dek"><strong>A self-serve flow for selling Amazon and Flipkart gift cards, designed to make the amount, verification and payout clear.</strong></p>
       <dl class="gc-meta">
@@ -421,6 +436,14 @@ a{color:var(--fg)}a:hover{color:var(--muted)}
         <p class="gc-p">These measures would help show whether the flow was understandable for users and whether the new fulfilment model delivered the projected business impact.</p>
       </div>
     </div>
+  </section>
+
+  <section class="gc-end" aria-label="Next project">
+    <a class="gc-next" href="/#yaper-design-system">
+      <div><span style="font-size: 13px; font-weight: 500; color: var(--faint)">Next project</span><span style="font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em">Yaper Design System</span><span style="color: var(--muted)">Building the system behind the product</span><span style="display: inline-flex; gap: 6px; font-weight: 500; padding-top: 6px">Read case study <span class="arr">→</span></span></div>
+      <div class="frame"><img src="/assets/images/328a4c5e64ab.webp" alt="Yaper Design System board"></div>
+    </a>
+    <a class="gc-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to all work</a>
   </section>
 
   <footer class="gc-foot"><span>© 2026 Parveen Yadav</span><a href="#top">Back to top ↑</a></footer>
