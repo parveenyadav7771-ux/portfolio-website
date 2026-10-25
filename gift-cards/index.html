@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gift Cards case study, Parveen Yadav</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="/assets/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A self-serve flow for selling Amazon and Flipkart gift cards, designed to make the amount, verification and payout clear.">
+<meta property="og:title" content="Turning a gift card into cash, without leaving users guessing">
+<meta property="og:description" content="A self-serve flow for selling Amazon and Flipkart gift cards, designed to make the amount, verification and payout clear.">
+<meta property="og:type" content="article">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--accent:#025ACE;--accent-soft:#EEF3FC;--bg:#FFFFFF;--fg:#141414;--muted:#5C5C5C;--faint:#6F6F6F;--line:#EBEBEB;--soft:#F4F4F4;--panel:#F7F7F7;--ok:#1F7A4D;--ok-soft:#EAF5EF;--bad:#B42318;--bad-soft:#FCEDEB}
+html{color-scheme:light only}
+body{margin:0;background:#FFFFFF}
+a{color:var(--fg)}a:hover{color:var(--muted)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none !important;animation:none !important}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.gc-nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;padding:24px 0;border-bottom:1px solid var(--line)}
+.gc-nav>a{font-weight:600;text-decoration:none}
+.gc-nav div{display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--muted)}
+.gc-nav div a{color:var(--muted);text-decoration:none;padding:10px 0}
+.gc-nav div a:hover{color:var(--fg)}
+
+.gc-hero{display:flex;flex-direction:column;gap:28px;padding-top:24px}
+.gc-h1{margin:0;font-size:clamp(32px, 3.4vw + 14px, 56px);font-weight:600;line-height:1.06;letter-spacing:-0.035em;text-wrap:balance;max-width:18ch}
+.gc-dek{margin:0;font-size:clamp(17px, 0.5vw + 14px, 20px);line-height:1.55;color:var(--muted);max-width:52ch;text-wrap:pretty}
+.gc-dek strong{font-weight:500}
+.gc-meta{margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 32px;border-top:1px solid var(--line);padding-top:20px}
+.gc-meta div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.gc-meta dt{font-size:13px;font-weight:500;color:var(--faint)}
+.gc-meta dd{margin:0;font-size:15px;line-height:1.5}
+.gc-cover{margin:0;border-radius:14px;background:var(--panel);padding:clamp(20px, 4vw, 56px) clamp(12px, 3vw, 48px) 0;overflow:hidden}
+.gc-cover img{display:block;width:100%;max-width:1000px;height:auto;margin:0 auto}
+
+.gc-sec{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px 56px;align-items:start}
+.gc-sec>h2{margin:0;font-size:clamp(22px, 1.4vw + 12px, 30px);font-weight:600;line-height:1.18;letter-spacing:-0.02em;text-wrap:balance}
+.gc-sec>h2 .gc-n{display:block;margin-bottom:10px;font-size:14px;line-height:20px;font-weight:500;letter-spacing:0;color:var(--accent);font-variant-numeric:tabular-nums}
+.gc-body{display:flex;flex-direction:column;gap:20px;min-width:0}
+.gc-wide{grid-column:1 / -1;min-width:0}
+.gc-after{grid-column:1 / -1}
+@media (min-width: 861px){.gc-sec>h2+.gc-body{padding-top:calc((1.18 * clamp(22px, 1.4vw + 12px, 30px) - 29px) / 2)}.gc-sec>h2:has(.gc-n)+.gc-body{padding-top:calc(30px + (1.18 * clamp(22px, 1.4vw + 12px, 30px) - 29px) / 2)}.gc-sec>h2+.gc-body>.gc-dec:first-child>.gc-h3{margin-top:2px}}
+.gc-p{margin:0;font-size:17px;line-height:1.7;max-width:62ch;text-wrap:pretty}
+.gc-p strong{font-weight:600}
+.gc-p.mute{font-size:15px;line-height:1.6;color:var(--muted)}
+.gc-hl{background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:5px;font-weight:600;white-space:nowrap}
+.gc-note{margin:0;display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border:1px dashed #C9C9C9;border-radius:10px;font-size:15px;line-height:1.6;color:var(--muted);max-width:62ch}
+.gc-note svg{flex:0 0 auto;margin-top:3px;color:var(--faint)}
+.gc-h3{margin:0;font-size:19px;font-weight:600;line-height:1.35;letter-spacing:-0.01em}
+
+/* 02 four questions */
+.gc-qs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gc-qs li{display:flex;flex-direction:column;gap:8px;padding:20px 22px;border:1px solid var(--line);border-radius:12px;font-size:15px;line-height:1.6;color:var(--muted)}
+.gc-qs li strong{display:block;font-size:18px;font-weight:600;line-height:1.35;color:var(--fg)}
+
+/* 03 process */
+.gc-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 32px}
+.gc-step{position:relative;display:flex;flex-direction:column;gap:10px;padding-top:22px;border-top:2px solid var(--line)}
+.gc-step::before{content:"";position:absolute;top:-6px;left:0;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.gc-step p{margin:0;font-size:15px;line-height:1.65;color:var(--muted)}
+.gc-pair2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.gc-shot{margin:0;border-radius:14px;background:var(--panel);padding:clamp(14px, 2.5vw, 28px);display:flex;align-items:center;justify-content:center}
+.gc-shot img{display:block;width:100%;height:auto;border-radius:6px}
+
+/* 04 decisions */
+.gc-dec{display:flex;flex-direction:column;gap:20px;padding-top:28px;border-top:1px solid var(--line)}
+.gc-dec:first-child{padding-top:0;border-top:0}
+.gc-lab{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px 40px;align-items:center;border-radius:14px;background:var(--panel);padding:clamp(18px, 3.5vw, 40px)}
+.gc-lab.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
+.gc-phone{justify-self:center;width:100%;max-width:260px}
+.gc-phone img{display:block;width:100%;height:auto}
+.gc-k{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+
+.gc-calc{display:flex;flex-direction:column;gap:18px;min-width:0}
+.gc-seg{display:inline-grid;grid-template-columns:repeat(2,minmax(0,1fr));align-self:flex-start;padding:4px;border-radius:999px;background:#FFFFFF;border:1px solid var(--line)}
+.gc-seg button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:500;text-align:center;color:var(--muted);transition:background-color .2s ease,color .2s ease}
+.gc-seg button.on{background:var(--fg);color:#FFFFFF}
+.gc-seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gc-range{display:flex;flex-direction:column;gap:10px}
+.gc-range label{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.gc-range output{font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--fg)}
+.gc-range input{width:100%;margin:0;min-height:28px;accent-color:var(--accent);cursor:pointer}
+.gc-card{display:flex;flex-direction:column;border-radius:12px;background:#FFFFFF;border:1px solid var(--line);overflow:hidden}
+.gc-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 18px;font-variant-numeric:tabular-nums}
+.gc-row+.gc-row{border-top:1px solid var(--line)}
+.gc-row b{font-size:17px;font-weight:600}
+.gc-row.total{background:var(--accent-soft)}
+.gc-row.total b{font-size:clamp(24px, 1.6vw + 14px, 32px);letter-spacing:-0.02em;color:var(--accent)}
+.gc-rate{display:flex;flex-direction:column;gap:6px;padding:22px 18px}
+.gc-rate b{font-size:clamp(24px, 1.6vw + 14px, 32px);font-weight:600;letter-spacing:-0.02em;line-height:1.15}
+
+.gc-tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.gc-tl li{min-width:0}
+.gc-tl button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;height:100%;display:flex;flex-direction:column;gap:8px;padding:16px 16px 18px;border-radius:12px;background:#FFFFFF;border:1px solid var(--line);transition:border-color .2s ease,box-shadow .2s ease}
+.gc-tl button:hover{border-color:#C9C9C9}
+.gc-tl button.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.gc-tl button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gc-tl .dot{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;color:var(--fg)}
+.gc-tl .dot i{flex:0 0 auto;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:#FFFFFF}
+.gc-tl button.on .dot i{background:var(--accent)}
+.gc-tl .why{font-size:14px;line-height:1.5;color:var(--muted)}
+.gc-sec .gc-stack img{display:none}
+.gc-stack[data-on="0"] img:nth-child(1),.gc-stack[data-on="1"] img:nth-child(2),.gc-stack[data-on="2"] img:nth-child(3),.gc-stack[data-on="3"] img:nth-child(4),.gc-stack:not([data-on="0"]):not([data-on="1"]):not([data-on="2"]):not([data-on="3"]) img:first-child{display:block}
+.gc-tl-wrap{display:flex;flex-direction:column;gap:20px;min-width:0}
+
+/* 06 state explorer */
+.gc-ex{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px 32px;align-items:stretch}
+.gc-ex-shot{display:flex;align-items:center;justify-content:center;border-radius:12px;background:#FFFFFF;border:1px solid var(--line);padding:24px}
+.gc-ex-shot img{display:block;width:100%;max-width:220px;height:auto}
+.gc-tbl-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.gc-tbl{width:100%;border-collapse:collapse;table-layout:fixed;font-size:15px;line-height:1.5}
+.gc-tbl th{text-align:left;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding:14px 20px 14px 0;background:var(--panel);border-bottom:1px solid var(--line)}
+.gc-tbl th:first-child{padding-left:42px}
+.gc-tbl td{vertical-align:top;padding:0;border-bottom:1px solid var(--line)}
+.gc-tbl tr:last-child td{border-bottom:0}
+.gc-tbl td>span{display:block;padding:18px 20px 18px 0}
+.gc-tbl td:nth-child(2)>span{color:var(--muted)}
+.gc-tbl th:first-child,.gc-tbl td:first-child{width:34%}
+.gc-tbl th:nth-child(2),.gc-tbl td:nth-child(2){width:30%}
+.gc-tbl button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:flex-start;width:100%;min-height:44px;padding:18px 20px 18px 18px;font-weight:500;line-height:1.5;color:var(--fg)}
+.gc-tbl button i{flex:0 0 auto;margin-top:4px;width:12px;height:12px;box-sizing:border-box;border-radius:50%;border:2px solid #BDBDBD;transition:background-color .2s ease,border-color .2s ease}
+.gc-tbl button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.gc-tbl tr.on td{background:var(--accent-soft)}
+.gc-tbl tr.on button i{border-color:var(--accent);background:var(--accent)}
+.gc-tbl tr:hover td{background:#FAFAFA}
+.gc-tbl tr.on:hover td{background:var(--accent-soft)}
+
+/* 07 patterns */
+.gc-pats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.gc-pats li{display:flex;flex-direction:column;gap:14px;min-width:0;font-size:15px;line-height:1.6;color:var(--muted)}
+.gc-pats li div{border-radius:12px;background:var(--panel);padding:16px 16px 0;overflow:hidden;aspect-ratio:4 / 5}
+.gc-pats li img{display:block;width:100%;height:auto}
+.gc-pats li strong{display:block;margin-bottom:4px;font-size:16px;font-weight:600;color:var(--fg)}
+
+/* 08 status machine */
+.gc-sm{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px 10px;padding:clamp(18px, 3vw, 32px);border-radius:14px;background:var(--panel);font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace;font-size:14px;color:var(--faint)}
+.gc-sm b{font-weight:600;letter-spacing:.04em;padding:9px 14px;border-radius:8px;background:#FFFFFF;border:1px solid var(--line);color:var(--fg)}
+.gc-sm b.ok{background:var(--ok-soft);border-color:#BFE0CD;color:var(--ok)}
+.gc-sm b.bad{background:var(--bad-soft);border-color:#F2C7C2;color:var(--bad)}
+.gc-scroll{border-radius:14px;background:var(--panel);padding:clamp(14px, 2.5vw, 32px)}
+.gc-scroll img{display:block;width:100%;height:auto}
+
+/* 09 */
+.gc-quote{margin:0;padding:clamp(24px, 4vw, 48px);border-radius:14px;background:var(--fg);color:#FFFFFF;font-size:clamp(19px, 1vw + 14px, 26px);font-weight:500;line-height:1.4;letter-spacing:-0.01em;text-wrap:pretty}
+.gc-measure{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+.gc-measure li{display:flex;gap:12px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.5}
+.gc-measure li:nth-child(odd){padding-right:24px}
+.gc-measure li::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
+
+.gc-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid var(--line);color:var(--faint);font-size:13px}
+.gc-foot a{color:var(--faint)}
+
+@media (max-width: 1000px){
+  .gc-meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gc-pats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 860px){
+  .gc-sec{grid-template-columns:minmax(0,1fr);gap:32px}
+    .gc-after{grid-column:auto}
+  .gc-qs,.gc-steps,.gc-pair2,.gc-lab,.gc-lab.flip,.gc-measure{grid-template-columns:minmax(0,1fr)}
+  .gc-measure li:nth-child(odd){padding-right:0}
+  .gc-lab .gc-phone{max-width:240px}
+  .gc-ex{grid-template-columns:minmax(0,1fr)}
+  .gc-ex-shot{order:-1;padding:16px;justify-self:stretch}
+  .gc-ex-shot img{max-width:200px}
+}
+@media (max-width: 640px){
+  .gc-meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gc-p{font-size:16px}
+  .gc-tl{grid-template-columns:minmax(0,1fr)}
+  .gc-pats{grid-template-columns:minmax(0,1fr)}
+  .gc-pats li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:start}
+  .gc-pats li div{padding:10px 10px 0}
+  .gc-tbl thead{display:none}
+  .gc-tbl,.gc-tbl tbody,.gc-tbl tr,.gc-tbl td{display:block;width:auto}
+  .gc-tbl{table-layout:auto}
+  .gc-tbl td:first-child,.gc-tbl td:nth-child(2){width:auto}
+  .gc-tbl tr{border-bottom:1px solid var(--line)}
+  .gc-tbl tr:last-child{border-bottom:0}
+  .gc-tbl td{border-bottom:0}
+  .gc-tbl td>span{padding:0 18px 14px 42px}
+  .gc-tbl button{padding-bottom:8px}
+  .gc-tbl td:nth-child(2)>span{color:var(--muted)}
+}
+</style>
+</helmet>
+<div style="background: var(--bg); color: var(--fg); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.55; min-height: 100vh">
+<div style="max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 48px; display: flex; flex-direction: column; gap: clamp(96px, 11vw, 160px)">
+
+  <nav class="gc-nav" aria-label="Site">
+    <a href="/" id="top">Parveen Yadav</a>
+    <div><a href="/#work">Work</a><a href="/#lab">Lab</a><a href="/#about">About</a><a href="/#contact">Contact</a></div>
+  </nav>
+
+  <div style="display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px); margin-top: calc(-1 * clamp(24px, 4vw, 56px))">
+    <header class="gc-hero">
+      <h1 class="gc-h1">Turning a gift card into cash, without leaving users guessing</h1>
+      <p class="gc-dek"><strong>A self-serve flow for selling Amazon and Flipkart gift cards, designed to make the amount, verification and payout clear.</strong></p>
+      <dl class="gc-meta">
+        <div><dt>Role:</dt> <dd>End-to-end product design</dd></div>
+        <div><dt>Collaborators:</dt> <dd>Product manager and engineering</dd></div>
+        <div><dt>Scope:</dt> <dd>Flow design, prototyping and developer handoff</dd></div>
+        <div><dt>Status:</dt> <dd>Handed off; not live</dd></div>
+        <div><dt>Tools:</dt> <dd>Claude, Figma Make and Yaper Design System</dd></div>
+      </dl>
+    </header>
+    <figure class="gc-cover"><img src="/assets/images/c23b827c2d0e.webp" alt="Three Yaper screens: gift card details with the fetched card value and payout, the Sell Gift Card landing screen, and transaction history" width="2040" height="1309"></figure>
+  </div>
+
+  <section class="gc-sec" aria-labelledby="s-glance">
+    <h2 id="s-glance">At a glance</h2>
+    <div class="gc-body">
+      <p class="gc-p">Yaper’s cashback orders relied on external cardholders for fulfilment. Product and support inputs pointed to operational friction in that model, including unpredictable availability, processing fees and delays.</p>
+      <p class="gc-p">The team explored buying discounted gift cards directly from consumers and using those balances to fulfil cashback orders. I worked with product and engineering on the end-to-end design for that flow, from card entry through verification and UPI payout.</p>
+      <p class="gc-p">Because a gift-card number and PIN can unlock real value, the experience needed to explain what a user would receive and what would happen after they submitted their details. The proposed change was projected to increase commission per order by <strong class="gc-hl">30% or more</strong> by reducing the cardholder split and processing fees. The feature had not launched, so this was a projection, not a measured outcome.</p>
+    </div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s1">
+    <h2 id="s1"><span class="gc-n">01</span> <span>Why we explored a new fulfilment model</span></h2>
+    <div class="gc-body">
+      <p class="gc-p">Yaper depended on external cardholders to fulfil cashback orders. That created operational challenges: cardholders were not always available when needed, processing fees reduced the commission, and delays contributed to fulfilment backlogs.</p>
+      <p class="gc-p">The proposed model was to buy discounted Amazon and Flipkart gift cards directly from consumers, then use those balances to fulfil cashback orders.</p>
+      <p class="gc-p">The business case projected a 30%+ lift in commission per order by reducing the cardholder split and processing fees. Since the feature was handed off but not live, we had no post-launch result to report.</p>
+    </div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s2">
+    <h2 id="s2"><span class="gc-n">02</span> <span>The user problem was trust</span></h2>
+    <div class="gc-body">
+      <p class="gc-p">Selling a gift card is different from entering an ordinary payment detail. A user shares a card number and PIN that may hold real value. They need to understand the transaction before they hand over those details.</p>
+      <p class="gc-p">I used product and support inputs to shape the flow around four questions:</p>
+      <ul class="gc-qs">
+        <li><strong>How much will I receive?</strong> Show the expected payout amount, not only a discount rate.</li>
+        <li><strong>What’s happening to my card?</strong> Explain verification and show the current status.</li>
+        <li><strong>What if the card is rejected?</strong> Give a clear reason and explain what the user can do next.</li>
+        <li><strong>When will I get my money?</strong> Separate verification from payout and set a clear expectation: UPI payout is instant after the card is verified.</li>
+      </ul>
+      
+    </div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s3">
+    <h2 id="s3"><span class="gc-n">03</span> <span>I worked out the flow before polishing the screens</span></h2>
+    <div class="gc-body">
+      <p class="gc-p">I started with the transaction logic, explored it as a clickable flow, then rebuilt the design for Yaper’s design system. I worked end to end with the product manager and engineering.</p>
+    </div>
+    <div class="gc-wide" style="display: flex; flex-direction: column; gap: 48px">
+      <div class="gc-steps">
+        <div class="gc-step">
+          <h3 class="gc-h3">Map the states</h3>
+          <p>I used Claude to help organize the product proposal into a state matrix covering card and PIN entry, verification, rejection and payout. I worked with the product and engineering context to shape the states the design needed to support.</p>
+        </div>
+        <div class="gc-step">
+          <h3 class="gc-h3">Prototype the interaction</h3>
+          <p>I used Figma Make to create a rough, clickable version of the flow. This let me work through the sequence as a user would: select a brand, enter card details, wait for verification and follow the transaction status.</p>
+        </div>
+        <div class="gc-step">
+          <h3 class="gc-h3">Prepare the design for handoff</h3>
+          <p>Once the flow and states were mapped, I rebuilt the experience using Yaper’s design system and prepared the interaction details for engineering handoff.</p>
+        </div>
+      </div>
+      <div class="gc-pair2">
+        <figure class="gc-shot"><img src="/assets/images/99c06e852775.webp" alt="State matrix for the Sell Gift Card flow: card and PIN input states, verification states, payout states and business rules" width="1496" height="1182"></figure>
+        <figure class="gc-shot"><img src="/assets/images/fadab1e9008f.webp" alt="Rough clickable Figma Make prototype: submitted, transaction details, checking and card details screens" width="1760" height="1108"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s4">
+    <h2 id="s4"><span class="gc-n">04</span> <span>Three decisions that shaped the experience</span></h2>
+    <div class="gc-body" style="gap: 56px">
+
+      <div class="gc-dec">
+        <h3 class="gc-h3">Show the payout in rupees</h3>
+        <p class="gc-p">A discount rate makes the user do mental arithmetic during a high-stakes moment.</p>
+        <p class="gc-p">Instead of showing only “Sell at 4% discount,” the design shows the result directly: for a <strong>₹10,000</strong> card, the user receives <strong>₹9,600</strong> after a <strong>₹400</strong> platform fee.</p>
+        <div class="gc-lab">
+          <div class="gc-calc" role="group" aria-label="Show the payout in rupees">
+            <div class="gc-seg" role="group" aria-label="Presentation">
+              <button type="button" class="{{segRate}}" aria-pressed="{{rateOn}}" onClick="{{showRate}}">Discount rate</button>
+              <button type="button" class="{{segPay}}" aria-pressed="{{payOn}}" onClick="{{showPay}}">Payout in rupees</button>
+            </div>
+            <div class="gc-range">
+              <label for="gc-val"><span class="gc-k">card value</span><output for="gc-val" aria-live="polite">{{valText}}</output></label>
+              <input id="gc-val" type="range" min="500" max="20000" step="500" value="{{val}}" aria-valuetext="{{valText}}" onChange="{{onVal}}">
+            </div>
+            <sc-if value="{{isPay}}" hint-placeholder-val="{{true}}">
+              <div class="gc-card">
+                <div class="gc-row"><span class="gc-k">card value</span><b>{{valText}}</b></div>
+                <div class="gc-row"><span class="gc-k">platform fee</span><b>−{{feeText}}</b></div>
+                <div class="gc-row total"><span class="gc-k" style="color: var(--accent)">expected payout</span><b>{{payText}}</b></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{isRate}}" hint-placeholder-val="{{false}}">
+              <div class="gc-card">
+                <div class="gc-row"><span class="gc-k">card value</span><b>{{valText}}</b></div>
+                <div class="gc-rate"><b>Sell at 4% discount</b></div>
+              </div>
+            </sc-if>
+          </div>
+          <div class="gc-phone"><img src="/assets/images/1b8cfe39bea1.webp" alt="Gift Card Details screen: card value fetched, ₹10,000 gift card value and ₹9,600 to receive after the 4% fee" width="640" height="1309"></div>
+        </div>
+      </div>
+
+      <div class="gc-dec">
+        <h3 class="gc-h3">Separate submission, verification and payment</h3>
+        <p class="gc-p">“Your card has been submitted” can sound like the money is already on its way. The flow separates the transaction into clear stages: <strong>Submitted → Verified → Paid</strong>.</p>
+        <p class="gc-p">The user can see whether the card was received, whether it passed verification and whether the payout has been sent.</p>
+        <div class="gc-lab flip">
+          <div class="gc-phone gc-stack" data-on="{{stage}}"><img src="/assets/images/25930a25f36e.webp" alt="Gift Card Submitted screen: the card is being processed and funds are credited after successful verification" width="322" height="654"><img src="/assets/images/09a20327681b.webp" alt="Transaction Details screen with a verification in progress banner and a timeline starting at Card Submitted" width="332" height="679"><img src="/assets/images/2e5f454ba63d.webp" alt="Transaction Details screen: transaction completed, funds credited to your bank, ₹9,600 received" width="322" height="654"></div>
+          <div class="gc-tl-wrap">
+            <ol class="gc-tl" aria-label="Submitted → Verified → Paid">
+              <li><button type="button" class="{{st0}}" aria-pressed="{{st0On}}" onClick="{{pick0}}"><span class="dot"><i aria-hidden="true"></i>Submitted</span><span class="why">whether the card was received</span></button></li>
+              <li><button type="button" class="{{st1}}" aria-pressed="{{st1On}}" onClick="{{pick1}}"><span class="dot"><i aria-hidden="true"></i>Verified</span><span class="why">whether it passed verification</span></button></li>
+              <li><button type="button" class="{{st2}}" aria-pressed="{{st2On}}" onClick="{{pick2}}"><span class="dot"><i aria-hidden="true"></i>Paid</span><span class="why">whether the payout has been sent</span></button></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="gc-dec">
+        <h3 class="gc-h3">Explain what’s happening during verification</h3>
+        <p class="gc-p">A generic loader during a balance check can look like a frozen app. The design uses a dedicated verification screen to explain what is being checked and show progress.</p>
+        <p class="gc-p">After verification, the UPI payout is instant. Verification and payout are shown as separate steps, so “instant payout” doesn’t imply the card check itself is instant.</p>
+        <div class="gc-lab" style="grid-template-columns: minmax(0, 1fr); justify-items: center">
+          <div class="gc-phone" style="max-width: 280px"><img src="/assets/images/b37e528e5869.webp" alt="Checking Gift Card Details screen: progress bar with Verifying Gift Card done, Checking Gift Card Details in progress and Preparing Transaction next" width="332" height="679"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s5">
+    <h2 id="s5"><span class="gc-n">05</span> <span>Build the experience into Yaper</span></h2>
+    <div class="gc-body">
+      <p class="gc-p">The early prototype helped me explore the interaction, but it wasn’t the final handoff design. I rebuilt the flow using Yaper’s design system so it would fit the wider app experience.</p>
+      <p class="gc-p">That included applying Yaper’s semantic color, typography and radius tokens; using core components; and defining input states for focus, errors and masked card details.</p>
+    </div>
+    <div class="gc-wide gc-scroll"><img src="/assets/images/02a07abbc039.webp" alt="Ten screens of the Sell Gift Card flow rebuilt on the Yaper Design System, from the home entry point and landing screen through card entry, fetching, review, submission and transaction details" width="1760" height="1342"></div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s6">
+    <h2 id="s6"><span class="gc-n">06</span> <span>Design for the cases that can break trust</span></h2>
+    <div class="gc-body">
+      <p class="gc-p">I worked through failure and waiting states as part of the main flow, not as afterthoughts.</p>
+    </div>
+    <div class="gc-wide gc-ex">
+      <div class="gc-tbl-wrap">
+        <table class="gc-tbl">
+          <thead><tr><th scope="col">Situation</th><th scope="col">What the user needs to know</th><th scope="col">Design response</th></tr></thead>
+          <tbody>
+            <tr class="{{r0}}"><td><button type="button" aria-pressed="{{r0On}}" onClick="{{sit0}}"><i aria-hidden="true"></i><span>Card number is incorrect</span></button></td><td><span>What needs correcting</span></td><td><span>Explain that the card number could not be verified</span></td></tr>
+            <tr class="{{r1}}"><td><button type="button" aria-pressed="{{r1On}}" onClick="{{sit1}}"><i aria-hidden="true"></i><span>PIN does not match</span></button></td><td><span>Which detail needs attention</span></td><td><span>Name the PIN issue clearly</span></td></tr>
+            <tr class="{{r2}}"><td><button type="button" aria-pressed="{{r2On}}" onClick="{{sit2}}"><i aria-hidden="true"></i><span>Card has expired or no balance</span></button></td><td><span>Why the card cannot be sold</span></td><td><span>Explain the reason for rejection</span></td></tr>
+            <tr class="{{r3}}"><td><button type="button" aria-pressed="{{r3On}}" onClick="{{sit3}}"><i aria-hidden="true"></i><span>Card was already redeemed</span></button></td><td><span>Whether the user was charged</span></td><td><span>State that no charges were applied</span></td></tr>
+            <tr class="{{r4}}"><td><button type="button" aria-pressed="{{r4On}}" onClick="{{sit4}}"><i aria-hidden="true"></i><span>Verification is still in progress</span></button></td><td><span>What is happening and what comes next</span></td><td><span>Show the verification stage and transaction status</span></td></tr>
+            <tr class="{{r5}}"><td><button type="button" aria-pressed="{{r5On}}" onClick="{{sit5}}"><i aria-hidden="true"></i><span>Card is verified, payout is pending</span></button></td><td><span>Whether the money has been sent</span></td><td><span>Show verification and payout as separate milestones</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="gc-ex-shot gc-stack" data-on="{{sitShot}}"><img src="/assets/images/d1be018e3231.webp" alt="Gift Card Invalid state on the Gift Card Details screen, listing possible reasons the card could not be verified" width="334" height="679"><img src="/assets/images/1184821bc27f.webp" alt="Gift Card Already Redeemed state on Transaction Details, confirming no charges were applied" width="332" height="679"><img src="/assets/images/b37e528e5869.webp" alt="Checking Gift Card Details screen showing verification progress" width="332" height="679"><img src="/assets/images/09a20327681b.webp" alt="Transaction Details with verification in progress and a separate timeline of milestones" width="332" height="679"></div>
+    </div>
+    <div class="gc-body gc-after">
+      <p class="gc-p">I documented states such as network timeouts, duplicate submissions and zero-balance cards for the handoff.</p>
+    </div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s7">
+    <h2 id="s7"><span class="gc-n">07</span> <span>Make trust visible at each step</span></h2>
+    <div class="gc-body">
+      <p class="gc-p">The flow uses a few patterns to make the transaction easier to understand:</p>
+    </div>
+    <ul class="gc-wide gc-pats">
+      <li><div><img src="/assets/images/b74ba79f158b.webp" alt="Sell Gift Card landing screen with How it works: enter card details, get best offer, get paid instantly" width="322" height="656"></div><p style="margin: 0"><strong>Set expectations early:</strong> Show the steps (select a brand, enter details and receive a UPI payout) before asking for the card number and PIN.</p></li>
+      <li><div><img src="/assets/images/d8a9faa71133.webp" alt="Review screen showing gift card value ₹10,000, platform fee −₹400 and ₹9,600 you receive" width="322" height="654"></div><p style="margin: 0"><strong>Show the amount clearly:</strong> Display the card value, platform fee and expected payout together.</p></li>
+      <li><div><img src="/assets/images/d1be018e3231.webp" alt="Gift Card Details screen with the PIN masked as four asterisks" width="334" height="679"></div><p style="margin: 0"><strong>Protect sensitive details:</strong> Mask card numbers and PINs after entry.</p></li>
+      <li><div><img src="/assets/images/c73c00a99482.webp" alt="Transaction History tab listing completed, processing and failed gift card submissions" width="322" height="656"></div><p style="margin: 0"><strong>Keep a transaction record:</strong> Show previous submissions, payout status and rejection reasons in transaction history.</p></li>
+    </ul>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s8">
+    <h2 id="s8"><span class="gc-n">08</span> <span>Give engineering the states, not just the screens</span></h2>
+    <div class="gc-body">
+      <p class="gc-p">For handoff, I documented how the flow should behave across field and transaction states. The status sequence was:</p>
+      <p class="gc-sm"><b>SUBMITTED</b> <span>→</span> <b>CHECKING</b> <span>→</span> <b>VERIFIED</b> <span>→</span> <b class="ok">PAID</b> <span>or</span> <b class="bad">REJECTED</b></p>
+      <p class="gc-p">The handoff also covered field states such as typing, focus, loading, success and error, along with copy for validation messages and cases such as network timeouts, duplicate submissions and cards with no balance.</p>
+      <p class="gc-p mute">The design was handed off to engineering. The feature had not launched at the time of this case study, so these details describe the intended experience rather than a verified production behavior.</p>
+    </div>
+  </section>
+
+  <section class="gc-sec" aria-labelledby="s9">
+    <h2 id="s9"><span class="gc-n">09</span> <span>What I learned</span></h2>
+    <div class="gc-body" style="gap: 28px">
+      <p class="gc-p">This project reinforced the value of working through transaction logic before visual polish. Prototyping helped me shape the flow and its edge cases before handoff, while collaboration with product and engineering helped connect the screens to the underlying transaction states.</p>
+      <p class="gc-quote">The key design question was not only “Can the user submit a card?” It was also “Can they tell what has happened to their card and when they’ll receive their money?”</p>
+      <div style="display: flex; flex-direction: column; gap: 16px; padding-top: 12px">
+        <h3 class="gc-h3">What I’d measure after launch</h3>
+        <p class="gc-p">Because the feature had not launched, I could not claim a measured user or business result. After launch, I’d track:</p>
+        <ul class="gc-measure">
+          <li>The percentage of users who start and complete a submission</li>
+          <li>Rejections by reason</li>
+          <li>Time from card submission to verification</li>
+          <li>Time from verification to UPI payout</li>
+          <li>Support contacts per transaction</li>
+          <li>Repeat submissions</li>
+        </ul>
+        <p class="gc-p">These measures would help show whether the flow was understandable for users and whether the new fulfilment model delivered the projected business impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="gc-foot"><span>© 2026 Parveen Yadav</span><a href="#top">Back to top ↑</a></footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":11200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'pay', val: 10000, stage: 0, sit: 0 };
+  }
+  renderVals() {
+    const s = this.state;
+    const inr = (n) => '₹' + Number(n).toLocaleString('en-IN');
+    const fee = Math.round(s.val * 0.04);
+    const v = {
+      val: s.val,
+      valText: inr(s.val), feeText: inr(fee), payText: inr(s.val - fee),
+      isPay: s.mode === 'pay', isRate: s.mode === 'rate',
+      segPay: s.mode === 'pay' ? 'on' : '', segRate: s.mode === 'rate' ? 'on' : '',
+      payOn: s.mode === 'pay' ? 'true' : 'false', rateOn: s.mode === 'rate' ? 'true' : 'false',
+      showPay: () => this.setState({ mode: 'pay' }),
+      showRate: () => this.setState({ mode: 'rate' }),
+      onVal: (e) => this.setState({ val: Number(e.target.value) || 10000 }),
+      stage: String(s.stage),
+      sitShot: String([0, 0, 0, 1, 2, 3][s.sit])
+    };
+    [0, 1, 2].forEach((i) => {
+      v['st' + i] = s.stage === i ? 'on' : '';
+      v['st' + i + 'On'] = s.stage === i ? 'true' : 'false';
+      v['pick' + i] = () => this.setState({ stage: i });
+    });
+    [0, 1, 2, 3, 4, 5].forEach((i) => {
+      v['r' + i] = s.sit === i ? 'on' : '';
+      v['r' + i + 'On'] = s.sit === i ? 'true' : 'false';
+      v['sit' + i] = () => this.setState({ sit: i });
+    });
+    return v;
+  }
+}
+</script>
+</body>
+</html>
