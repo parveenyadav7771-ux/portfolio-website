@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yaper Product Revamp 2.0, Parveen Yadav</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="/assets/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Redesigning Yaper to fix the activation, trust and reward loop: onboarding completion up to 65%, first-deal redemption to 44%.">
+<meta property="og:title" content="Redesigning Yaper to fix the activation → trust → reward loop">
+<meta property="og:description" content="Redesigning Yaper to fix the activation, trust and reward loop: onboarding completion up to 65%, first-deal redemption to 44%.">
+<meta property="og:type" content="article">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--accent:#025ACE;--fg:#141414;--body:#2B2B2B;--muted:#666666;--line:#EBEBEB;--panel:#F5F5F5}
+html{color-scheme:light only}
+body{margin:0;background:#FFFFFF}
+a{color:var(--fg)}a:hover{color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none !important}}
+
+.c-page{max-width:1120px;margin:0 auto;padding:0 clamp(16px, 4vw, 40px) 48px;display:flex;flex-direction:column;gap:96px}
+.c-page>*{box-sizing:border-box;width:100%;max-width:840px;margin-left:auto;margin-right:auto}
+.c-page>.c-nav,.c-page>.c-foot,.c-page>.c-top{max-width:none}
+.c-top{display:flex;flex-direction:column;gap:40px;margin-top:-48px}
+.c-top>header{width:100%;max-width:840px;margin:0 auto}
+.c-nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.c-nav>a{font-weight:600;text-decoration:none}
+.c-nav div{display:flex;flex-wrap:wrap;gap:4px 20px}
+.c-nav div a{color:var(--muted);text-decoration:none;padding:10px 0}
+.c-nav div a:hover{color:var(--fg)}
+
+.c-back{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:40px;font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+.c-back:hover{color:var(--fg)}
+
+.c-sec{display:flex;flex-direction:column;gap:20px}
+.c-num{font-size:14px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+.c-label{font-size:14px;font-weight:500;color:var(--muted)}
+.c-h1{margin:0;font-size:clamp(30px, 2.4vw + 18px, 40px);font-weight:600;line-height:1.15;letter-spacing:-0.025em;text-wrap:balance}
+.c-dek{margin:0;font-size:18px;line-height:1.6;color:var(--muted)}
+.c-h2{margin:0;font-size:clamp(22px, 1vw + 16px, 26px);font-weight:600;line-height:1.25;letter-spacing:-0.015em;text-wrap:balance}
+.c-h2-wrap{display:flex;flex-direction:column;gap:8px}
+.c-h3{margin:0;font-size:18px;font-weight:600;line-height:1.4}
+.c-p{margin:0;font-size:16px;line-height:1.7;color:var(--body);text-wrap:pretty}
+.c-p strong{font-weight:600;color:var(--fg)}
+.c-cap{margin:0;font-size:14px;line-height:1.55;color:var(--muted)}
+
+.c-fig{margin:8px 0;display:flex;flex-direction:column;gap:10px}
+.c-panel{border-radius:12px;background:#FFFFFF;border:1px solid var(--line);padding:24px;display:flex;justify-content:center;align-items:center;min-width:0}
+.c-panel img{display:block;max-width:100%;height:auto}
+.c-panel img.c-ph{height:360px;width:auto;max-width:100%;object-fit:contain}
+.c-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.c-pair.lop{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.c-pair .c-fig{margin:0}
+.c-pair .c-panel{padding:20px 16px}
+.c-ba-k{font-size:14px;font-weight:500;color:var(--muted)}
+.c-ba-k.after{color:var(--fg);font-weight:600}
+
+.c-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-rows li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--body)}
+.c-rows li .c-num{line-height:1.6}
+.c-rows li strong{font-weight:600;color:var(--fg)}
+
+.c-seq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-seq div{display:grid;grid-template-columns:80px minmax(0,1fr);gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--muted)}
+.c-seq div.after{color:var(--fg);font-weight:500}
+.c-seq b{font-size:14px;font-weight:500;color:var(--muted)}
+.c-seq div.after b{color:var(--accent)}
+
+.c-meta{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px;padding-top:20px;border-top:1px solid var(--line)}
+.c-meta div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.c-meta dt{font-size:14px;color:var(--muted)}
+.c-meta dd{margin:0;font-size:15px;line-height:1.5}
+
+.c-q{margin:4px 0;font-size:22px;font-weight:600;line-height:1.35;letter-spacing:-0.01em;color:var(--fg)}
+
+.c-trade{margin:8px 0 0;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
+.c-trade div{display:flex;flex-direction:column;gap:2px}
+.c-trade dt{font-size:14px;font-weight:600;color:var(--fg)}
+.c-trade dd{margin:0;font-size:16px;line-height:1.65;color:var(--body)}
+
+.c-ba{position:relative;width:240px;max-width:100%;aspect-ratio:880 / 1350;border-radius:16px;overflow:hidden;background:#FFFFFF;user-select:none;-webkit-user-select:none}
+.c-ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.c-ba .after{clip-path:inset(0 0 0 var(--ba))}
+.c-ba .line{position:absolute;top:0;bottom:0;left:var(--ba);width:2px;margin-left:-1px;background:#FFFFFF;box-shadow:0 0 0 1px rgba(0,0,0,.08);pointer-events:none}
+.c-ba .knob{position:absolute;top:50%;left:var(--ba);width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:#FFFFFF;color:#141414;box-shadow:0 4px 14px rgba(0,0,0,.18);display:grid;place-items:center;pointer-events:none}
+.c-ba .t{position:absolute;top:10px;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:500;background:rgba(20,20,20,.7);color:#FFFFFF;pointer-events:none}
+.c-ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.c-ba:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+
+.c-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
+.c-grid li{display:flex;flex-direction:column;gap:10px;min-width:0}
+.c-grid .c-panel{height:220px;padding:20px 16px 0;align-items:flex-start;overflow:hidden}
+.c-grid .c-panel img{width:150px;height:auto}
+.c-grid p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
+.c-grid strong{display:block;font-size:16px;font-weight:600;color:var(--fg)}
+
+.c-list{margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.6;color:var(--body)}
+
+.c-next{display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--line);text-decoration:none;color:var(--fg)}
+a.c-next:hover{color:var(--fg)}
+.c-next .c-panel{padding:0;overflow:hidden;background:#F4F4F4;border:0}
+.c-next .c-panel img{width:100%;aspect-ratio:3 / 2;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.c-next:hover .c-panel img{transform:scale(1.03)}
+.c-next .go{font-weight:500}
+.c-next .go span{display:inline-block;transition:transform .25s ease}
+.c-next:hover .go span{transform:translateX(3px)}
+.c-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.c-foot a{color:var(--muted)}
+
+@media (max-width: 600px){
+  .c-page{gap:72px}
+  .c-panel img.c-ph{height:auto;width:auto;max-height:300px;max-width:100%}
+  .c-pair,.c-pair.lop{grid-template-columns:minmax(0,1fr)}
+  .c-grid{grid-template-columns:minmax(0,1fr)}
+  .c-grid li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;align-items:start}
+  .c-grid .c-panel{height:150px;padding:12px 10px 0}
+  .c-grid .c-panel img{width:100%}
+  .c-seq div{grid-template-columns:minmax(0,1fr)}
+  .c-meta{grid-template-columns:minmax(0,1fr)}
+  .c-panel{padding:16px}
+}
+
+/* shared additions */
+.c-pair.wide-r{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
+.c-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+.c-tiles .c-fig{margin:0}
+.c-tiles .c-panel{padding:0;overflow:hidden}
+.c-tiles .c-panel img{width:100%}
+.c-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.c-lists>div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.c-lists ul{margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.55;color:var(--body)}
+.c-lists .k{font-size:14px;font-weight:500;color:var(--muted)}
+.c-lists .k.after{color:var(--fg);font-weight:600}
+.c-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 24px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.c-metrics>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.c-metrics strong{font-size:26px;font-weight:600;line-height:1.2;letter-spacing:-0.015em;color:var(--fg)}
+.c-metrics span{font-size:14px;line-height:1.5;color:var(--muted)}
+.c-result{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:16px;color:var(--body)}
+.c-result strong{font-size:18px;font-weight:600;color:var(--fg)}
+.c-code{margin:0;padding:16px 18px;border:1px solid var(--line);border-radius:12px;font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace;font-size:13px;line-height:1.8;color:var(--body);white-space:pre-wrap;overflow-wrap:anywhere}
+.c-code i{font-style:normal;color:var(--muted)}
+.c-mono{font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace;font-size:13px}
+.c-table-wrap{border-top:1px solid var(--line)}
+.c-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5}
+.c-table th{text-align:left;font-size:14px;font-weight:500;color:var(--muted);padding:12px 16px 12px 0;border-bottom:1px solid var(--line)}
+.c-table td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--body)}
+.c-sw{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.12);vertical-align:-2px;margin-right:8px}
+
+/* interactive bits */
+.c-seg{display:inline-flex;align-self:flex-start;padding:3px;border-radius:999px;border:1px solid var(--line)}
+.c-seg button{all:unset;box-sizing:border-box;cursor:pointer;min-height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted)}
+.c-seg button.on{background:var(--fg);color:#FFFFFF}
+.c-seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.c-tool{display:flex;flex-direction:column;gap:16px;padding:20px;border:1px solid var(--line);border-radius:12px}
+.c-range{display:flex;flex-direction:column;gap:8px}
+.c-range label{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
+.c-range output{font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+.c-range input{width:100%;margin:0;min-height:28px;accent-color:var(--accent);cursor:pointer}
+.c-amt{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-amt div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+.c-amt div b{font-weight:600;color:var(--fg)}
+.c-amt div.total b{font-size:22px;color:var(--accent)}
+.c-amt div.rate b{font-size:22px}
+.c-tool-pair{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:20px;align-items:center}
+.c-tool-pair img{display:block;width:100%;height:auto}
+.c-stack img{display:none}
+.c-stack[data-on="0"] img:nth-child(1),.c-stack[data-on="1"] img:nth-child(2),.c-stack[data-on="2"] img:nth-child(3),.c-stack[data-on="3"] img:nth-child(4),.c-stack:not([data-on="0"]):not([data-on="1"]):not([data-on="2"]):not([data-on="3"]) img:first-child{display:block}
+.c-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.c-steps button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:10px}
+.c-steps button.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.c-steps button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.c-steps b{font-size:15px;font-weight:600;color:var(--fg)}
+.c-steps span{font-size:14px;color:var(--muted)}
+.c-ex{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:20px;align-items:start}
+.c-ex .c-table td:first-child{width:36%}
+.c-ex .c-table button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:10px;align-items:flex-start;font-weight:500;color:var(--fg)}
+.c-ex .c-table button i{flex:0 0 auto;margin-top:5px;width:10px;height:10px;border-radius:50%;border:2px solid #BDBDBD;box-sizing:border-box}
+.c-ex .c-table button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.c-ex .c-table tr.on button i{border-color:var(--accent);background:var(--accent)}
+.c-ex .c-table tr.on td{color:var(--fg)}
+.c-ex .c-panel{position:sticky;top:24px}
+.c-ex .c-panel img{width:100%;height:auto}
+
+@media (max-width: 760px){
+  .c-pair.wide-r,.c-lists,.c-tool-pair,.c-ex{grid-template-columns:minmax(0,1fr)}
+  .c-tool-pair img{max-width:220px;margin:0 auto}
+  .c-ex .c-panel{position:static;order:-1}
+  .c-ex .c-panel img{max-width:200px}
+}
+@media (max-width: 600px){
+  .c-tiles,.c-metrics{grid-template-columns:minmax(0,1fr)}
+  .c-table thead{display:none}
+  .c-table,.c-table tbody,.c-table tr,.c-table td{display:block;width:auto !important}
+  .c-table tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .c-table td{border:0;padding:2px 0}
+  .c-ex .c-table td+td{padding-left:20px}
+}
+</style>
+</helmet>
+<div style="background: #FFFFFF; color: var(--fg); font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<div class="c-page">
+  <nav class="c-nav" aria-label="Site">
+    <a href="/" id="top">Parveen Yadav</a>
+    <div><a href="/#work">Work</a><a href="/#lab">Lab</a><a href="/#about">About</a><a href="/#contact">Contact</a></div>
+  </nav>
+
+  <div class="c-top">
+  <header class="c-sec">
+    <a class="c-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>All work</a>
+    <span class="c-label">Yaper · Product Revamp 2.0</span>
+    <h1 class="c-h1">Redesigning Yaper to fix the activation → trust → reward loop</h1>
+    <p class="c-dek">A credit card cashback app had competitive rewards that users simply weren’t discovering, trusting, or redeeming. Here’s how a strategic redesign changed that.</p>
+    <dl class="c-meta">
+      <div><dt>Role</dt><dd>Lead Product Designer</dd></div>
+      <div><dt>Timeline</dt><dd>8 weeks (Phase 1)</dd></div>
+      <div><dt>Scope</dt><dd>End-to-end UX strategy and execution</dd></div>
+    </dl>
+  </header>
+  <figure class="c-fig" style="margin: 0"><div class="c-panel" style="background: #F4F4F4; border: 0; padding: clamp(20px, 4vw, 48px) clamp(12px, 3vw, 48px) 0"><img src="/assets/images/942f86c62ced.webp" alt="Three redesigned Yaper screens: order history, the home screen with deals, and deal details with instructions" width="1080" height="540" style="width: 100%; max-width: 900px"></div></figure>
+  </div>
+
+  <section class="c-sec" aria-labelledby="s-ov">
+    <h2 class="c-h2" id="s-ov">Overview</h2>
+    <dl class="c-trade" style="margin: 0">
+      <div><dt>The problem</dt><dd>59% of new users left during onboarding, before seeing a single deal. The app asked for PAN and bank details before showing any value.</dd></div>
+      <div><dt>What I did</dt><dd>Re-sequenced the product around one principle (show value, earn trust, then ask for commitment) across onboarding, home, redemption and the wallet.</dd></div>
+      <div><dt>The result</dt><dd>Onboarding completion rose to 65%, first-deal redemption to 44%, and support tickets fell 32%.</dd></div>
+    </dl>
+    <div class="c-metrics" aria-label="Impact">
+      <div><strong>65%</strong><span>Onboarding completion, up from 41%</span></div>
+      <div><strong>44%</strong><span>First-deal redemption, up from 35%</span></div>
+      <div><strong>−32%</strong><span>Overall support tickets</span></div>
+    </div>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s1">
+    <div class="c-h2-wrap"><span class="c-num">01</span><h2 class="c-h2" id="s1">The product had great rewards. Almost nobody was using them.</h2></div>
+    <p class="c-p">Yaper is a credit card rewards and cashback platform operating in India’s high-trust, high-regulation fintech environment. The product connects users with deals across major e-commerce platforms, earning cashback every time a qualifying purchase is completed.</p>
+    <p class="c-p">On paper, the value proposition was strong. In practice, the numbers told a different story.</p>
+    <ul class="c-rows">
+      <li style="grid-template-columns: 64px minmax(0, 1fr)"><strong style="font-size: 18px">59%</strong><span>of new users dropped off during onboarding, before seeing a single deal.</span></li>
+      <li style="grid-template-columns: 64px minmax(0, 1fr)"><strong style="font-size: 18px">35%</strong><span>first-deal redemption rate; most users who did onboard never earned anything.</span></li>
+    </ul>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/675ffac50c6d.webp" alt="Funnel: 100% new users, 41% reach the product, 35% redeem a first deal, about 10% become active repeat users. Support tickets were about confusion, not bugs." width="1296" height="730"></div></figure>
+    <p class="c-q">This wasn’t a UI problem. It was a value communication and trust sequencing problem.</p>
+    <p class="c-p">The product was asking users to commit before it had shown them why they should.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s2">
+    <div class="c-h2-wrap"><span class="c-num">02</span><h2 class="c-h2" id="s2">Why users were leaving before the product delivered on its promise</h2></div>
+    <p class="c-p">Research inputs included 10 qualitative user interviews I ran, funnel drop-off analysis, and a competitive teardown of Perkpay, IDZO, and Piepay. A clear pattern emerged across all three: the product was asking for trust, verification, and commitment before it had earned any of it.</p>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/b22f444aa769.webp" alt="Evidence and what it revealed: interviews showed hesitation to share PAN before seeing value, funnel analysis showed 59% dropping during onboarding, support tickets repeated questions about cashback and transactions, and competitors exposed value earlier" width="1512" height="1008" style="width: 100%; max-width: 680px"></div></figure>
+    <ul class="c-rows">
+      <li><span class="c-num">1</span><span><strong>Trust was demanded before it was earned.</strong> Users were hitting KYC and data capture screens before they’d seen a single deal or understood the product’s value. One interviewee put it directly: “I don’t even know what I’m signing up for yet.”</span></li>
+      <li><span class="c-num">2</span><span><strong>Rewards existed but weren’t perceived.</strong> The deals were there, users simply weren’t finding them. Deals were buried behind navigation, not surfaced on the home screen. Discovery failure was killing activation before intent could form.</span></li>
+      <li><span class="c-num">3</span><span><strong>Ambiguity was generating support load.</strong> The instructions for placing a deal order were unclear enough that users were going to support rather than completing their first redemption. Confusion at the critical moment was the retention killer.</span></li>
+    </ul>
+    <p class="c-q">The reframe: from “simplify the flows” to “re-sequence value, trust, and effort, in that order.”</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s3">
+    <div class="c-h2-wrap"><span class="c-num">03</span><h2 class="c-h2" id="s3">One principle to guide every decision</h2></div>
+    <p class="c-p">Rather than treating each screen as an isolated problem, the redesign needed a single strategic principle that could be applied consistently across onboarding, the dashboard, deal redemption, and compliance flows.</p>
+    <p class="c-q">Show value → earn trust → then ask for commitment.</p>
+    <div class="c-seq">
+      <div><b>Before</b><span>Sign up → Number → Name → Email → PAN → Bank details → Browse deals → Accept deal → Deal complete. Deals appear at step 7 of 9, after two asks for trust.</span></div>
+      <div class="after"><b>After</b><span>Sign up → Browse deals → Accept deal → KYC verification → Deal complete. Deals appear at step 2 of 5; KYC is asked once there’s a reason to verify.</span></div>
+    </div>
+    <p class="c-p">This principle directly challenged the existing product logic, where KYC and data capture came first. Getting alignment across PM, Engineering, and Compliance on this sequencing shift was one of the defining leadership challenges of the project.</p>
+    <p class="c-p">Success was defined upfront with three measurable metrics: onboarding completion rate, first-deal redemption rate, and support ticket volume.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s4">
+    <div class="c-h2-wrap"><span class="c-num">04</span><h2 class="c-h2" id="s4">Four decisions that changed the product’s trajectory</h2></div>
+
+    <h3 class="c-h3">1. Progressive onboarding over upfront KYC</h3>
+    <p class="c-p">The original flow demanded PAN verification and bank details before users could browse deals. This optimized for compliance but destroyed activation; users had no reason to trust the product with that information yet.</p>
+    <figure class="c-fig"><span class="c-ba-k">Before: nine steps, verification first</span><div class="c-panel"><img src="/assets/images/54ce15fc141b.webp" alt="Existing flow: sign up, number, name, email, PAN card details, bank account details, then browse deals, accept deal, deal complete" width="1728" height="585"></div></figure>
+    <figure class="c-fig"><span class="c-ba-k after">After: five steps, value first</span><div class="c-panel"><img src="/assets/images/00194fa163f5.webp" alt="New flow: sign up, browse deals, accept deal, KYC verification, deal complete" width="1728" height="585"></div></figure>
+    <dl class="c-trade">
+      <div><dt>The trade-off</dt><dd>Delaying verification could have led to more fraud and created extra technical and compliance work. It was a significant effort for the Engineering and Compliance teams, not a small change.</dd></div>
+      <div><dt>The call</dt><dd>I facilitated alignment between PM, Engineering, and Compliance on a staged verification model: collect the minimum needed to show value immediately, and gate high-trust actions behind progressive verification steps.</dd></div>
+    </dl>
+    <div class="c-lists"><div><span class="k">Before</span><ul><li>PAN required before browsing</li><li>Bank details upfront</li><li>No deal preview before commitment</li></ul></div><div><span class="k after">After</span><ul><li>Browse deals immediately after signup</li><li>KYC triggered contextually at first redemption</li><li>Progressive commitment model throughout</li></ul></div></div>
+    <p class="c-result"><strong>65%</strong> onboarding completion</p>
+
+    <h3 class="c-h3" style="margin-top: 32px">2. Home-first deal discovery</h3>
+    <p class="c-p">In the old app, deals lived behind a navigation tab. The home screen showed account info with no reward signals. Users who didn’t already understand the product had no prompt to explore.</p>
+    <div class="c-pair wide-r">
+      <figure class="c-fig"><span class="c-ba-k">Before</span><div class="c-panel"><img src="/assets/images/51ad51d833f5.webp" alt="Old home screen annotated: no reward visibility, deals hidden behind a tab, no prompt to explore" width="755" height="1080"></div><figcaption class="c-cap">Account info, no deals.</figcaption></figure>
+      <figure class="c-fig"><span class="c-ba-k after">After</span><div class="c-panel"><img src="/assets/images/1303a97c2411.webp" alt="Three redesigned home screens with filters, deal cards showing earnings, and an active deal banner" width="1512" height="923"></div><figcaption class="c-cap">Deals on the home screen.</figcaption></figure>
+    </div>
+    <dl class="c-trade">
+      <div><dt>The trade-off</dt><dd>Moving deals to the home screen meant showing more information in one place. The screen got busier, and I chose that over keeping it minimal.</dd></div>
+      <div><dt>The call</dt><dd>Prioritized activation over visual brevity. A clean screen that users abandon is not a good design. The right measure was completion, not polish.</dd></div>
+    </dl>
+    <div class="c-lists"><div><span class="k">Before</span><ul><li>Deals hidden in a separate tab</li><li>Home screen showed account info only</li><li>No reward signal on first view</li></ul></div><div><span class="k after">After</span><ul><li>Deals surfaced immediately on home</li><li>Earnings potential visible on first load</li><li>Filter and contextual deal cards above the fold</li></ul></div></div>
+    <p class="c-result"><strong>44%</strong> first-deal redemption, the primary metric this influenced</p>
+
+    <h3 class="c-h3" style="margin-top: 32px">3. Explicit guidance over “clean” UI</h3>
+    <p class="c-p">Yaper’s deal redemption process involves real-world steps: placing an order within a time window, matching order IDs, uploading tracking details. The old UI treated these as implied. Users were failing at the critical moment because they didn’t know what was expected of them.</p>
+    <figure class="c-fig"><span class="c-ba-k">Before: requirements implied</span><div class="c-panel"><img src="/assets/images/98f3a8318235.webp" alt="Old order screens: dense order history, a key note block, and order detail forms for order and tracking IDs" width="1728" height="572"></div></figure>
+    <figure class="c-fig"><span class="c-ba-k after">After: a step-by-step deal status</span><div class="c-panel"><img src="/assets/images/4c053a2caa9b.webp" alt="New order history and order details screens with a deal status timeline: accepted, ordered, shipped, delivered, payment released" width="1512" height="873"></div></figure>
+    <dl class="c-trade">
+      <div><dt>The trade-off</dt><dd>I chose to include more information and clear instructions, even if it made the screens longer. It may not have been the most minimal design, but it worked better for our users.</dd></div>
+      <div><dt>The call</dt><dd>I focused on helping users complete their tasks rather than making screens shorter. Instructions were made clear, easy to scan, and shown at the right time in the user journey.</dd></div>
+    </dl>
+    <div class="c-lists"><div><span class="k">Before</span><ul><li>Instructions buried or absent</li><li>Order requirements implied, not stated</li><li>No clarity on cashback timelines</li></ul></div><div><span class="k after">After</span><ul><li>Key notes surfaced before deal acceptance</li><li>Step-by-step order tracking with status UI</li><li>Cashback timeline made explicit in wallet view</li></ul></div></div>
+    <p class="c-result"><strong>−27%</strong> deal-redemption support tickets</p>
+
+    <h3 class="c-h3" style="margin-top: 32px">4. From wallet balance to transaction clarity</h3>
+    <p class="c-p">User research showed that people were confused by the wallet balance. They assumed the amount shown was ready to withdraw, but didn’t understand that the money would only be transferred to their bank after the order was delivered. The transaction history also mixed received and cancelled transactions together.</p>
+    <div class="c-pair">
+      <figure class="c-fig"><span class="c-ba-k">Before</span><div class="c-panel"><img src="/assets/images/6600ea5a0a3c.webp" alt="Old Yaper Wallet screens: a total balance with payment received and cancelled entries mixed in one list" width="1512" height="1072"></div><figcaption class="c-cap">One balance, one mixed list.</figcaption></figure>
+      <figure class="c-fig"><span class="c-ba-k after">After</span><div class="c-panel"><img src="/assets/images/ec33bb349e59.webp" alt="New wallet screens with Received and Cancelled tabs, and a timeline from amount added in wallet to amount transferred to bank" width="1213" height="1152"></div><figcaption class="c-cap">Transaction states and a clear timeline.</figcaption></figure>
+    </div>
+    <dl class="c-trade">
+      <div><dt>The trade-off</dt><dd>Instead of showing only the balance, we introduced transaction states, clearer timelines, and separate views for received and cancelled transactions. This added information to the screen, but reduced ambiguity.</dd></div>
+      <div><dt>The call</dt><dd>I renamed “Wallet” to “Transactions” and redesigned the experience around status clarity. The new flow makes the journey from order to wallet to bank transfer explicit.</dd></div>
+    </dl>
+    <div class="c-lists"><div><span class="k">Before</span><ul><li>Wallet balance looked immediately withdrawable</li><li>No clear timeline for bank transfer</li><li>Received and cancelled transactions mixed together</li><li>“Wallet” didn’t reflect the full transaction history</li></ul></div><div><span class="k after">After</span><ul><li>Transfer status and timing made explicit</li><li>Clear order to wallet to bank journey</li><li>Received and cancelled transactions separated</li><li>Renamed Wallet to Transactions</li></ul></div></div>
+    <p class="c-result"><strong>−32%</strong> wallet-related support tickets</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s5">
+    <div class="c-h2-wrap"><span class="c-num">05</span><h2 class="c-h2" id="s5">Checking that people could finish without help</h2></div>
+    <p class="c-p">I tested the redesigned prototype with 8 participants, 4 power users and 4 non-power users, to validate whether the new experience was easier to understand and whether users could complete key tasks without assistance.</p>
+    <p class="c-p"><strong>Key tasks:</strong> find a relevant deal, understand deal eligibility, place an order, track cashback, understand transaction status, and find and use the new feature.</p>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/4400d1909af3.webp" alt="What we found: 7 of 8 completed deal discovery without help, 8 of 8 understood the new transaction status, 6 of 8 hesitated with advanced deal features, 5 of 8 wanted clearer guidance on when cashback arrives" width="1036" height="691" style="width: 100%; max-width: 680px"></div></figure>
+    <p class="c-p">The testing showed that the core experience was easy to understand, but some advanced actions still needed more context. We responded with three changes:</p>
+    <ul class="c-rows">
+      <li><span class="c-num">1</span><span><strong>Clarifying action labels.</strong> Made important actions more explicit instead of relying on familiar product terminology.</span></li>
+      <li><span class="c-num">2</span><span><strong>Adding contextual guidance.</strong> Introduced guidance closer to the point where users needed it.</span></li>
+      <li><span class="c-num">3</span><span><strong>Strengthening transaction hierarchy.</strong> Made pending, completed, and transferred states easier to distinguish.</span></li>
+    </ul>
+    <p class="c-q">The redesign wasn’t just easier to look at.</p>
+    <p class="c-p">Users were able to find value faster, understand what was happening with their money, and complete key tasks with less assistance.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s6">
+    <div class="c-h2-wrap"><span class="c-num">06</span><h2 class="c-h2" id="s6">The app, before and after</h2></div>
+    <figure class="c-fig"><span class="c-ba-k">Before</span><div class="c-panel"><img src="/assets/images/e3ecba784a9c.webp" alt="Ten screens from the old Yaper app: cards, order history, order placed, deal details, support" width="1512" height="1212"></div></figure>
+    <figure class="c-fig"><span class="c-ba-k after">After</span><div class="c-panel"><img src="/assets/images/59c4f99d7e28.webp" alt="Ten screens from the redesigned app: welcome, home with deals, deal details, order details, profile, wallet, bank details, filters, order history and accept deal" width="1512" height="1192"></div></figure>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s7">
+    <div class="c-h2-wrap"><span class="c-num">07</span><h2 class="c-h2" id="s7">What this project taught me</h2></div>
+    <p class="c-q">The biggest learning: good UX isn’t about removing information. It’s about giving users the right information at the right moment.</p>
+    <ul class="c-rows">
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Trust is a UX problem.</strong> Clear information and transparency can be just as important as visual design.</span></li>
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Minimalism has a business cost.</strong> A cleaner interface isn’t always better if it hides information users need.</span></li>
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Design strategy requires alignment, not just craft.</strong> The best solutions came from balancing user needs, business goals, and technical constraints.</span></li>
+    </ul>
+    <h3 class="c-h3" style="margin-top: 12px">Phase 2: personalisation, without feeling watched</h3>
+    <p class="c-p">If I were starting Phase 2, the focus would be personalisation: surfacing deals matched to a user’s specific cards, spend history, and timing patterns. The infrastructure is there. The question is how to do it without making the product feel like it’s watching you.</p>
+  </section>
+  <section class="c-sec" aria-label="Next project">
+    <a class="c-next" href="/product-revamp-3/">
+      <span class="c-label">Next project</span>
+      <div class="c-panel"><img src="/assets/images/194f76d6dd4f.webp" alt="Product Revamp 3.0 screens"></div>
+      <span class="c-h3">Product Revamp 3.0</span>
+      <span style="color: var(--muted); margin-top: -10px">Making a growing product easier to understand</span>
+      <span class="go">Read case study <span>→</span></span>
+    </a>
+    <a class="c-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to all work</a>
+  </section>
+
+  <footer class="c-foot"><span>© 2026 Parveen Yadav</span><a href="#top">Back to top ↑</a></footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":14000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

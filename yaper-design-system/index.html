@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yaper Design System, Parveen Yadav</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="/assets/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Building the design system Yaper had been missing: tokens, foundations, components, product migration and an audit framework.">
+<meta property="og:title" content="Building the design system that Yaper had been missing.">
+<meta property="og:description" content="Building the design system Yaper had been missing: tokens, foundations, components, product migration and an audit framework.">
+<meta property="og:type" content="article">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--accent:#025ACE;--fg:#141414;--body:#2B2B2B;--muted:#666666;--line:#EBEBEB;--panel:#F5F5F5}
+html{color-scheme:light only}
+body{margin:0;background:#FFFFFF}
+a{color:var(--fg)}a:hover{color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none !important}}
+
+.c-page{max-width:1120px;margin:0 auto;padding:0 clamp(16px, 4vw, 40px) 48px;display:flex;flex-direction:column;gap:96px}
+.c-page>*{box-sizing:border-box;width:100%;max-width:840px;margin-left:auto;margin-right:auto}
+.c-page>.c-nav,.c-page>.c-foot,.c-page>.c-top{max-width:none}
+.c-top{display:flex;flex-direction:column;gap:40px;margin-top:-48px}
+.c-top>header{width:100%;max-width:840px;margin:0 auto}
+.c-nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.c-nav>a{font-weight:600;text-decoration:none}
+.c-nav div{display:flex;flex-wrap:wrap;gap:4px 20px}
+.c-nav div a{color:var(--muted);text-decoration:none;padding:10px 0}
+.c-nav div a:hover{color:var(--fg)}
+
+.c-back{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:40px;font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+.c-back:hover{color:var(--fg)}
+
+.c-sec{display:flex;flex-direction:column;gap:20px}
+.c-num{font-size:14px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+.c-label{font-size:14px;font-weight:500;color:var(--muted)}
+.c-h1{margin:0;font-size:clamp(30px, 2.4vw + 18px, 40px);font-weight:600;line-height:1.15;letter-spacing:-0.025em;text-wrap:balance}
+.c-dek{margin:0;font-size:18px;line-height:1.6;color:var(--muted)}
+.c-h2{margin:0;font-size:clamp(22px, 1vw + 16px, 26px);font-weight:600;line-height:1.25;letter-spacing:-0.015em;text-wrap:balance}
+.c-h2-wrap{display:flex;flex-direction:column;gap:8px}
+.c-h3{margin:0;font-size:18px;font-weight:600;line-height:1.4}
+.c-p{margin:0;font-size:16px;line-height:1.7;color:var(--body);text-wrap:pretty}
+.c-p strong{font-weight:600;color:var(--fg)}
+.c-cap{margin:0;font-size:14px;line-height:1.55;color:var(--muted)}
+
+.c-fig{margin:8px 0;display:flex;flex-direction:column;gap:10px}
+.c-panel{border-radius:12px;background:#FFFFFF;border:1px solid var(--line);padding:24px;display:flex;justify-content:center;align-items:center;min-width:0}
+.c-panel img{display:block;max-width:100%;height:auto}
+.c-panel img.c-ph{height:360px;width:auto;max-width:100%;object-fit:contain}
+.c-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.c-pair.lop{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.c-pair .c-fig{margin:0}
+.c-pair .c-panel{padding:20px 16px}
+.c-ba-k{font-size:14px;font-weight:500;color:var(--muted)}
+.c-ba-k.after{color:var(--fg);font-weight:600}
+
+.c-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-rows li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--body)}
+.c-rows li .c-num{line-height:1.6}
+.c-rows li strong{font-weight:600;color:var(--fg)}
+
+.c-seq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-seq div{display:grid;grid-template-columns:80px minmax(0,1fr);gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--muted)}
+.c-seq div.after{color:var(--fg);font-weight:500}
+.c-seq b{font-size:14px;font-weight:500;color:var(--muted)}
+.c-seq div.after b{color:var(--accent)}
+
+.c-meta{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px;padding-top:20px;border-top:1px solid var(--line)}
+.c-meta div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.c-meta dt{font-size:14px;color:var(--muted)}
+.c-meta dd{margin:0;font-size:15px;line-height:1.5}
+
+.c-q{margin:4px 0;font-size:22px;font-weight:600;line-height:1.35;letter-spacing:-0.01em;color:var(--fg)}
+
+.c-trade{margin:8px 0 0;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
+.c-trade div{display:flex;flex-direction:column;gap:2px}
+.c-trade dt{font-size:14px;font-weight:600;color:var(--fg)}
+.c-trade dd{margin:0;font-size:16px;line-height:1.65;color:var(--body)}
+
+.c-ba{position:relative;width:240px;max-width:100%;aspect-ratio:880 / 1350;border-radius:16px;overflow:hidden;background:#FFFFFF;user-select:none;-webkit-user-select:none}
+.c-ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.c-ba .after{clip-path:inset(0 0 0 var(--ba))}
+.c-ba .line{position:absolute;top:0;bottom:0;left:var(--ba);width:2px;margin-left:-1px;background:#FFFFFF;box-shadow:0 0 0 1px rgba(0,0,0,.08);pointer-events:none}
+.c-ba .knob{position:absolute;top:50%;left:var(--ba);width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:#FFFFFF;color:#141414;box-shadow:0 4px 14px rgba(0,0,0,.18);display:grid;place-items:center;pointer-events:none}
+.c-ba .t{position:absolute;top:10px;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:500;background:rgba(20,20,20,.7);color:#FFFFFF;pointer-events:none}
+.c-ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.c-ba:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+
+.c-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
+.c-grid li{display:flex;flex-direction:column;gap:10px;min-width:0}
+.c-grid .c-panel{height:220px;padding:20px 16px 0;align-items:flex-start;overflow:hidden}
+.c-grid .c-panel img{width:150px;height:auto}
+.c-grid p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
+.c-grid strong{display:block;font-size:16px;font-weight:600;color:var(--fg)}
+
+.c-list{margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.6;color:var(--body)}
+
+.c-next{display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--line);text-decoration:none;color:var(--fg)}
+a.c-next:hover{color:var(--fg)}
+.c-next .c-panel{padding:0;overflow:hidden;background:#F4F4F4;border:0}
+.c-next .c-panel img{width:100%;aspect-ratio:3 / 2;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.c-next:hover .c-panel img{transform:scale(1.03)}
+.c-next .go{font-weight:500}
+.c-next .go span{display:inline-block;transition:transform .25s ease}
+.c-next:hover .go span{transform:translateX(3px)}
+.c-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.c-foot a{color:var(--muted)}
+
+@media (max-width: 600px){
+  .c-page{gap:72px}
+  .c-panel img.c-ph{height:auto;width:auto;max-height:300px;max-width:100%}
+  .c-pair,.c-pair.lop{grid-template-columns:minmax(0,1fr)}
+  .c-grid{grid-template-columns:minmax(0,1fr)}
+  .c-grid li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;align-items:start}
+  .c-grid .c-panel{height:150px;padding:12px 10px 0}
+  .c-grid .c-panel img{width:100%}
+  .c-seq div{grid-template-columns:minmax(0,1fr)}
+  .c-meta{grid-template-columns:minmax(0,1fr)}
+  .c-panel{padding:16px}
+}
+
+/* shared additions */
+.c-pair.wide-r{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
+.c-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+.c-tiles .c-fig{margin:0}
+.c-tiles .c-panel{padding:0;overflow:hidden}
+.c-tiles .c-panel img{width:100%}
+.c-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.c-lists>div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.c-lists ul{margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.55;color:var(--body)}
+.c-lists .k{font-size:14px;font-weight:500;color:var(--muted)}
+.c-lists .k.after{color:var(--fg);font-weight:600}
+.c-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 24px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.c-metrics>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.c-metrics strong{font-size:26px;font-weight:600;line-height:1.2;letter-spacing:-0.015em;color:var(--fg)}
+.c-metrics span{font-size:14px;line-height:1.5;color:var(--muted)}
+.c-result{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:16px;color:var(--body)}
+.c-result strong{font-size:18px;font-weight:600;color:var(--fg)}
+.c-code{margin:0;padding:16px 18px;border:1px solid var(--line);border-radius:12px;font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace;font-size:13px;line-height:1.8;color:var(--body);white-space:pre-wrap;overflow-wrap:anywhere}
+.c-code i{font-style:normal;color:var(--muted)}
+.c-mono{font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace;font-size:13px}
+.c-table-wrap{border-top:1px solid var(--line)}
+.c-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5}
+.c-table th{text-align:left;font-size:14px;font-weight:500;color:var(--muted);padding:12px 16px 12px 0;border-bottom:1px solid var(--line)}
+.c-table td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--body)}
+.c-sw{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.12);vertical-align:-2px;margin-right:8px}
+
+/* interactive bits */
+.c-seg{display:inline-flex;align-self:flex-start;padding:3px;border-radius:999px;border:1px solid var(--line)}
+.c-seg button{all:unset;box-sizing:border-box;cursor:pointer;min-height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted)}
+.c-seg button.on{background:var(--fg);color:#FFFFFF}
+.c-seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.c-tool{display:flex;flex-direction:column;gap:16px;padding:20px;border:1px solid var(--line);border-radius:12px}
+.c-range{display:flex;flex-direction:column;gap:8px}
+.c-range label{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
+.c-range output{font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+.c-range input{width:100%;margin:0;min-height:28px;accent-color:var(--accent);cursor:pointer}
+.c-amt{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-amt div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+.c-amt div b{font-weight:600;color:var(--fg)}
+.c-amt div.total b{font-size:22px;color:var(--accent)}
+.c-amt div.rate b{font-size:22px}
+.c-tool-pair{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:20px;align-items:center}
+.c-tool-pair img{display:block;width:100%;height:auto}
+.c-stack img{display:none}
+.c-stack[data-on="0"] img:nth-child(1),.c-stack[data-on="1"] img:nth-child(2),.c-stack[data-on="2"] img:nth-child(3),.c-stack[data-on="3"] img:nth-child(4),.c-stack:not([data-on="0"]):not([data-on="1"]):not([data-on="2"]):not([data-on="3"]) img:first-child{display:block}
+.c-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.c-steps button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:10px}
+.c-steps button.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.c-steps button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.c-steps b{font-size:15px;font-weight:600;color:var(--fg)}
+.c-steps span{font-size:14px;color:var(--muted)}
+.c-ex{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:20px;align-items:start}
+.c-ex .c-table td:first-child{width:36%}
+.c-ex .c-table button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:10px;align-items:flex-start;font-weight:500;color:var(--fg)}
+.c-ex .c-table button i{flex:0 0 auto;margin-top:5px;width:10px;height:10px;border-radius:50%;border:2px solid #BDBDBD;box-sizing:border-box}
+.c-ex .c-table button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.c-ex .c-table tr.on button i{border-color:var(--accent);background:var(--accent)}
+.c-ex .c-table tr.on td{color:var(--fg)}
+.c-ex .c-panel{position:sticky;top:24px}
+.c-ex .c-panel img{width:100%;height:auto}
+
+@media (max-width: 760px){
+  .c-pair.wide-r,.c-lists,.c-tool-pair,.c-ex{grid-template-columns:minmax(0,1fr)}
+  .c-tool-pair img{max-width:220px;margin:0 auto}
+  .c-ex .c-panel{position:static;order:-1}
+  .c-ex .c-panel img{max-width:200px}
+}
+@media (max-width: 600px){
+  .c-tiles,.c-metrics{grid-template-columns:minmax(0,1fr)}
+  .c-table thead{display:none}
+  .c-table,.c-table tbody,.c-table tr,.c-table td{display:block;width:auto !important}
+  .c-table tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  .c-table td{border:0;padding:2px 0}
+  .c-ex .c-table td+td{padding-left:20px}
+}
+</style>
+</helmet>
+<div style="background: #FFFFFF; color: var(--fg); font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<div class="c-page">
+  <nav class="c-nav" aria-label="Site">
+    <a href="/" id="top">Parveen Yadav</a>
+    <div><a href="/#work">Work</a><a href="/#lab">Lab</a><a href="/#about">About</a><a href="/#contact">Contact</a></div>
+  </nav>
+
+  <div class="c-top">
+  <header class="c-sec">
+    <a class="c-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>All work</a>
+    <span class="c-label">Yaper · Design System</span>
+    <h1 class="c-h1">Building the design system that Yaper had been missing.</h1>
+    <p class="c-dek">The system underneath Yaper: tokens, foundations, components, product migration and an audit framework.</p>
+    <dl class="c-meta">
+      <div><dt>Role</dt><dd>Senior Product Designer, solo design system ownership</dd></div>
+      <div><dt>Status</dt><dd>System and product migration shipped. Engineering handoff in progress.</dd></div>
+      <div><dt>Scope</dt><dd>Tokens, foundations, components, dev handoff, migration and audit framework</dd></div>
+      <div><dt>Tools</dt><dd>Figma, Figma Desktop Bridge (MCP) and Dev Mode</dd></div>
+    </dl>
+  </header>
+  <figure class="c-fig" style="margin: 0"><div class="c-panel" style="padding: 0; overflow: hidden; border: 0"><img src="/assets/images/328a4c5e64ab.webp" alt="Yaper Design System board: icons, chips and badges, brand colours, tokens and grid" width="1672" height="941" style="width: 100%"></div></figure>
+  </div>
+
+  <section class="c-sec" aria-labelledby="s-ov">
+    <h2 class="c-h2" id="s-ov">Overview</h2>
+    <dl class="c-trade" style="margin: 0">
+      <div><dt>The problem</dt><dd>Yaper had been redesigned many times but never systemized, so every new screen made the same decisions again.</dd></div>
+      <div><dt>What I did</dt><dd>Built a two-tier token architecture, foundations and a core component library, migrated the Yaper Revamp onto it, and set up an audit framework for drift.</dd></div>
+      <div><dt>The result</dt><dd>Tokens, the component library and the product migration shipped. Engineering handoff is in progress.</dd></div>
+    </dl>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s1">
+    <div class="c-h2-wrap"><span class="c-num">01</span><h2 class="c-h2" id="s1">The interface had been shipped many times. It had never been systemized once.</h2></div>
+    <p class="c-p">Yaper is a cashback and deals platform that had gone through several redesigns as the product evolved. Each redesign improved the experience in front of the user, but the underlying design language remained largely screen-based.</p>
+    <p class="c-p">By the time I started working on Yaper Revamp, the file had accumulated the effects of that approach: hardcoded colors and type values, duplicated components, inconsistent patterns, and no single source of truth for what the interface should use.</p>
+    <p class="c-p">The problem wasn’t simply that the UI looked inconsistent. The problem was that every new screen required the same decisions to be made again.</p>
+    <p class="c-q">Before designing more screens, I needed to design the system those screens were made from.</p>
+    <div class="c-pair">
+      <div class="c-fig" style="margin: 0"><span class="c-ba-k">Before: accumulated drift</span><p class="c-code">#025ACE <i>hardcoded</i>
+local style
+duplicate component
+font-size: 15px
+padding: 14px 22px
+OrderCard_v2 <i>one-off</i></p></div>
+      <div class="c-fig" style="margin: 0"><span class="c-ba-k after">After: systemized</span><p class="c-code">brand/primary
+semantic tokens
+space/16 <i>8px grid</i>
+component/system</p></div>
+    </div>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s2">
+    <div class="c-h2-wrap"><span class="c-num">02</span><h2 class="c-h2" id="s2">Four failure modes were driving the inconsistency.</h2></div>
+    <ul class="c-rows">
+      <li><span class="c-num">1</span><span><strong>No token layer.</strong> Color and typography values were largely hardcoded at the screen level.</span></li>
+      <li><span class="c-num">2</span><span><strong>Component drift.</strong> Components intended to represent the same pattern had evolved into near-duplicates.</span></li>
+      <li><span class="c-num">3</span><span><strong>No reliable handoff surface.</strong> There was no clear relationship between a value used in a design and the role that value played in the system.</span></li>
+      <li><span class="c-num">4</span><span><strong>No mechanism for detecting drift.</strong> Even a perfectly structured system could diverge from the live product over time.</span></li>
+    </ul>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s3">
+    <div class="c-h2-wrap"><span class="c-num">03</span><h2 class="c-h2" id="s3">System architecture</h2></div>
+    <p class="c-p">The system is built in five layers, each depending on the one before it: Foundations → Tokens → Components → Product → Governance.</p>
+    <ul class="c-rows">
+      <li><span class="c-num">1</span><span><strong>Foundations.</strong> Color, typography, spacing and icons.</span></li>
+      <li><span class="c-num">2</span><span><strong>Tokens.</strong> Primitive and semantic, with light and dark modes.</span></li>
+      <li><span class="c-num">3</span><span><strong>Components.</strong> Input (22 variants), Order Card (10 variants), buttons and states.</span></li>
+      <li><span class="c-num">4</span><span><strong>Yaper Revamp.</strong> Home, orders and pay-link screens migrated onto the system.</span></li>
+      <li><span class="c-num">5</span><span><strong>Governance.</strong> An audit framework with P0, P1 and P2 priorities for drift detection.</span></li>
+    </ul>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s4">
+    <div class="c-h2-wrap"><span class="c-num">04</span><h2 class="c-h2" id="s4">From visual values to semantic decisions.</h2></div>
+    <p class="c-p">The system uses a two-tier token architecture: primitive values underneath semantic roles.</p>
+    <div class="c-table-wrap"><table class="c-table">
+      <thead><tr><th scope="col">Primitive</th><th scope="col">Semantic</th><th scope="col">Used in</th></tr></thead>
+      <tbody>
+        <tr><td class="c-mono">blue/500</td><td class="c-mono">brand/primary</td><td>Button, interactive state, focus ring</td></tr>
+        <tr><td class="c-mono">gray/900</td><td class="c-mono">text/primary</td><td>Component typography, headings, body</td></tr>
+      </tbody>
+    </table></div>
+    <p class="c-p">Primitive tokens contain the raw values. Semantic tokens describe how those values are used. Components reference the semantic layer rather than the primitives directly.</p>
+    <p class="c-q">Components depend on roles, not colors.</p>
+    <p class="c-p">Every semantic token has a resolved value for both modes. Components read from the semantic name; the mode decides which primitive shows up on screen.</p>
+    <div class="c-table-wrap"><table class="c-table">
+      <thead><tr><th scope="col">Semantic token</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
+      <tbody>
+        <tr><td class="c-mono">surface/primary</td><td class="c-mono"><span class="c-sw" style="background: #FFFFFF"></span>#FFFFFF</td><td class="c-mono"><span class="c-sw" style="background: #1B1F26"></span>#1B1F26</td></tr>
+        <tr><td class="c-mono">surface/page</td><td class="c-mono"><span class="c-sw" style="background: #F7F8FA"></span>#F7F8FA</td><td class="c-mono"><span class="c-sw" style="background: #0F1216"></span>#0F1216</td></tr>
+        <tr><td class="c-mono">text/primary</td><td class="c-mono"><span class="c-sw" style="background: #14171C"></span>#14171C</td><td class="c-mono"><span class="c-sw" style="background: #F4F5F7"></span>#F4F5F7</td></tr>
+        <tr><td class="c-mono">text/secondary</td><td class="c-mono"><span class="c-sw" style="background: #4B535C"></span>#4B535C</td><td class="c-mono"><span class="c-sw" style="background: #98A0AD"></span>#98A0AD</td></tr>
+        <tr><td class="c-mono">border/subtle</td><td class="c-mono"><span class="c-sw" style="background: #E1E5EA"></span>#E1E5EA</td><td class="c-mono"><span class="c-sw" style="background: #2A2F38"></span>#2A2F38</td></tr>
+        <tr><td class="c-mono">brand/primary</td><td class="c-mono"><span class="c-sw" style="background: #025ACE"></span>#025ACE</td><td class="c-mono"><span class="c-sw" style="background: #4A90F5"></span>#4A90F5</td></tr>
+      </tbody>
+    </table></div>
+    <p class="c-cap">Same components, same tokens. Semantic tokens stay stable; their resolved values change by mode.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s5">
+    <div class="c-h2-wrap"><span class="c-num">05</span><h2 class="c-h2" id="s5">The rules underneath the components.</h2></div>
+    <div class="c-tiles">
+      <figure class="c-fig"><div class="c-panel"><img src="/assets/images/a66f1ec4d36c.webp" alt="Yaper color foundation: brand, text, surface, border, feedback, badge and shadow colors" width="1200" height="900"></div><figcaption class="c-cap">Color: brand, surface, feedback and badge.</figcaption></figure>
+      <figure class="c-fig"><div class="c-panel"><img src="/assets/images/79b0cc686339.webp" alt="Yaper typography: headings H1 to H4, paragraphs and labels" width="1200" height="900"></div><figcaption class="c-cap">Typography: headings, paragraphs and labels.</figcaption></figure>
+      <figure class="c-fig"><div class="c-panel"><img src="/assets/images/188dfcc4bf93.webp" alt="Yaper layout and spacing: 8px grid, columns, spacing scale and corner radius" width="1200" height="900"></div><figcaption class="c-cap">Layout: grid, spacing and radius.</figcaption></figure>
+      <figure class="c-fig"><div class="c-panel"><img src="/assets/images/d1ab7194e8df.webp" alt="Yaper icon library: Phosphor regular and fill weights, deduplicated" width="1200" height="900"></div><figcaption class="c-cap">Icons: regular and fill, deduplicated.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s6">
+    <div class="c-h2-wrap"><span class="c-num">06</span><h2 class="c-h2" id="s6">Components became systems of rules, not collections of screens.</h2></div>
+    <p class="c-p">The goal wasn’t simply to recreate components already visible in Yaper. It was to define the states, properties, and relationships that made each component reusable.</p>
+    <h3 class="c-h3">Input Field: 22 variants</h3>
+    <p class="c-p">One component. Multiple states and configurations. A shared source of truth.</p>
+    <dl class="c-meta" style="padding-top: 16px">
+      <div><dt>States</dt><dd>Default, focus, filled, error, disabled and OTP</dd></div>
+      <div><dt>Configurations</dt><dd>Label, hint, prefix, suffix, icon, optional, multiline and OTP</dd></div>
+    </dl>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/ed2470f794ed.webp" alt="Input Field: 22 variants across states, configurations and OTP" width="1800" height="2021" style="width: 100%; max-width: 640px"></div></figure>
+    <p class="c-q">A component has to survive real product states.</p>
+    <h3 class="c-h3">Order Card: 10 variants</h3>
+    <p class="c-p">The Order Card was structured around the different product states while preserving the underlying component structure. Variants cover accepted, delivered, payment released, shipped and ordered, alongside Pay-link.</p>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/41651f4671c8.webp" alt="Order Card: 10 variants with Pay-link, Home Deal, Bottom Navigation and Title Bar components" width="990" height="1562" style="width: 100%; max-width: 400px"></div></figure>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/fd09f665dfe7.webp" alt="Selection controls: checkbox, radio, toggle and selection chips" width="1230" height="504"></div><figcaption class="c-cap">Form controls: checkbox, radio, toggle and chips.</figcaption></figure>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/df2087dbde49.webp" alt="Filter chips, deal badges and order status badges" width="1202" height="736"></div><figcaption class="c-cap">Badges and chips: filter, deal and order status.</figcaption></figure>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s7">
+    <div class="c-h2-wrap"><span class="c-num">07</span><h2 class="c-h2" id="s7">Not everything needed a new component.</h2></div>
+    <p class="c-p">Part of the work was reducing system entropy: cleaning up what already existed before adding more.</p>
+    <div class="c-lists">
+      <div><span class="k">Before</span><ul><li>Duplicate icons</li><li>Ghost components</li><li>Orphaned assets</li><li>Multiple interpretations</li></ul></div>
+      <div><span class="k after">After</span><ul><li>Consolidated icon library</li><li>Clear component sources</li><li>Reduced duplication</li><li>Cleaner structure</li></ul></div>
+    </div>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s8">
+    <div class="c-h2-wrap"><span class="c-num">08</span><h2 class="c-h2" id="s8">Moving repetitive system work out of manual workflows.</h2></div>
+    <p class="c-p">A design system contains a large amount of repetitive work: creating variables, applying naming conventions, generating component structures, and migrating existing screens.</p>
+    <p class="c-p">I used a programmatic Figma workflow through Figma Desktop Bridge (MCP) to handle parts of that work in batches.</p>
+    <p class="c-code">Define variables → Generate components → Validate naming → Migrate screens → Audit in batches</p>
+    <p class="c-q">The design decisions are the hero. MCP is the implementation mechanism that helped scale the work, turning batch operations into reproducible actions rather than manual repetition.</p>
+    <h3 class="c-h3">Execution constraints</h3>
+    <ul class="c-list">
+      <li>5 to 7 second execution timeout</li>
+      <li>Operations chunked into batches</li>
+      <li>Local and library variables use different API paths</li>
+      <li>Some import and swap operations share a single execution</li>
+    </ul>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s9">
+    <div class="c-h2-wrap"><span class="c-num">09</span><h2 class="c-h2" id="s9">A design system only proves its value when the product uses it.</h2></div>
+    <div class="c-pair">
+      <div class="c-fig" style="margin: 0"><span class="c-ba-k">Before</span><p class="c-code">color: #025ACE <i>hardcoded</i>
+OrderCard_v2 <i>local variant</i>
+padding: 14px 22px <i>one-off</i>
+font-size: 15px <i>screen-local</i></p></div>
+      <div class="c-fig" style="margin: 0"><span class="c-ba-k after">After</span><p class="c-code">color: brand/primary
+OrderCard/accepted
+space/16, space/24 <i>8px grid</i>
+text/body/lg <i>16px</i></p></div>
+    </div>
+    <figure class="c-fig"><div class="c-panel" style="padding: 0; overflow: hidden; background: #4412BC; border: 0"><img src="/assets/images/20d9e161ebda.webp" alt="Yaper Revamp app screens built on the design system" width="1584" height="674" style="width: 100%"></div></figure>
+    <p class="c-p">The Yaper Revamp became the first real test of whether the system could support the complexity of the product rather than simply look organized inside Figma.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s10">
+    <div class="c-h2-wrap"><span class="c-num">10</span><h2 class="c-h2" id="s10">What happens after the system ships?</h2></div>
+    <p class="c-p">Any design system can drift back toward inconsistency. The audit framework classifies issues by their severity so maintenance work is triaged rather than reactive.</p>
+    <ul class="c-rows">
+      <li><span class="c-num">P0</span><span><strong>Critical: breaks trust.</strong> Issues that can affect user confidence or make the experience feel fundamentally wrong.</span></li>
+      <li><span class="c-num">P1</span><span><strong>High: breaks consistency.</strong> Meaningful deviations from established tokens, components, or patterns.</span></li>
+      <li><span class="c-num">P2</span><span><strong>Low: cosmetic.</strong> Minor visual differences with limited product impact.</span></li>
+    </ul>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s11">
+    <div class="c-h2-wrap"><span class="c-num">11</span><h2 class="c-h2" id="s11">What changed.</h2></div>
+    <dl class="c-trade" style="margin: 0">
+      <div><dt>System</dt><dd>Token architecture established, foundations defined, core component library shipped, and light and dark modes established.</dd></div>
+      <div><dt>Product</dt><dd>Yaper Revamp migrated, hardcoded values replaced, and components standardized.</dd></div>
+      <div><dt>Workflow</dt><dd>Programmatic creation and migration, developer handoff enabled, and an audit framework defined.</dd></div>
+    </dl>
+    <ul class="c-rows">
+      <li style="grid-template-columns: 120px minmax(0, 1fr)"><span class="c-label">Shipped</span><span>Token architecture</span></li>
+      <li style="grid-template-columns: 120px minmax(0, 1fr)"><span class="c-label">Shipped</span><span>Core component library</span></li>
+      <li style="grid-template-columns: 120px minmax(0, 1fr)"><span class="c-label">Shipped</span><span>Product migration</span></li>
+      <li style="grid-template-columns: 120px minmax(0, 1fr)"><span class="c-label">In progress</span><span>Engineering handoff</span></li>
+    </ul>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s12">
+    <div class="c-h2-wrap"><span class="c-num">12</span><h2 class="c-h2" id="s12">A design system isn’t really about consistency.</h2></div>
+    <p class="c-p">Consistency is one of the visible outcomes of a design system, but it isn’t the most valuable one.</p>
+    <p class="c-p">The more important outcome is reducing repeated decisions.</p>
+    <p class="c-p">Before the system, every new screen could introduce another interpretation of color, spacing, typography, or component behavior. After the system, many of those decisions are already encoded.</p>
+    <p class="c-q">The biggest improvement wasn’t making Yaper more consistent. It was making the next redesign less expensive.</p>
+  </section>
+  <section class="c-sec" aria-label="Next project">
+    <a class="c-next" href="/product-revamp-2/">
+      <span class="c-label">Next project</span>
+      <div class="c-panel"><img src="/assets/images/f4c2f7b25897.webp" alt="Product Revamp 2.0 screens"></div>
+      <span class="c-h3">Product Revamp 2.0</span>
+      <span style="color: var(--muted); margin-top: -10px">Redesigning Yaper to fix the activation → trust → reward loop</span>
+      <span class="go">Read case study <span>→</span></span>
+    </a>
+    <a class="c-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to all work</a>
+  </section>
+
+  <footer class="c-foot"><span>© 2026 Parveen Yadav</span><a href="#top">Back to top ↑</a></footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":12000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

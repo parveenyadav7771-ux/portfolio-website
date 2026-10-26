@@ -1471,11 +1471,12 @@ class Component extends DCLogic {
 
   // Hero illustration: blocks near the pointer drift slowly aside and ease back.
 
-  // Gift Cards lives on its own page on the live site
-  goGiftPage() {
+  // Case studies live on their own pages on the live site
+  goCasePage(h) {
     try {
+      if (['product-revamp-3', 'gift-cards', 'yaper-design-system', 'product-revamp-2'].indexOf(h) === -1) return false;
       if (!/parveenyadav|vercel\.app/.test(window.location.hostname)) return false;
-      window.location.replace('/gift-cards/');
+      window.location.replace('/' + h + '/');
       return true;
     } catch (e) { return false; }
   }
@@ -1483,7 +1484,7 @@ class Component extends DCLogic {
   caseFromHash() {
     let h = '';
     try { h = (window.location.hash || '').slice(1); } catch (e) {}
-    if (h === 'gift-cards' && this.goGiftPage()) return 'home';
+    if (this.goCasePage(h)) return 'home';
     return h === 'product-revamp-3' ? 'revamp3' : (h === 'gift-cards' ? 'gift' : (h === 'yaper-design-system' ? 'ds' : (h === 'product-revamp-2' ? 'rev2' : 'home')));
   }
   scrollToId(id, smooth) {
@@ -1640,7 +1641,7 @@ class Component extends DCLogic {
   }
   openCase(hash) {
     const h = hash || 'product-revamp-3';
-    if (h === 'gift-cards' && this.goGiftPage()) return;
+    if (this.goCasePage(h)) return;
     try { if (window.location.hash !== '#' + h) { window.history.pushState({ pvCase: 1 }, '', '#' + h); this.caseDepth = (this.caseDepth || 0) + 1; } } catch (e) {}
     const v = h === 'gift-cards' ? 'gift' : (h === 'yaper-design-system' ? 'ds' : (h === 'product-revamp-2' ? 'rev2' : 'revamp3'));
     this.pageSwap(() => this.setState({ view: v }), 'top', false, v);
@@ -1815,7 +1816,7 @@ class Component extends DCLogic {
       const a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
       if (!a) return;
       const id = a.getAttribute('href').slice(1);
-      if (id === 'gift-cards' && this.goGiftPage()) { e.preventDefault(); return; }
+      if (this.goCasePage(id)) { e.preventDefault(); return; }
       if (id === 'product-revamp-3' || id === 'gift-cards' || id === 'yaper-design-system' || id === 'product-revamp-2') { e.preventDefault(); this.openCase(id); return; }
       if (this.state.view !== 'home' && ['top', 'work', 'lab', 'about', 'contact'].indexOf(id) !== -1) {
         e.preventDefault();

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yaper Product Revamp 3.0, Parveen Yadav</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="/assets/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Yaper was working, but as it grew, the experience became harder to follow. A product revamp across discovery, orders, payments, account management, and notifications.">
+<meta property="og:title" content="Making a growing product easier to understand">
+<meta property="og:description" content="Yaper was working, but as it grew, the experience became harder to follow. A product revamp across discovery, orders, payments, account management, and notifications.">
+<meta property="og:type" content="article">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--accent:#025ACE;--fg:#141414;--body:#2B2B2B;--muted:#666666;--line:#EBEBEB;--panel:#F5F5F5}
+html{color-scheme:light only}
+body{margin:0;background:#FFFFFF}
+a{color:var(--fg)}a:hover{color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none !important}}
+
+.c-page{max-width:1120px;margin:0 auto;padding:0 clamp(16px, 4vw, 40px) 48px;display:flex;flex-direction:column;gap:96px}
+.c-page>*{box-sizing:border-box;width:100%;max-width:840px;margin-left:auto;margin-right:auto}
+.c-page>.c-nav,.c-page>.c-foot,.c-page>.c-top{max-width:none}
+.c-top{display:flex;flex-direction:column;gap:40px;margin-top:-48px}
+.c-top>header{width:100%;max-width:840px;margin:0 auto}
+.c-nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.c-nav>a{font-weight:600;text-decoration:none}
+.c-nav div{display:flex;flex-wrap:wrap;gap:4px 20px}
+.c-nav div a{color:var(--muted);text-decoration:none;padding:10px 0}
+.c-nav div a:hover{color:var(--fg)}
+
+.c-back{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:40px;font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+.c-back:hover{color:var(--fg)}
+
+.c-sec{display:flex;flex-direction:column;gap:20px}
+.c-num{font-size:14px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+.c-label{font-size:14px;font-weight:500;color:var(--muted)}
+.c-h1{margin:0;font-size:clamp(30px, 2.4vw + 18px, 40px);font-weight:600;line-height:1.15;letter-spacing:-0.025em;text-wrap:balance}
+.c-dek{margin:0;font-size:18px;line-height:1.6;color:var(--muted)}
+.c-h2{margin:0;font-size:clamp(22px, 1vw + 16px, 26px);font-weight:600;line-height:1.25;letter-spacing:-0.015em;text-wrap:balance}
+.c-h2-wrap{display:flex;flex-direction:column;gap:8px}
+.c-h3{margin:0;font-size:18px;font-weight:600;line-height:1.4}
+.c-p{margin:0;font-size:16px;line-height:1.7;color:var(--body);text-wrap:pretty}
+.c-p strong{font-weight:600;color:var(--fg)}
+.c-cap{margin:0;font-size:14px;line-height:1.55;color:var(--muted)}
+
+.c-fig{margin:8px 0;display:flex;flex-direction:column;gap:10px}
+.c-panel{border-radius:12px;background:#FFFFFF;border:1px solid var(--line);padding:24px;display:flex;justify-content:center;align-items:center;min-width:0}
+.c-panel img{display:block;max-width:100%;height:auto}
+.c-panel img.c-ph{height:360px;width:auto;max-width:100%;object-fit:contain}
+.c-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.c-pair.lop{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.c-pair .c-fig{margin:0}
+.c-pair .c-panel{padding:20px 16px}
+.c-ba-k{font-size:14px;font-weight:500;color:var(--muted)}
+.c-ba-k.after{color:var(--fg);font-weight:600}
+
+.c-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-rows li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--body)}
+.c-rows li .c-num{line-height:1.6}
+.c-rows li strong{font-weight:600;color:var(--fg)}
+
+.c-seq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.c-seq div{display:grid;grid-template-columns:80px minmax(0,1fr);gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--muted)}
+.c-seq div.after{color:var(--fg);font-weight:500}
+.c-seq b{font-size:14px;font-weight:500;color:var(--muted)}
+.c-seq div.after b{color:var(--accent)}
+
+.c-meta{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px;padding-top:20px;border-top:1px solid var(--line)}
+.c-meta div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.c-meta dt{font-size:14px;color:var(--muted)}
+.c-meta dd{margin:0;font-size:15px;line-height:1.5}
+
+.c-q{margin:4px 0;font-size:22px;font-weight:600;line-height:1.35;letter-spacing:-0.01em;color:var(--fg)}
+
+.c-trade{margin:8px 0 0;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
+.c-trade div{display:flex;flex-direction:column;gap:2px}
+.c-trade dt{font-size:14px;font-weight:600;color:var(--fg)}
+.c-trade dd{margin:0;font-size:16px;line-height:1.65;color:var(--body)}
+
+.c-ba{position:relative;width:240px;max-width:100%;aspect-ratio:880 / 1350;border-radius:16px;overflow:hidden;background:#FFFFFF;user-select:none;-webkit-user-select:none}
+.c-ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.c-ba .after{clip-path:inset(0 0 0 var(--ba))}
+.c-ba .line{position:absolute;top:0;bottom:0;left:var(--ba);width:2px;margin-left:-1px;background:#FFFFFF;box-shadow:0 0 0 1px rgba(0,0,0,.08);pointer-events:none}
+.c-ba .knob{position:absolute;top:50%;left:var(--ba);width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:#FFFFFF;color:#141414;box-shadow:0 4px 14px rgba(0,0,0,.18);display:grid;place-items:center;pointer-events:none}
+.c-ba .t{position:absolute;top:10px;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:500;background:rgba(20,20,20,.7);color:#FFFFFF;pointer-events:none}
+.c-ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.c-ba:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+
+.c-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
+.c-grid li{display:flex;flex-direction:column;gap:10px;min-width:0}
+.c-grid .c-panel{height:220px;padding:20px 16px 0;align-items:flex-start;overflow:hidden}
+.c-grid .c-panel img{width:150px;height:auto}
+.c-grid p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
+.c-grid strong{display:block;font-size:16px;font-weight:600;color:var(--fg)}
+
+.c-list{margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:1.6;color:var(--body)}
+
+.c-next{display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--line);text-decoration:none;color:var(--fg)}
+a.c-next:hover{color:var(--fg)}
+.c-next .c-panel{padding:0;overflow:hidden;background:#F4F4F4;border:0}
+.c-next .c-panel img{width:100%;aspect-ratio:3 / 2;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.c-next:hover .c-panel img{transform:scale(1.03)}
+.c-next .go{font-weight:500}
+.c-next .go span{display:inline-block;transition:transform .25s ease}
+.c-next:hover .go span{transform:translateX(3px)}
+.c-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.c-foot a{color:var(--muted)}
+
+@media (max-width: 600px){
+  .c-page{gap:72px}
+  .c-panel img.c-ph{height:auto;width:auto;max-height:300px;max-width:100%}
+  .c-pair,.c-pair.lop{grid-template-columns:minmax(0,1fr)}
+  .c-grid{grid-template-columns:minmax(0,1fr)}
+  .c-grid li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;align-items:start}
+  .c-grid .c-panel{height:150px;padding:12px 10px 0}
+  .c-grid .c-panel img{width:100%}
+  .c-seq div{grid-template-columns:minmax(0,1fr)}
+  .c-meta{grid-template-columns:minmax(0,1fr)}
+  .c-panel{padding:16px}
+}
+</style>
+</helmet>
+<div style="background: #FFFFFF; color: var(--fg); font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<div class="c-page">
+
+  <nav class="c-nav" aria-label="Site">
+    <a href="/" id="top">Parveen Yadav</a>
+    <div><a href="/#work">Work</a><a href="/#lab">Lab</a><a href="/#about">About</a><a href="/#contact">Contact</a></div>
+  </nav>
+
+  <div class="c-top">
+  <header class="c-sec">
+    <a class="c-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>All work</a>
+    <span class="c-label">Yaper Product Revamp 3.0 · Recently shipped</span>
+    <h1 class="c-h1">Making a growing product easier to understand</h1>
+    <p class="c-dek">Yaper was working, but as it grew, the experience became harder to follow.</p>
+    <dl class="c-meta">
+      <div><dt>Role</dt><dd>Product Designer</dd></div>
+      <div><dt>Status</dt><dd>Recently shipped</dd></div>
+      <div><dt>Scope</dt><dd>UX strategy, research, information architecture, interaction design, UI, and design system</dd></div>
+      <div><dt>Focus</dt><dd>Discovery, orders, payments, account management, and notifications</dd></div>
+    </dl>
+  </header>
+    <figure class="c-fig" style="margin: 0"><div class="c-panel" style="padding: 0; overflow: hidden; background: #4412BC; border: 0"><img src="/assets/images/20d9e161ebda.webp" alt="Five redesigned Yaper screens: notifications, deal details, guest home, order history and order details" width="1584" height="674" style="width: 100%"></div></figure>
+  </div>
+
+  <section class="c-sec" aria-labelledby="s-ov">
+    <h2 class="c-h2" id="s-ov">Overview</h2>
+    <p class="c-p">Users contacted support to ask about payment status. Some created multiple Yaper accounts to receive payments into different bank accounts. Others needed help understanding what their wallet balance represented.</p>
+    <p class="c-p">These signals pointed to a broader problem: Yaper’s structure was becoming harder to understand than the tasks people came to do.</p>
+    <p class="c-p">I led a product revamp across discovery, orders, payments, account management, and notifications.</p>
+    <p class="c-p"><strong>The goal:</strong> make the experience clearer by organizing it around how people explore Yaper, manage orders, and understand their money.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s-ev">
+    <h2 class="c-h2" id="s-ev">What users and support were telling us</h2>
+    <p class="c-p">Feedback from direct users and the support team revealed recurring friction:</p>
+    <ul class="c-rows">
+      <li><span class="c-num">01</span><span>Users asked support about the payment status of their orders.</span></li>
+      <li><span class="c-num">02</span><span>Some users created multiple Yaper accounts to receive payments into different bank accounts.</span></li>
+      <li><span class="c-num">03</span><span>Users needed help understanding what their wallet balance represented.</span></li>
+      <li><span class="c-num">04</span><span>The sign-in flow asked people to commit before they could explore Yaper.</span></li>
+    </ul>
+    <p class="c-p">These weren’t isolated screen-level issues. They showed that people had to understand Yaper’s internal structure to answer practical questions about orders, earnings, and payments.</p>
+    <p class="c-cap"><strong style="font-weight: 600; color: var(--fg)">Research input:</strong> Direct user feedback and recurring themes from support conversations and tickets.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s-shift">
+    <h2 class="c-h2" id="s-shift">The design shift</h2>
+    <p class="c-p">Rather than redesigning screens one by one, I focused on making the product’s structure easier to understand. Three principles guided the work:</p>
+    <ol class="c-rows">
+      <li><span class="c-num">1</span><strong>Let people understand Yaper before asking them to sign in.</strong></li>
+      <li><span class="c-num">2</span><strong>Put information where people naturally look for it.</strong></li>
+      <li><span class="c-num">3</span><strong>Give a growing product clearer places for discovery, payments, and updates.</strong></li>
+    </ol>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/b8cd4e0d39fd.webp" alt="Yaper journey map: discover a deal, understand the value, take action, complete the order, track the payment, get paid, come back" width="1276" height="703"></div><figcaption class="c-cap">The journey I worked across, from discovering a deal to getting paid and coming back.</figcaption></figure>
+  </section>
+
+  <section class="c-sec" aria-labelledby="d1">
+    <div class="c-h2-wrap"><span class="c-num">01</span><h2 class="c-h2" id="d1">Build confidence before asking for commitment</h2></div>
+    <p class="c-p">Previously, people had to log in before exploring Yaper. That asked for personal information before giving them a reason to trust the product. I changed the sequence:</p>
+    <div class="c-seq">
+      <div><b>Before</b><span>Open Yaper → Log in → Explore</span></div>
+      <div class="after"><b>After</b><span>Open Yaper → Explore → Take an action → Log in when needed</span></div>
+    </div>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/778ea460082a.webp" alt="Splash screen, two onboarding screens and the guest home screen" width="1440" height="689"></div><figcaption class="c-cap">Splash, onboarding and the guest home. People reach deals before anything asks them to sign in.</figcaption></figure>
+    <p class="c-p">Once people could explore without signing in, the home screen needed to do more than show deals. It needed to explain what Yaper was and show that the platform was active.</p>
+    <p class="c-p">I brought activity and credibility signals into the experience, including real-time earnings activity and cumulative earnings and user counts.</p>
+    <figure class="c-fig">
+      <div class="c-panel">
+        <div class="c-ba" style="--ba: {{ba}}%">
+          <img src="/assets/images/261317b4ac4a.webp" alt="Earlier home screen with deal cards only" width="880" height="1350">
+          <img class="after" src="/assets/images/cacc29d99adf.webp" alt="Redesigned home screen with a live earnings ticker and a total user earnings banner" width="880" height="1350">
+          <span class="t" style="left: 10px">Before</span><span class="t" style="right: 10px">After</span>
+          <span class="line"></span>
+          <span class="knob" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"></path></svg></span>
+          <input type="range" min="0" max="100" value="{{ba}}" onChange="{{onBa}}" aria-label="Compare the earlier and redesigned home screen" aria-valuetext="{{baText}}">
+        </div>
+      </div>
+      <figcaption class="c-cap">Drag to compare. The redesigned home adds a live earnings ticker and a banner with cumulative earnings and user counts.</figcaption>
+    </figure>
+    <p class="c-p">I also added contextual guidance to the first-deal experience, so help could appear in the flow instead of waiting to be found.</p>
+    <figure class="c-fig"><div class="c-panel"><img class="c-ph" src="/assets/images/fed0d256b975.webp" alt="Expert help prompt for first-time users, and a deal details screen with a Call with Expert card" width="1455" height="1362"></div><figcaption class="c-cap">Expert help is offered inside the first deal, at the moment a new user might get stuck.</figcaption></figure>
+    <dl class="c-trade">
+      <div><dt>Trade-off</dt><dd>Removing login from the entry point reduced early user identification and account-level personalization. Using the home screen to build trust also left less space for deals. Contextual guidance added information to the interface.</dd></div>
+      <div><dt>Why I accepted it</dt><dd>People needed a reason to trust Yaper before being asked to commit. For a first-time user, useful guidance during a deal mattered more than keeping every screen as minimal as possible.</dd></div>
+      <div><dt>What changed</dt><dd>Login became necessary when an action required an account, rather than a barrier to exploring the product.</dd></div>
+    </dl>
+  </section>
+
+  <section class="c-sec" aria-labelledby="d2">
+    <div class="c-h2-wrap"><span class="c-num">02</span><h2 class="c-h2" id="d2">Put payment information where people look for it</h2></div>
+    <p class="c-p">Yaper separated orders and transactions. But people weren’t looking for a transaction record by itself. They wanted to know:</p>
+    <p class="c-q">“Did I get paid for this order?”</p>
+    <p class="c-p">I brought payment details into the order context, including payment status, UTR, and receiving bank. Users could understand what happened without moving between separate sections.</p>
+    <div class="c-pair lop">
+      <figure class="c-fig"><span class="c-ba-k">Before</span><div class="c-panel"><img class="c-ph" src="/assets/images/72c436bd1fac.webp" alt="Order History screen and a separate Wallet screen listing transactions" width="1102" height="1080"></div><figcaption class="c-cap">Find the order, then open Transactions to find its payment.</figcaption></figure>
+      <figure class="c-fig"><span class="c-ba-k after">After</span><div class="c-panel"><img class="c-ph" src="/assets/images/e4c174437dce.webp" alt="Order Details screen showing payment released date, bank details, bank name and UTR" width="540" height="1080"></div><figcaption class="c-cap">Payment status sits within the order detail.</figcaption></figure>
+    </div>
+    <p class="c-p">The wallet created a related problem. Its balance could be read as money available to withdraw, while users needed to understand how much they had earned through Yaper.</p>
+    <p class="c-p">Instead of making the wallet responsible for more information, I moved earnings closer to orders, where users were already looking for the outcome of their activity.</p>
+    <div class="c-pair">
+      <figure class="c-fig"><span class="c-ba-k">Before</span><div class="c-panel"><img class="c-ph" src="/assets/images/fbfda1ccda86.webp" alt="Wallet screen showing a balance of ₹8,990" width="646" height="1310"></div><figcaption class="c-cap">A wallet balance that could be read as money to withdraw.</figcaption></figure>
+      <figure class="c-fig"><span class="c-ba-k after">After</span><div class="c-panel"><img class="c-ph" src="/assets/images/3a4a6cdc1313.webp" alt="Order History screen with a My Earnings total at the top" width="646" height="1310"></div><figcaption class="c-cap">My Earnings sits above the orders that produced it.</figcaption></figure>
+    </div>
+    <dl class="c-trade">
+      <div><dt>Trade-off</dt><dd>Order details became richer and could feel denser. Moving earnings out of the wallet also meant there was no single place for every money-related concept.</dd></div>
+      <div><dt>Why I accepted it</dt><dd>The information made more sense in context. An order should explain its payment, and earnings should relate to the activity that generated them.</dd></div>
+      <div><dt>What changed</dt><dd>Payment details were connected to orders, and earnings could be understood alongside those orders.</dd></div>
+    </dl>
+  </section>
+
+  <section class="c-sec" aria-labelledby="d3">
+    <div class="c-h2-wrap"><span class="c-num">03</span><h2 class="c-h2" id="d3">Support real payment needs with one account</h2></div>
+    <p class="c-p">Some users needed to receive payments into different bank accounts. With limited flexibility, one workaround was to create multiple Yaper accounts.</p>
+    <div class="c-seq">
+      <div><b>Before</b><span>Yaper account → Bank A, plus a second Yaper account → Bank B</span></div>
+      <div class="after"><b>After</b><span>One Yaper account → Bank A, Bank B, Bank C</span></div>
+    </div>
+    <p class="c-p">I treated that workaround as a sign that the product wasn’t supporting the user’s actual need. The redesign allowed multiple bank accounts to be managed from one Yaper account.</p>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/628db9da83ac.webp" alt="Add Bank Account form, empty and filled, and the Manage Bank Accounts screen with a primary account and other accounts" width="2117" height="1224"></div><figcaption class="c-cap">Add a bank once, then manage every payment destination from one screen, with a clear primary account.</figcaption></figure>
+    <dl class="c-trade">
+      <div><dt>Trade-off</dt><dd>Multiple accounts added configuration. Users needed to know which bank was selected and where each payment would go.</dd></div>
+      <div><dt>Why I accepted it</dt><dd>Managing more bank options was preferable to maintaining multiple Yaper identities.</dd></div>
+      <div><dt>What changed</dt><dd>Users could manage several payment destinations from one account.</dd></div>
+    </dl>
+  </section>
+
+  <section class="c-sec" aria-labelledby="d4">
+    <div class="c-h2-wrap"><span class="c-num">04</span><h2 class="c-h2" id="d4">Give the growing product clearer places to live</h2></div>
+    <p class="c-p">As Yaper grew, the home screen started to hold deals, orders, payment information, and notifications. It became harder to understand what deserved attention.</p>
+    <p class="c-p">I gave notifications a dedicated place so updates did not have to compete with discovery.</p>
+    <div class="c-pair">
+      <figure class="c-fig"><span class="c-ba-k">Before</span><div class="c-panel"><img class="c-ph" src="/assets/images/50ab2db78869.webp" alt="Home screen with order updates stacked above the deals" width="646" height="1302"></div><figcaption class="c-cap">Order updates pushed deals down the home screen.</figcaption></figure>
+      <figure class="c-fig"><span class="c-ba-k after">After</span><div class="c-panel"><img class="c-ph" src="/assets/images/0b54ba514c43.webp" alt="Notifications screen with All, Payments and Order updates filters" width="646" height="1302"></div><figcaption class="c-cap">A dedicated notification centre.</figcaption></figure>
+    </div>
+    <p class="c-p">I also introduced a lightweight preference layer based on bank and card information, without asking users to share sensitive card details.</p>
+    <figure class="c-fig"><div class="c-panel"><img src="/assets/images/a099a89a6932.webp" alt="My Cards screens: choosing card banks, saving, and a prompt to allow deal notifications" width="2141" height="1368"></div><figcaption class="c-cap">People pick the banks behind their cards. No card numbers are collected.</figcaption></figure>
+    <dl class="c-trade">
+      <div><dt>Trade-off</dt><dd>A notification centre adds another destination. Asking for preferences adds an upfront step.</dd></div>
+      <div><dt>Why I accepted it</dt><dd>Separate responsibilities could reduce the burden of putting everything on the home screen. Keeping preferences lightweight created a starting point for more relevant deals and notifications without collecting card details.</dd></div>
+      <div><dt>What changed</dt><dd>Notifications had their own place, and Yaper had a foundation for future personalization.</dd></div>
+    </dl>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s-chg">
+    <h2 class="c-h2" id="s-chg">What changed across Yaper</h2>
+    <p class="c-p">The redesign connected discovery, orders, payments, account management, and notifications around clearer user needs.</p>
+    <ul class="c-grid">
+      <li><div class="c-panel"><img src="/assets/images/fd17e6f2b293.webp" alt="Onboarding screen with a Get Started button" width="352" height="689"></div><p><strong>More room to explore</strong>People could open Yaper before signing in.</p></li>
+      <li><div class="c-panel"><img src="/assets/images/997aaac7f547.webp" alt="Guest home with live earnings activity" width="350" height="689"></div><p><strong>More context upfront</strong>The home experience surfaced activity and credibility signals.</p></li>
+      <li><div class="c-panel"><img src="/assets/images/e4c174437dce.webp" alt="Order Details with payment information" width="540" height="1080"></div><p><strong>Clearer payment details</strong>Payment information appeared with the order it explained.</p></li>
+      <li><div class="c-panel"><img src="/assets/images/3a4a6cdc1313.webp" alt="Order History with My Earnings" width="646" height="1310"></div><p><strong>Clearer earnings</strong>Earnings were connected to user activity instead of an ambiguous wallet balance.</p></li>
+      <li><div class="c-panel"><img src="/assets/images/7c82f331c89a.webp" alt="Manage Bank Accounts" width="617" height="1224"></div><p><strong>More payment flexibility</strong>Multiple bank accounts could be managed from one Yaper account.</p></li>
+      <li><div class="c-panel"><img src="/assets/images/0b54ba514c43.webp" alt="Notifications screen" width="646" height="1302"></div><p><strong>Clearer focus</strong>Notifications no longer competed with discovery on the home screen.</p></li>
+    </ul>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s-learn">
+    <h2 class="c-h2" id="s-learn">What I learned</h2>
+    <p class="c-p">The biggest lesson wasn’t about screens. It was about mental models.</p>
+    <ul class="c-list">
+      <li>A separate Transactions tab made sense to the system.</li>
+      <li>One bank account made sense when Yaper was smaller.</li>
+      <li>Putting everything on the home screen made sense when there was less to manage.</li>
+    </ul>
+    <p class="c-p">As products grow, the assumptions behind them can stop matching how people use them. This revamp was about recognizing those gaps and deciding which trade-offs would make the product easier to understand.</p>
+  </section>
+
+  <section class="c-sec" aria-labelledby="s-track">
+    <div class="c-h2-wrap"><span class="c-label">Planned measures, not results</span><h2 class="c-h2" id="s-track">What we’ll track next</h2></div>
+    <p class="c-p">The redesign has recently shipped, so post-launch impact data isn’t available yet. The next step is to establish a baseline and track whether the changes address the issues raised by users and support.</p>
+    <ul class="c-rows">
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Payment-status support tickets.</strong> Track volume and themes over time.</span></li>
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Multiple-account workarounds.</strong> Monitor reports of users creating extra accounts to manage bank destinations.</span></li>
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Order payment comprehension.</strong> Use research or usability sessions to see whether users can find and understand payment details.</span></li>
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Explore-to-sign-up behavior.</strong> Measure how people move from exploring to actions that require an account.</span></li>
+      <li style="grid-template-columns: minmax(0, 1fr)"><span><strong>Notification engagement.</strong> Assess whether a dedicated notification centre helps people find and act on important updates.</span></li>
+    </ul>
+  </section>
+
+  <section class="c-sec" aria-label="Next project">
+    <a class="c-next" href="/gift-cards/">
+      <span class="c-label">Next project</span>
+      <div class="c-panel"><img src="/assets/images/0110bee0f94d.webp" alt="Gift Cards screens"></div>
+      <span class="c-h3">Gift Cards</span>
+      <span style="color: var(--muted); margin-top: -10px">Turning a gift card into cash, without leaving users guessing</span>
+      <span class="go">Read case study <span>→</span></span>
+    </a>
+    <a class="c-back" href="/#work"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back to all work</a>
+  </section>
+
+  <footer class="c-foot"><span>© 2026 Parveen Yadav</span><a href="#top">Back to top ↑</a></footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":12000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { ba: 50 };
+  }
+  renderVals() {
+    const ba = this.state.ba;
+    return {
+      ba: ba,
+      baText: ba + '% showing the earlier home screen',
+      onBa: (e) => { const v = Number(e.target.value); this.setState({ ba: isNaN(v) ? 50 : v }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
