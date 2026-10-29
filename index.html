@@ -1474,7 +1474,7 @@ class Component extends DCLogic {
   // Case studies live on their own pages on the live site
   goCasePage(h) {
     try {
-      if (['product-revamp-3', 'gift-cards', 'yaper-design-system', 'product-revamp-2'].indexOf(h) === -1) return false;
+      if (['product-revamp-3', 'quick-repairs', 'gift-cards', 'yaper-design-system', 'product-revamp-2'].indexOf(h) === -1) return false;
       if (!/parveenyadav|vercel\.app/.test(window.location.hostname)) return false;
       window.location.replace('/' + h + '/');
       return true;
@@ -1956,7 +1956,7 @@ class Component extends DCLogic {
       setCv: this.setCvRef,
       work: [
         { name: 'Product Revamp 3.0', status: 'Live', dot: '#2FA36B', tint: 'rgba(110, 90, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Making a complicated rewards product simpler', img: 'assets/images/194f76d6dd4f.webp', alt: 'Product Revamp 3.0 cover', url: '#product-revamp-3', arrow: '→', target: '' },
-        { name: 'Quick Repairs', status: '', dot: '#8C8C8C', tint: 'rgba(90, 150, 230, 0.09)', tags: 'OneAssist · Service experience', cta: 'View case study', arrow: '↗', target: '_blank', title: 'Making complex repairs simpler for customers', img: 'assets/images/9ee547d63051.webp', alt: 'Quick Repairs cover', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=245-35&viewport=266%2C85%2C0.03&t=9dKWqpn7QmiVIiar-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
+        { name: 'Quick Repairs', status: '', dot: '#8C8C8C', tint: 'rgba(90, 150, 230, 0.09)', tags: 'OneAssist · Service experience', cta: 'Read case study', arrow: '→', target: '', title: 'Making complex repairs simpler for customers', img: 'assets/images/9ee547d63051.webp', alt: 'Quick Repairs cover', url: '#quick-repairs' },
         { name: 'Yaper Design System', status: 'Foundation', dot: '#3B82C4', tint: 'rgba(90, 150, 230, 0.09)', tags: 'Yaper · System', cta: 'Read case study', title: 'Building the system behind the product', img: 'assets/images/328a4c5e64ab.webp', alt: 'Yaper Design System cover', url: '#yaper-design-system', arrow: '→', target: '' },
         { name: 'Product Revamp 2.0', status: 'Archive', dot: '#8C8C8C', tint: 'rgba(140, 120, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Redesigning Yaper to fix the activation → trust → reward loop', img: 'assets/images/f4c2f7b25897.webp', alt: 'Product Revamp 2.0 cover', url: '#product-revamp-2', arrow: '→', target: '' }
       ],
