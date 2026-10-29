@@ -536,12 +536,12 @@ html.pv-menu-lock{overflow:hidden}
     <div class="pv-reveal" style="display: flex; justify-content: space-between; gap: 16px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 12px"><h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: var(--fg)">Selected work</h2></div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 56px 40px">
       <sc-for list="{{work}}" as="w" hint-placeholder-count="4">
-        <a href="{{w.url}}" class="pv-card pv-reveal" style="--tint: {{w.tint}}; --dotc: {{w.dot}}">
+        <a href="{{w.url}}" target="{{w.target}}" rel="noopener" class="pv-card pv-reveal" style="--tint: {{w.tint}}; --dotc: {{w.dot}}">
           <div class="pv-frame"><img src="{{w.img}}" alt="{{w.alt}}"></div>
           <div style="display: flex; flex-direction: column; gap: 2px">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px"><span style="font-weight: 500">{{w.name}}</span></div>
             <span style="color: var(--muted)">{{w.title}}</span>
-            <div style="display: flex; justify-content: space-between; gap: 16px; padding-top: 6px"><span style="color: var(--faint); font-size: 13px">{{w.tags}}</span><span class="pv-more" style="font-size: 13px">{{w.cta}} <span class="pv-arrow">→</span></span></div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; padding-top: 6px"><span style="color: var(--faint); font-size: 13px">{{w.tags}}</span><span class="pv-more" style="font-size: 13px">{{w.cta}} <span class="pv-arrow">{{w.arrow}}</span></span></div>
           </div>
         </a>
       </sc-for>
@@ -559,7 +559,7 @@ html.pv-menu-lock{overflow:hidden}
     <div class="pv-reveal" style="display: flex; justify-content: space-between; gap: 16px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 12px"><h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: var(--fg)">Archived work</h2></div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 32px 28px">
       <sc-for list="{{archive}}" as="a" hint-placeholder-count="4">
-        <a href="{{a.url}}" target="_blank" rel="noopener" class="pv-card pv-reveal" style="--tint: var(--panel); --dotc: var(--fg)">
+        <a href="{{a.url}}" target="{{a.target}}" rel="noopener" class="pv-card pv-reveal" style="--tint: var(--panel); --dotc: var(--fg)">
           <div class="pv-frame"><img src="{{a.img}}" alt="{{a.name}} cover"></div>
           <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 500">{{a.name}}</span><span style="color: var(--muted)">{{a.title}}</span><span style="color: var(--faint); font-size: 13px">{{a.client}}</span></div>
         </a>
@@ -1955,16 +1955,16 @@ class Component extends DCLogic {
       setArt: this.setArtRef,
       setCv: this.setCvRef,
       work: [
-        { name: 'Product Revamp 3.0', status: 'Live', dot: '#2FA36B', tint: 'rgba(110, 90, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Making a complicated rewards product simpler', img: 'assets/images/194f76d6dd4f.webp', alt: 'Product Revamp 3.0 cover', url: '#product-revamp-3' },
-        { name: 'Gift Cards', status: 'Live', dot: '#2FA36B', tint: 'rgba(120, 140, 240, 0.09)', tags: 'Yaper · New surface', cta: 'Read case study', title: 'Turning a gift card into cash, without losing the user’s trust along the way', img: 'assets/images/0110bee0f94d.webp', alt: 'Gift Cards cover', url: '#gift-cards' },
-        { name: 'Yaper Design System', status: 'Foundation', dot: '#3B82C4', tint: 'rgba(90, 150, 230, 0.09)', tags: 'Yaper · System', cta: 'Read case study', title: 'Building the system behind the product', img: 'assets/images/328a4c5e64ab.webp', alt: 'Yaper Design System cover', url: '#yaper-design-system' },
-        { name: 'Product Revamp 2.0', status: 'Archive', dot: '#8C8C8C', tint: 'rgba(140, 120, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Redesigning Yaper to fix the activation → trust → reward loop', img: 'assets/images/f4c2f7b25897.webp', alt: 'Product Revamp 2.0 cover', url: '#product-revamp-2' }
+        { name: 'Product Revamp 3.0', status: 'Live', dot: '#2FA36B', tint: 'rgba(110, 90, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Making a complicated rewards product simpler', img: 'assets/images/194f76d6dd4f.webp', alt: 'Product Revamp 3.0 cover', url: '#product-revamp-3', arrow: '→', target: '' },
+        { name: 'Quick Repairs', status: '', dot: '#8C8C8C', tint: 'rgba(90, 150, 230, 0.09)', tags: 'OneAssist · Service experience', cta: 'View case study', arrow: '↗', target: '_blank', title: 'Making complex repairs simpler for customers', img: 'assets/images/9ee547d63051.webp', alt: 'Quick Repairs cover', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=245-35&viewport=266%2C85%2C0.03&t=9dKWqpn7QmiVIiar-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
+        { name: 'Yaper Design System', status: 'Foundation', dot: '#3B82C4', tint: 'rgba(90, 150, 230, 0.09)', tags: 'Yaper · System', cta: 'Read case study', title: 'Building the system behind the product', img: 'assets/images/328a4c5e64ab.webp', alt: 'Yaper Design System cover', url: '#yaper-design-system', arrow: '→', target: '' },
+        { name: 'Product Revamp 2.0', status: 'Archive', dot: '#8C8C8C', tint: 'rgba(140, 120, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Redesigning Yaper to fix the activation → trust → reward loop', img: 'assets/images/f4c2f7b25897.webp', alt: 'Product Revamp 2.0 cover', url: '#product-revamp-2', arrow: '→', target: '' }
       ],
       archive: [
-        { name: 'Quick Repairs', img: 'assets/images/9ee547d63051.webp', title: 'Making complex repairs simpler for customers', client: 'OneAssist · Service experience', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=245-35&viewport=266%2C85%2C0.03&t=9dKWqpn7QmiVIiar-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
-        { name: 'Insta Doc', img: 'assets/images/9829ebac6299.webp', title: 'Designing a simpler telemedicine experience for patients', client: 'InstaDoc · Healthcare', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=649-431&viewport=266%2C85%2C0.03&t=rzYL0wGSNZvHuKM6-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
-        { name: 'Continental Coffee', img: 'assets/images/1438050e1183.webp', title: 'Brewing a better digital experience for Continental Coffee', client: 'Continental Coffee · E-commerce', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=648-2&viewport=266%2C85%2C0.03&t=EdSec0aZUYahBPhl-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
-        { name: 'IDFence', img: 'assets/images/13ad9538c940.webp', title: 'Making digital identity protection easier to understand', client: 'OneAssist · Fintech / Security', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=882-494&viewport=266%2C85%2C0.03&t=YMWpCHODs0tgytbr-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' }
+        { name: 'Gift Cards', img: 'assets/images/0110bee0f94d.webp', title: 'Turning a gift card into cash, without leaving users guessing', client: 'Yaper · New surface', url: '#gift-cards', target: '' },
+        { name: 'Insta Doc', img: 'assets/images/9829ebac6299.webp', title: 'Designing a simpler telemedicine experience for patients', client: 'InstaDoc · Healthcare', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=649-431&viewport=266%2C85%2C0.03&t=rzYL0wGSNZvHuKM6-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' },
+        { name: 'Continental Coffee', img: 'assets/images/1438050e1183.webp', title: 'Brewing a better digital experience for Continental Coffee', client: 'Continental Coffee · E-commerce', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=648-2&viewport=266%2C85%2C0.03&t=EdSec0aZUYahBPhl-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' },
+        { name: 'IDFence', img: 'assets/images/13ad9538c940.webp', title: 'Making digital identity protection easier to understand', client: 'OneAssist · Fintech / Security', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=882-494&viewport=266%2C85%2C0.03&t=YMWpCHODs0tgytbr-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' }
       ],
       lab: [
         { title: 'AI App Critique', tag: 'AI · UX experiment', body: 'Upload a screen and get an AI critique of its UX issues, gaps and inconsistencies.', img: 'assets/images/ca511cbaf66f.webp', url: 'https://critique-taupe.vercel.app', live: true, soon: false },
