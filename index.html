@@ -496,6 +496,14 @@ html.pv-menu-lock{overflow:hidden}
 .pv-logo{width:32px;height:32px;border-radius:50%;object-fit:contain;box-shadow:0 0 0 1px var(--line)}
 .pv-btn{font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:500;border-radius:8px;min-height:44px;padding:0 16px;cursor:pointer;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.pv-logos{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:-24px}
+.pv-logos-k{font-size:13px;color:var(--faint)}
+.pv-logos ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 32px}
+.pv-logos li{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--muted);filter:grayscale(1);opacity:.85;transition:filter .3s ease,opacity .3s ease}
+.pv-logos li:hover{filter:none;opacity:1}
+.pv-logos img{width:24px;height:24px;border-radius:6px;object-fit:contain}
+.pv-shot video{display:block;height:100%;width:100%;object-fit:contain;border-radius:15% / 7.4%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+@media (hover: hover){.pv-shot:hover video{transform:translateY(-6px)}}
 </style>
 </helmet>
 <div style="background: var(--bg); color: var(--fg); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.55; min-height: 100vh">
@@ -532,6 +540,9 @@ html.pv-menu-lock{overflow:hidden}
     </div>
   </header>
 
+  <div class="pv-logos pv-reveal" aria-label="Brands I have designed for"><span class="pv-logos-k">Designed for</span><ul><li><img src="assets/images/b74a94937866.webp" alt="" width="24" height="24">Yaper</li><li><img src="assets/images/2e2fead75a41.webp" alt="" width="24" height="24">OneAssist</li><li><img src="assets/images/ac294ebbe0cf.webp" alt="" width="24" height="24">Eckovation</li><li><img src="assets/images/255381863433.webp" alt="" width="24" height="24">OYO</li><li><img src="assets/images/f51c7f4831ef.webp" alt="" width="24" height="24">Baari</li></ul></div>
+
+
   <section id="work" style="display: flex; flex-direction: column; gap: 28px">
     <div class="pv-reveal" style="display: flex; justify-content: space-between; gap: 16px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 12px"><h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: var(--fg)">Selected work</h2></div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 56px 40px">
@@ -548,10 +559,39 @@ html.pv-menu-lock{overflow:hidden}
     </div>
   </section>
 
-  <section id="showcase" style="display: flex; flex-direction: column; gap: 24px">
-    <div class="pv-reveal" style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 12px"><h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: var(--fg)">Screens up close</h2><span class="pv-show-hint" style="font-size: 13px">Hover to pause</span></div>
-    <div class="pv-show" ref="{{setShow}}" aria-label="Screens from recent work">
-      <div class="pv-show-set"><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/bdc087c2f4de.webp" alt="App screen: Refer a friend" width="377" height="760" draggable="false"><figcaption><b>App</b>Refer a friend</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3604b6edb719.webp" alt="App screen: Home for new users" width="377" height="760" draggable="false"><figcaption><b>App</b>Home for new users</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/4d1cbadde612.webp" alt="App screen: Order & Earn progress" width="377" height="760" draggable="false"><figcaption><b>App</b>Order &amp; Earn progress</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/72cf8e4f4df9.webp" alt="App screen: Select your cards" width="377" height="760" draggable="false"><figcaption><b>App</b>Select your cards</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3cbcd3ba0ee8.webp" alt="App screen: Onboarding" width="377" height="760" draggable="false"><figcaption><b>App</b>Onboarding</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/1dd769187ad6.webp" alt="App screen: Campaign terms" width="377" height="760" draggable="false"><figcaption><b>App</b>Campaign terms</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/63c0f5befc09.webp" alt="App screen: Pay Link" width="377" height="760" draggable="false"><figcaption><b>App</b>Pay Link</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/ae46123ac183.webp" alt="App screen: Festive home" width="377" height="760" draggable="false"><figcaption><b>App</b>Festive home</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3dceb7163dfa.webp" alt="App screen: Home with instant deal" width="377" height="760" draggable="false"><figcaption><b>App</b>Home with instant deal</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/887d08d94043.webp" alt="App screen: Apply for cards" width="377" height="760" draggable="false"><figcaption><b>App</b>Apply for cards</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/8b1f9c56631d.webp" alt="App screen: Card details" width="377" height="760" draggable="false"><figcaption><b>App</b>Card details</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/e02b2d57731e.webp" alt="App screen: My profile" width="377" height="760" draggable="false"><figcaption><b>App</b>My profile</figcaption></figure></div>
+  <section id="motion" ref="{{setMotion}}" style="display: flex; flex-direction: column; gap: 24px">
+    <div class="pv-reveal" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px">
+      <div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 420px; min-width: 0">
+        <h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25">App craft</h2>
+        <p style="margin: 0; color: var(--muted); max-width: 640px">Screens and small moments from the Yaper app, from onboarding and cards to festive campaigns and referral.</p>
+      </div>
+      <span class="pv-show-hint" style="font-size: 13px; color: var(--muted)">Hover to pause</span>
+    </div>
+    <div class="pv-show" ref="{{setShow}}" aria-label="Screens and animations from the Yaper app">
+      <div class="pv-show-set"><figure class="pv-shot pv-shot-v" style="aspect-ratio: 426 / 856"><video src="assets/images/786c178e742b.mp4" poster="assets/images/c589d6eb3c51.webp" muted loop playsinline preload="metadata" aria-label="App launch animation"></video><figcaption><b>Onboarding</b>App launch</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3604b6edb719.webp" alt="App screen: Home for new users" width="377" height="760" draggable="false"><figcaption><b>Home</b>Home for new users</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/3dceb7163dfa.webp" alt="App screen: Home with instant deal" width="377" height="760" draggable="false"><figcaption><b>Home</b>Home with instant deal</figcaption></figure><figure class="pv-shot pv-shot-v" style="aspect-ratio: 426 / 856"><video src="assets/images/b4465df7f541.mp4" poster="assets/images/322ddd156fc2.webp" muted loop playsinline preload="metadata" aria-label="Festive home animation"></video><figcaption><b>Festive campaign</b>Festive home</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/72cf8e4f4df9.webp" alt="App screen: Select your cards" width="377" height="760" draggable="false"><figcaption><b>Cards</b>Select your cards</figcaption></figure><figure class="pv-shot pv-shot-v" style="aspect-ratio: 426 / 856"><video src="assets/images/8e7408a0a866.mp4" poster="assets/images/bdff5456921f.webp" muted loop playsinline preload="metadata" aria-label="Campaign terms animation"></video><figcaption><b>Festive campaign</b>Campaign terms</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/887d08d94043.webp" alt="App screen: Apply for cards" width="377" height="760" draggable="false"><figcaption><b>Cards</b>Apply for cards</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/8b1f9c56631d.webp" alt="App screen: Card details" width="377" height="760" draggable="false"><figcaption><b>Cards</b>Card details</figcaption></figure><figure class="pv-shot pv-shot-v" style="aspect-ratio: 426 / 856"><video src="assets/images/5b19fc8cc5bf.mp4" poster="assets/images/e85810fc6a4b.webp" muted loop playsinline preload="metadata" aria-label="Invite friends animation"></video><figcaption><b>Referral</b>Invite friends</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/63c0f5befc09.webp" alt="App screen: Pay Link" width="377" height="760" draggable="false"><figcaption><b>Payments</b>Pay Link</figcaption></figure><figure class="pv-shot pv-shot-v" style="aspect-ratio: 426 / 856"><video src="assets/images/da1ade756f0a.mp4" poster="assets/images/c3c341472dc8.webp" muted loop playsinline preload="metadata" aria-label="Order and earn milestones animation"></video><figcaption><b>Festive campaign</b>Order and earn milestones</figcaption></figure><figure class="pv-shot" style="aspect-ratio: 377 / 760"><img src="assets/images/e02b2d57731e.webp" alt="App screen: My profile" width="377" height="760" draggable="false"><figcaption><b>Account</b>My profile</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section id="lab" style="display: flex; flex-direction: column; gap: 24px">
+    <div class="pv-reveal" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; border-bottom: 1px solid var(--line); padding-bottom: 12px">
+      <div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+        <h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25">Lab: things I built with AI</h2>
+        <p style="margin: 0; color: var(--muted); max-width: 640px">I like figuring out how things work, and AI has given me a whole new set of things to take apart and rebuild. Here are some experiments, prototypes and small products I’ve built.</p>
+      </div>
+      
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px 28px">
+      <sc-for list="{{lab}}" as="l" hint-placeholder-count="3">
+        <a href="{{l.url}}" target="_blank" rel="noopener" class="pv-card pv-reveal" style="--tint: var(--panel); --dotc: #2FA36B">
+          <div class="pv-frame"><img src="{{l.img}}" alt="{{l.title}}"></div>
+          <div style="display: flex; justify-content: space-between; gap: 12px"><span style="font-weight: 500">{{l.title}}</span><span style="color: var(--faint); font-size: 13px">{{l.tag}}</span></div>
+          <span style="color: var(--muted); margin-top: -6px">{{l.body}}</span>
+          <sc-if value="{{l.live}}" hint-placeholder-val="{{true}}"><span class="pv-more" style="font-size: 13px">View project <span class="pv-arrow">↗</span></span></sc-if>
+          <sc-if value="{{l.soon}}" hint-placeholder-val="{{false}}">
+            <span style="font-size: 13px; color: var(--faint)">Coming soon</span>
+          </sc-if>
+        </a>
+      </sc-for>
     </div>
   </section>
 
@@ -562,29 +602,6 @@ html.pv-menu-lock{overflow:hidden}
         <a href="{{a.url}}" target="{{a.target}}" rel="noopener" class="pv-card pv-reveal" style="--tint: var(--panel); --dotc: var(--fg)">
           <div class="pv-frame"><img src="{{a.img}}" alt="{{a.name}} cover"></div>
           <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 500">{{a.name}}</span><span style="color: var(--muted)">{{a.title}}</span><span style="color: var(--faint); font-size: 13px">{{a.client}}</span></div>
-        </a>
-      </sc-for>
-    </div>
-  </section>
-
-  <section id="lab" style="display: flex; flex-direction: column; gap: 24px">
-    <div class="pv-reveal" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; border-bottom: 1px solid var(--line); padding-bottom: 12px">
-      <div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-        <h2 style="margin: 0; font-size: clamp(20px, 1.2vw + 12px, 24px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25">Lab — things I built with AI</h2>
-        <p style="margin: 0; color: var(--muted); max-width: 640px">I like figuring out how things work — and AI has given me a whole new set of things to take apart and rebuild. Here are some experiments, prototypes and small products I’ve built.</p>
-      </div>
-      
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 32px 28px">
-      <sc-for list="{{lab}}" as="l" hint-placeholder-count="3">
-        <a href="{{l.url}}" target="_blank" rel="noopener" class="pv-card pv-reveal" style="--tint: var(--panel); --dotc: #2FA36B">
-          <div class="pv-frame"><img src="{{l.img}}" alt="{{l.title}}"></div>
-          <div style="display: flex; justify-content: space-between; gap: 12px"><span style="font-weight: 500">{{l.title}}</span><span style="color: var(--faint); font-size: 13px">{{l.tag}}</span></div>
-          <span style="color: var(--muted); margin-top: -6px">{{l.body}}</span>
-          <sc-if value="{{l.live}}" hint-placeholder-val="{{true}}"><span class="pv-more" style="font-size: 13px">View project <span class="pv-arrow">↗</span></span></sc-if>
-          <sc-if value="{{l.soon}}" hint-placeholder-val="{{false}}">
-            <span style="font-size: 13px; color: var(--faint)">Coming soon</span>
-          </sc-if>
         </a>
       </sc-for>
     </div>
@@ -1444,6 +1461,19 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.setBaRef = (el) => { if (el) this.baEl = el; };
+    this.setMotionRef = (el) => {
+      if (!el || el === this.motionEl) return;
+      this.motionEl = el;
+      const vids = Array.prototype.slice.call(el.querySelectorAll('video'));
+      let reduce = false;
+      try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.playsInline = true; });
+      if (reduce) return;
+      const play = (v) => { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); };
+      if (typeof IntersectionObserver === 'undefined') { vids.forEach(play); return; }
+      const io = new IntersectionObserver((ents) => { ents.forEach((en) => { if (en.isIntersecting) play(en.target); else en.target.pause(); }); }, { threshold: 0.3 });
+      vids.forEach((v) => io.observe(v));
+    };
     this.setShowRef = (el) => { if (el && el !== this.showEl) { this.showEl = el; this.startShow(el); } };
     this.setGcRef = (el) => { if (el) { this.gcEl = el; const i = el.querySelector('#gc-value'); if (i && !i.dataset.init) { i.value = '10000'; i.dataset.init = '1'; } } };
     this.setIntroRef = (el) => { if (el && el !== this.introEl) { this.introEl = el; this.runIntro(el); } };
@@ -1931,6 +1961,7 @@ class Component extends DCLogic {
       introSkip: this.introSkip,
       toggleMenu: this.toggleMenu,
       setShow: this.setShowRef,
+      setMotion: this.setMotionRef,
       isCase: s.view === 'revamp3',
       isGift: s.view === 'gift',
       isDs: s.view === 'ds',
@@ -1956,17 +1987,18 @@ class Component extends DCLogic {
       setCv: this.setCvRef,
       work: [
         { name: 'Product Revamp 3.0', status: 'Live', dot: '#2FA36B', tint: 'rgba(110, 90, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Making a complicated rewards product simpler', img: 'assets/images/194f76d6dd4f.webp', alt: 'Product Revamp 3.0 cover', url: '#product-revamp-3', arrow: '→', target: '' },
-        { name: 'Quick Repairs', status: '', dot: '#8C8C8C', tint: 'rgba(90, 150, 230, 0.09)', tags: 'OneAssist · Service experience', cta: 'Read case study', arrow: '→', target: '', title: 'Making complex repairs simpler for customers', img: 'assets/images/9ee547d63051.webp', alt: 'Quick Repairs cover', url: '#quick-repairs' },
+        { name: 'Quick Repairs', status: '', dot: '#8C8C8C', tint: 'rgba(90, 150, 230, 0.09)', tags: 'OneAssist · Service experience', cta: 'Read case study', arrow: '→', target: '', title: 'Making complex repairs simpler for customers', img: 'assets/images/9ba8c80f41e1.webp', alt: 'Quick Repairs cover', url: '#quick-repairs' },
         { name: 'Yaper Design System', status: 'Foundation', dot: '#3B82C4', tint: 'rgba(90, 150, 230, 0.09)', tags: 'Yaper · System', cta: 'Read case study', title: 'Building the system behind the product', img: 'assets/images/328a4c5e64ab.webp', alt: 'Yaper Design System cover', url: '#yaper-design-system', arrow: '→', target: '' },
         { name: 'Product Revamp 2.0', status: 'Archive', dot: '#8C8C8C', tint: 'rgba(140, 120, 230, 0.08)', tags: 'Yaper · End-to-end', cta: 'Read case study', title: 'Redesigning Yaper to fix the activation → trust → reward loop', img: 'assets/images/f4c2f7b25897.webp', alt: 'Product Revamp 2.0 cover', url: '#product-revamp-2', arrow: '→', target: '' }
       ],
       archive: [
         { name: 'Gift Cards', img: 'assets/images/0110bee0f94d.webp', title: 'Turning a gift card into cash, without leaving users guessing', client: 'Yaper · New surface', url: '#gift-cards', target: '' },
-        { name: 'Insta Doc', img: 'assets/images/9829ebac6299.webp', title: 'Designing a simpler telemedicine experience for patients', client: 'InstaDoc · Healthcare', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=649-431&viewport=266%2C85%2C0.03&t=rzYL0wGSNZvHuKM6-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' },
-        { name: 'Continental Coffee', img: 'assets/images/1438050e1183.webp', title: 'Brewing a better digital experience for Continental Coffee', client: 'Continental Coffee · E-commerce', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=648-2&viewport=266%2C85%2C0.03&t=EdSec0aZUYahBPhl-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' },
-        { name: 'IDFence', img: 'assets/images/13ad9538c940.webp', title: 'Making digital identity protection easier to understand', client: 'OneAssist · Fintech / Security', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=882-494&viewport=266%2C85%2C0.03&t=YMWpCHODs0tgytbr-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' }
+        { name: 'Insta Doc', img: 'assets/images/ef20a325331b.webp', title: 'Designing a simpler telemedicine experience for patients', client: 'InstaDoc · Healthcare', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=649-431&viewport=266%2C85%2C0.03&t=rzYL0wGSNZvHuKM6-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' },
+        { name: 'Continental Coffee', img: 'assets/images/953df017cee2.webp', title: 'Brewing a better digital experience for Continental Coffee', client: 'Continental Coffee · E-commerce', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=648-2&viewport=266%2C85%2C0.03&t=EdSec0aZUYahBPhl-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' },
+        { name: 'IDFence', img: 'assets/images/882356860d4f.webp', title: 'Making digital identity protection easier to understand', client: 'OneAssist · Fintech / Security', url: 'https://www.figma.com/proto/Hyc8EIgGHWYe8YtpaL1tHJ/Case-Studies?node-id=882-494&viewport=266%2C85%2C0.03&t=YMWpCHODs0tgytbr-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', target: '_blank' }
       ],
       lab: [
+        { title: 'A Sky Full of Wishes', tag: 'AI · Diwali experience', body: 'Fold your Diwali wish into a lantern, light it, and release it into a sky shared with strangers. Read theirs too.', img: 'assets/images/fb1201b69815.webp', url: 'https://sky-full-of-wishes.vercel.app/', live: true, soon: false },
         { title: 'AI App Critique', tag: 'AI · UX experiment', body: 'Upload a screen and get an AI critique of its UX issues, gaps and inconsistencies.', img: 'assets/images/ca511cbaf66f.webp', url: 'https://critique-taupe.vercel.app', live: true, soon: false },
         { title: 'Cosmos Space', tag: 'AI experiment · Space', body: 'An interactive journey through the events unfolding in our sky.', img: 'assets/images/5f8f67c364a1.webp', url: 'https://cosmos-universe.vercel.app/', live: true, soon: false },
         { title: 'Chidiya Udh', tag: 'AI · Game', body: 'A childhood game rebuilt with AI. Hold your finger down, lift only if it flies.', img: 'assets/images/4f7da102e586.webp', url: 'https://chidiya-udh-rouge.vercel.app/', live: true, soon: false }
