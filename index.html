@@ -1467,7 +1467,7 @@ class Component extends DCLogic {
       const vids = Array.prototype.slice.call(el.querySelectorAll('video'));
       let reduce = false;
       try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.playsInline = true; });
+      vids.forEach((v) => { v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.playsInline = true; v.loop = true; v.setAttribute('loop', ''); });
       if (reduce) return;
       const play = (v) => { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); };
       if (typeof IntersectionObserver === 'undefined') { vids.forEach(play); return; }
